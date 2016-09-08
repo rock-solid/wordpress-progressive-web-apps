@@ -1,0 +1,12 @@
+Filter.Iframe
+TYPE: bool
+VERSION: 3.2.0
+DEFAULT: false
+--DESCRIPTION--
+
+<p>
+  This directive enables Iframe video embedding in HTML Purifier. Check
+  <a href="http://htmlpurifier.org/docs/filter-custom.html">this document
+  on embedding videos</a> for more information on what this filter does.
+</p>
+--# vim: et sw=4 sts=4
