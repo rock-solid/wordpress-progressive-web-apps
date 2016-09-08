@@ -30,10 +30,10 @@ function pwapp_admin_init() {
     // new PWAPP_Admin_Init();
 }
 
-if (class_exists( 'PWAPP' ) && class_exists( 'PWAPP' )) {
+if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
 
     global $progressive_web_apps;
-    $progressive_web_apps = new PWAPP();
+    $progressive_web_apps = new PWAPP_Core();
 
     // Add hooks for activating & deactivating the plugin
     register_activation_hook( __FILE__, array( &$progressive_web_apps, 'activate' ) );
