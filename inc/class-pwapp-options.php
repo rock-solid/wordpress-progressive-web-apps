@@ -19,6 +19,7 @@ if ( ! class_exists( 'PWAPP_Options' ) ) {
         public static $options = array(
 
             // themes
+			'theme' => 2,
             'color_scheme' => 1,
             'custom_colors' => array(),
             'theme_timestamp' => '',
