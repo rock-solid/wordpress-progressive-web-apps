@@ -3,7 +3,7 @@
 /**
  * Plugin Name:  Progressive Web Apps
  * Plugin URI:  http://wordpress.org/plugins/progressive-web-apps/
- * Description: *
+ * Description: Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
  * Author: Appticles.com
  * Author URI: http://www.appticles.com/
  * Version: 0.1
