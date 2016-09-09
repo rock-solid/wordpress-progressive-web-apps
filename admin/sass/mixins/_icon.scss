@@ -1,0 +1,45 @@
+@mixin wbz-inline-icon($name, $font-size: 15px, $font-family: 'Appticles') {
+	$character: wbz-icon-character-for-name($name);
+	
+	&:before {
+	  position: relative;
+	  text-align: center;
+	  font-family: $font-family!important;
+	  font-size: $font-size!important;
+	  font-weight: normal!important;
+	
+	  @if $character {
+		  content: "#{$character}";
+	  } @else {
+		  content: "#{$name}";
+	  }
+	}
+}
+
+
+@function wbz-icon-character-for-name($name) {
+
+    // Row 1
+    @if ($name == "facebook") { @return "f"; }
+	@else if ($name == "twitter") { @return "t"; } 
+	@else if ($name == "google-plus") { @return "g"; }
+	@else if ($name == "rss") { @return "r"; }
+	@else if ($name == "wordpress") { @return "w"; }
+	@else if ($name == "tumblr") { @return "\35"; }
+    @else if ($name == "youtube") {@return "\36"; }
+
+	@else if ($name == "close-x") { @return "\31"; }
+	@else if ($name == "active") { @return "\32"; }
+	@else if ($name == "preview") { @return "\33"; }
+	@else if ($name == "edit") { @return "\34"; }
+    @else if ($name == "font-size") { @return "\ff"; }
+
+    @else if($name == "dfp") { @return "\37"; }
+    @else if($name == "blocked") { @return "\e802"; }
+    @else if($name == "pic") { @return "\e900"; }
+
+    @else {
+        // @debug "#icon: icon with name '#{$name}' not found.";
+        @return false;
+    }
+}

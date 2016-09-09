@@ -1,0 +1,104 @@
+#pwapp-admin{
+	.btn{
+		@include wbz-display-box();
+		@include wbz-box-orient(horizontal);
+		@include wbz-box-pack(center);
+		@include wbz-box-align(center);
+
+		display:flex;
+
+		font-family: 'AcordeRegular', sans-serif;
+		width: $btn-size-normal;
+		height: $btn-height;
+		line-height: $btn-height;
+		min-height: $btn-height;
+		background: #ffffff;
+		color: $btn-color;
+		font-size: $btn-font-size;
+		@include wbz-border-radius($btn-radius);
+		border: $btn-border;
+		padding: 0 15px;
+		margin: 0;
+		text-decoration: none;
+
+		&.smallest{
+			width: $btn-size-smallest;
+		}
+		&.smaller{
+			width: $btn-size-smaller;
+		}
+		&.small{
+			width: $btn-size-small;
+		}
+		&.big{
+			width: $btn-size-big;
+		}
+		&.bigger{
+			width: $btn-size-bigger;
+		}
+
+		strong{
+			@include wbz-display-inline-box();
+			font-family: 'AcordeSemiBold', sans-serif;
+			font-weight: normal;
+			font-style: normal;
+		}
+		&:hover{
+			background: #fafafa;
+			border: 1px solid darken($btn-border, $darken-amounth/2);
+		}
+		&.green{
+			background: $base-green;
+			color: #ffffff;
+			border: 1px solid darken($base-green, $darken-amounth/2);
+
+			&:hover{
+				background: darken($base-green, $darken-amounth/2);
+				border: 1px solid darken($base-green, $darken-amounth);
+			}
+		}
+
+		&.blue{
+			background: $base-blue;
+			color: #ffffff;
+			border: 1px solid darken($base-blue, $darken-amounth/2);
+
+			&:hover{
+				background: darken($base-blue, $darken-amounth/2);
+				border: 1px solid darken($base-blue, $darken-amounth);
+			}
+			&.spaced-right{
+				margin-right:20px;
+			}
+		}
+		&.orange{
+			background: $base-orange;
+			color: #ffffff;
+			border: 1px solid darken($base-orange, $darken-amounth/2);
+
+			&:hover{
+				background: darken($base-orange, $darken-amounth/2);
+				border: 1px solid darken($base-orange, $darken-amounth);
+			}
+		}
+		&.grey{
+			background: $base-grey;
+			color: #939494;
+			text-transform: uppercase;
+			border: 1px solid darken($base-grey, $darken-amounth/2);
+
+			&:hover{
+				background: darken($base-grey, $darken-amounth/2);
+				border: 1px solid darken($base-grey, $darken-amounth);
+			}
+		}
+
+        &.red-text {
+            color: darken($base-red, 20%);
+        }
+	}
+
+    .inline-btns-container{
+        @include wbz-display-inline-box();
+    }
+}

@@ -1,0 +1,154 @@
+@mixin wbz-display-box($important: no) {
+	@if $important == important{
+    	display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: -moz-box !important;
+		display: box !important;
+  	}
+  	@else {
+    	display: -webkit-box;
+		display: -ms-flexbox;
+		display: -moz-box;
+		display: box;
+  	}
+}
+@mixin wbz-display-inline-box($important: no) {
+	@if $important == important{
+    	display: -webkit-inline-box !important;
+		display: -ms-inline-flexbox !important;
+		display: -moz-inline-box !important;
+		display: inline-flex !important;
+  	}
+  	@else {
+    	display: -webkit-inline-box;
+		display: -ms-inline-flexbox;
+		display: -moz-inline-box;
+		display: inline-flex;
+  	}
+}
+@mixin wbz-box-flex($flex: 1, $preferredSize: auto, $important: no) {
+	@if $important == important{
+    	-webkit-box-flex: $flex !important; 	
+		-ms-flex: $flex 0 $preferredSize !important;
+		-moz-box-flex: $flex !important; 					
+		box-flex: $flex !important;
+		flex: $flex 0 $preferredSize !important;
+  	}
+  	@else {
+    	-webkit-box-flex: $flex;
+		-ms-flex: $flex 0 $preferredSize;	
+		-moz-box-flex: $flex; 					
+		box-flex: $flex;
+		flex: $flex 0 $preferredSize;
+  	}
+}
+@mixin wbz-box-orient($orient: horizontal, $important: no) {
+    @if $important == important {
+        -webkit-box-orient: $orient !important;
+		-moz-box-orient: $orient !important;
+		box-orient: $orient !important;
+        @if $orient == horizontal {
+            -ms-flex-direction: row !important;
+            flex-direction: row !important;
+        } @else {
+            -ms-flex-direction: column !important;
+            flex-direction: column !important;
+        }
+    } @else {
+        -webkit-box-orient: $orient;
+		-moz-box-orient: $orient;
+		box-orient: $orient;
+        @if $orient == horizontal {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        } @else {
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+}
+@mixin wbz-box-pack($pack: start, $important: no) {
+    @if $important == important {
+        -webkit-box-pack: $pack !important;
+		-moz-box-pack: $pack !important;
+        -ms-flex-pack: $pack !important;
+		box-pack: $pack !important;
+        @if $pack == start {
+            justify-content: flex-start !important;
+        }
+        @else if $pack == end {
+            justify-content: flex-end !important;
+        }
+        @else if $pack == justify {
+            justify-content: space-between !important;
+        }
+        @else {
+            justify-content: $pack !important;
+        }
+    } @else {
+        -webkit-box-pack: $pack;
+		-moz-box-pack: $pack;
+        -ms-flex-pack: $pack;
+		box-pack: $pack;
+        @if $pack == start {
+            justify-content: flex-start;
+        }
+        @else if $pack == end {
+            justify-content: flex-end;
+        }
+        @else if $pack == justify {
+            justify-content: space-between;
+        }
+        @else {
+            justify-content: $pack;
+        }
+    }
+}
+@mixin wbz-box-align($align: stretch, $important: no) {
+	@if $important == important{
+    	-webkit-box-align: $align!important;
+		-moz-box-align: $align!important;
+    	-ms-flex-align: $align!important;
+		box-align: $align!important;
+    	
+		@if $align == start {
+        	align-items: flex-start!important;
+    	}
+    	@else if $align == end {
+        	align-items: flex-end!important;
+    	}
+    	@else {
+       		align-items: $align!important;
+    	}
+  	}
+  	@else {
+    	-webkit-box-align: $align;
+		-moz-box-align: $align;
+    	-ms-flex-align: $align;
+		box-align: $align;
+    	
+		@if $align == start {
+        	align-items: flex-start;
+    	}
+    	@else if $align == end {
+        	align-items: flex-end;
+    	}
+    	@else {
+        	align-items: $align;
+    	}
+  	}
+}
+@mixin wbz-box-sizing($value, $important: no){
+	@if $important == important{
+		-webkit-box-sizing: $value !important;
+		-moz-box-sizing: $value !important;
+		box-sizing: $value !important;
+	}
+	@else {
+		-webkit-box-sizing: $value;
+		-moz-box-sizing: $value;
+		box-sizing: $value;
+  	}
+}
+
+

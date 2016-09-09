@@ -1,0 +1,115 @@
+/************************************************/
+/*		import icon and display mixins files
+/************************************************/
+
+@import '_icon';
+@import '_display';
+
+/************************************************/
+/*		mixins for css3 animations
+/************************************************/
+
+@mixin wbz-transform-origin($value, $important: no) {
+	@if $important == important{
+    	-webkit-transform-origin: $value !important;
+		-moz-transform-origin: $value !important;
+		transform-origin: $value !important;
+  	}
+  	@else {
+    	-webkit-transform-origin: $value;
+		-moz-transform-origin: $value;
+		transform-origin: $value;
+  	}
+}
+@mixin wbz-transform($value, $important: no){
+	@if $important == important{
+		-webkit-transform: $value !important;
+		-moz-transform: $value !important; 
+		transform: $value !important;
+	}
+	@else {
+    	-webkit-transform: $value;
+		-moz-transform: $value; 
+		transform: $value;
+  	}
+}
+@mixin wbz-transition-timing($value, $important: no){
+	@if $important == important{
+		-webkit-transition-timing-function: $value !important;
+		-moz-transition-timing-function: $value !important;
+		transition-timing-function: $value !important;
+	}
+	@else {
+		-webkit-transition-timing-function: $value;
+		-moz-transition-timing-function: $value;
+		transition-timing-function: $value;
+  	}
+}
+@mixin wbz-transition($value){
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	transition: $value;
+
+}
+
+/************************************************/
+/*		other mixins
+/************************************************/
+@mixin wbz-box-shadow($value, $important: no){
+	@if $important == important{
+		-webkit-box-shadow: $value !important;
+	   	-moz-box-shadow: $value !important;
+	    box-shadow: $value !important;
+	}
+	@else {
+		-webkit-box-shadow: $value;
+	   	-moz-box-shadow: $value;
+	    box-shadow: $value;
+  	}
+}
+@mixin wbz-border-radius($value, $important: no){
+	@if $important == important{
+		-webkit-border-radius: $value !important;
+		-moz-border-radius: $value !important;
+		border-radius: $value !important;
+	}
+	@else {
+		-webkit-border-radius: $value;
+		-moz-border-radius: $value;
+		border-radius: $value;
+  	}
+}
+@mixin wbz-opacity($value, $important: no){
+	@if $important == important{
+		filter: progid:DXImageTransform.Microsoft.Alpha(opacity=$value*100) !important;
+		-moz-opacity: $value !important;
+		opacity: $value !important;
+	}
+	@else {
+		filter: progid:DXImageTransform.Microsoft.Alpha(opacity=$value*100);
+		-moz-opacity: $value;
+		opacity: $value;
+  	}
+}
+@mixin wbz-spacer($value){
+	clear: both;
+	font-size: 1px;
+	height: $value;
+	line-height: 1px;
+	overflow: hidden; 
+}
+@mixin wbz-placeholder-color($value){
+	::-webkit-input-placeholder { 
+		color: $value;
+	}
+	:-moz-placeholder { 
+		color: $value;
+	}
+	::-moz-placeholder { 
+		color: $value;
+	}
+	:-ms-input-placeholder { 
+		color: $value;
+	}
+}
+

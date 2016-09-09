@@ -1,0 +1,402 @@
+#pwapp-admin{
+	form{
+		text-align: left;
+	}
+	input[type="text"],
+	input[type="password"],
+	input[type="file"],
+	input[type="email"]{
+
+        &:not(.wp-color-picker) {
+
+            font-family: 'AcordeSemiBold', sans-serif;
+            background: $input-background;
+            color: $input-color;
+            font-size: $input-font-size;
+            @include wbz-border-radius($input-radius);
+            @include wbz-box-shadow(none);
+            border: 1px solid $input-border;
+            width: $input-size-normal;
+            height: $input-height;
+            padding: 0 15px;
+
+            &.smaller {
+                width: $input-size-smaller;
+            }
+            &.small {
+                width: $input-size-small;
+            }
+            &.big {
+                width: $input-size-big;
+            }
+            &:focus {
+                outline: none;
+                border: 1px solid darken($input-border, $darken-amounth);
+            }
+            &.error {
+                border-color: $error-color;
+                background: $error-bg;
+            }
+            &.indent {
+                margin: 0 0 0 30px;
+            }
+        }
+	}
+	select {
+		font-family: 'AcordeSemiBold', sans-serif;
+		width: $input-size-normal;
+		height: $input-height;
+		background: $input-background;
+		color: $input-color;
+		font-size: $input-font-size;
+		@include wbz-border-radius($input-radius);
+		@include wbz-box-shadow(none);
+		border: 1px solid $input-border;
+		padding: 0 15px;
+
+		&.smaller{
+			width: $input-size-smaller;
+		}
+		&.small{
+			width: $input-size-small;
+		}
+		&.big{
+			width: $input-size-big;
+		}
+		&:focus{
+			outline:none;
+			border:1px solid darken($input-border,$darken-amounth);
+		}
+	}
+
+
+	.selectboxit-container{
+
+		 .selectboxit{
+			font-family: 'AcordeSemiBold', sans-serif;
+			width: $input-size-normal;
+			height: $input-height;
+			background: $input-background;
+			color: $input-color;
+			font-size: $input-font-size;
+			@include wbz-border-radius($input-radius);
+			@include wbz-box-shadow(none);
+			border: 1px solid $input-border;
+			padding: 0 15px;
+			width: 220px!important;
+
+			&:focus{
+				outline:none;
+				border:1px solid darken($input-border,$darken-amounth);
+			}
+
+			span, .selectboxit-options a {
+				height: 36px;
+				line-height:33px;
+			}
+		}
+
+		.selectboxit-arrow-container{
+			width: 25px;
+		}
+
+		.selectboxit-options{
+			border-radius: 0;
+			width: 220px;
+
+			.selectboxit-option{
+				height: 36px;
+				border-bottom: $btn-border 1px solid;
+
+			}
+
+			a {
+				height: 36px;
+				line-height: 33px;
+			}
+			.selectboxit-option-first,.selectboxit-option-last{
+				border-radius: 0;
+			}
+		}
+
+		span{
+			height: 36px;
+			line-height: 33px;
+		}
+
+		.selectboxit-list{
+			 > .selectboxit-focus{
+			 	 > .selectboxit-option-anchor{
+				 	background: darken($base-grey, $darken-amounth/2);
+				 }
+			 }
+		}
+	}
+
+	input[type="radio"],
+    input[type="checkbox"]{
+		width: 16px;
+		height: 16px;
+		float: left;
+		margin: 0 10px 0 30px;
+
+		&::before{
+			margin: 4px;
+		}
+	}
+    input[type=checkbox]{
+        &:checked {
+            &::before{
+                margin: 0px;
+                float: left;
+                display: inline-block;
+                vertical-align: middle;
+                width: 16px;
+                font:normal 21px/1 'dashicons';
+                speak: none;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                position: relative;
+                top: -3px;
+                left: -4px;
+            }
+        }
+    }
+	textarea{
+		font-family: 'AcordeSemiBold', sans-serif;
+		width: $input-size-normal;
+		height: $textarea-height;
+		background: $input-background;
+		color: $input-color;
+		font-size: $input-font-size;
+		@include wbz-border-radius($input-radius);
+		@include wbz-box-shadow(none);
+		border: 1px solid $input-border;
+		padding: 10px 15px;
+		resize: none;
+
+		&.smaller{
+			width: $input-size-smaller;
+		}
+		&.small{
+			width: $input-size-small;
+		}
+		&.big{
+			width: $input-size-big;
+		}
+		&:focus{
+			outline:none;
+			border:1px solid darken($input-border,$darken-amounth);
+		}
+		&.error{
+			border-color: $error-color;
+			background: $error-bg;
+		}
+	}
+
+	label{
+		@include wbz-display-box();
+		font-family: 'AcordeRegular', sans-serif;
+		color: $label-color;
+		font-size: $label-font-size;
+	}
+
+	::-webkit-input-placeholder{
+		padding: 2px 0 0 0;
+		color: #b2b5bc;
+		font-size: 13px;
+	}
+	:-moz-placeholder{
+		padding: 2px 0 0 0;
+		color: #b2b5bc;
+		font-size: 13px;
+	}
+	::-moz-placeholder{
+		padding: 2px 0 0 0;
+		color: #b2b5bc;
+		font-size: 13px;
+	}
+	:-ms-input-placeholder{
+		color: #b2b5bc!important;
+		font-size: 13px;
+	}
+
+	.field-message{
+		@include wbz-display-box();
+		margin: 0 0 0 15px;
+
+		@include wbz-box-shadow(none);
+		background: transparent;
+		border: 0;
+
+		span{
+			font-family: "OpenSansRegular", sans-serif;
+			font-size: 13px;
+			line-height: 20px;
+		}
+		&.error{
+			span{
+				color: $error-color;
+			}
+		}
+		&.success{
+			span{
+				color: $success-color;
+			}
+		}
+		&.warning{
+			span{
+				color: $warning-color;
+			}
+		}
+	}
+	.message-container{
+		display: block;
+		text-align: left;
+		width: 100%;
+
+        a {
+            font-family: "OpenSansRegular", sans-serif;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+		&.error{
+			background:none;
+			border:none;
+
+		}
+
+		.wrapper{
+			@include wbz-display-box();
+			@include wbz-box-orient(vertical);
+			@include wbz-box-flex(1);
+			width: 100%;
+			padding: 25px 50px;
+			margin: 10px 0;
+
+			.relative{
+				width: 100%;
+			}
+		}
+		.title{
+			width: 100%;
+			@include wbz-display-box();
+			@include wbz-box-orient(horizontal, important);
+
+			h2{
+				font-family: 'OlRoundGothicLight', sans-serif;
+				@include wbz-display-box();
+				@include wbz-box-flex(1);
+				margin: 0 0 15px 0!important;
+				font-size: 25px;
+			}
+		}
+		span{
+			font-family: "OpenSansRegular", sans-serif;
+			font-size: 13px;
+			line-height: 20px;
+		}
+		.close-x{
+			@include wbz-inline-icon(close-x, 25px);
+			@include wbz-display-box();
+			@include wbz-box-pack(end);
+			@include wbz-box-align(center);
+			width: 25px;
+			height: 25px;
+			padding: 0 15px;
+			top: -10px;
+			right: -25px;
+			position: absolute;
+
+			&:hover{
+				cursor: pointer;
+                color: #ffc26b;
+			}
+			&::before{
+				width: 25px;
+				height: 25px;
+			}
+		}
+		&.error{
+			.wrapper{
+				border: 1px solid $error-border;
+				background: $error-bg;
+			}
+			.title{
+				h2{
+					color: $error-color;
+
+					&.underlined{
+						border-bottom: 1px solid $error-border;
+					}
+				}
+			}
+			span{
+				color: $error-color;
+			}
+			.close-x{
+				color: $error-border;
+
+				&:hover{
+					color: darken($error-border,$darken-amounth/2);
+				}
+			}
+		}
+		&.success{
+			.wrapper{
+				border: 1px solid $success-border;
+				background: $success-bg;
+			}
+			.title{
+				h2{
+					color: $success-color;
+
+					&.underlined{
+						border-bottom: 1px solid $success-border;
+					}
+				}
+			}
+			span{
+				color: $success-color;
+			}
+			.close-x{
+				color: $success-border;
+
+				&:hover{
+					color: darken($success-border,$darken-amounth/2);
+				}
+			}
+		}
+		&.warning{
+			.wrapper{
+				border: 1px solid $warning-border;
+				background: $warning-bg;
+			}
+			.title{
+				h2{
+					color: $warning-color;
+
+					&.underlined{
+						border-bottom: 1px solid $warning-border;
+					}
+				}
+			}
+			span{
+				color: $warning-color;
+
+                a {
+                    color: darken($warning-color,20%) !important;
+                    text-decoration: underline !important;
+                }
+			}
+			.close-x{
+				color: $warning-border;
+
+				&:hover{
+					color: darken($warning-border,$darken-amounth/2);
+				}
+			}
+		}
+	}
+}

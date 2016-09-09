@@ -1,0 +1,93 @@
+//color manipulation
+$darken-amounth: 20%;
+$lighten-amounth: 20%;
+
+$base-green: #9aca40;
+$base-purple: #ae113d;
+$base-orange: #ffbb42;
+$base-red: #ff4e40; 
+$base-blue: #1ca8dd;
+$base-dark-blue: #2a2d33;
+$base-grey: #fcfcfc;
+
+$base-color: #eeeff1;
+$base-color-lighter: #f5f7f7;
+$base-color-darken: #dce0e0;
+
+$body-color: #edf0f0;
+$box-color: #ffffff;
+$main-menu-background: $base-dark-blue;
+
+//text styling
+$base-text-color: #4b4b4b;
+$base-p-color: #8c8d8d;
+$h1-font-size: 47px;
+$h2-font-size: 20px;
+$h3-font-size: 18px;
+
+//buttons
+$btn-radius: 3px;
+$btn-background: #ffffff;
+$btn-color: $base-dark-blue;
+$btn-font-size: 14px;
+$btn-border: #daddde;
+$btn-height: 36px;
+$btn-size-smallest: 50px;
+$btn-size-smaller: 120px;
+$btn-size-small: 220px;
+$btn-size-normal: 240px;
+$btn-size-big: 320px;
+$btn-size-bigger: 455px;
+
+
+$btn-action-border: 1px solid #7ca62c;
+
+//forms
+$input-background: #fafafa;
+$input-color: $base-dark-blue;
+$input-font-size: 14px;
+$input-height: 36px;
+$textarea-height: 100px;
+$input-size-smaller: 120px;
+$input-size-small: 220px;
+$input-size-normal: 240px;
+$input-size-big: 320px;
+$input-size-bigger: 455px;
+$input-size-biggest: 550px;
+$input-radius: 3px;
+$input-border: #daddde;
+$label-color: $base-dark-blue;
+$label-font-size: 15px;
+
+	//errors
+	$error-bg: #fef7f7;
+	$error-color: #d0160a;
+	$error-border: #ecc2c3;
+	
+	//messages
+	$success-bg: #f7fef7;
+	$success-color: #4cae4c;
+	$success-border: #5cb85c;
+	
+	//warnings
+	$warning-bg: #fffce1;
+	$warning-color: #f89406;
+	$warning-border: #ffd79e;
+	
+	//notices
+	$notice-bg: #f6f9f9;
+	$notice-border: #dfeaea;
+	$notice-color: #819196;
+	$notice-radius: 3px;
+
+//structure variables
+$total-width: 1180px;
+$left-menu-width: 110px;
+$inner-width: 1070px;
+$header-height: 90px;
+$section-spacer: 10px;
+
+
+$inner-width-centered: 850px;
+$inner-width-popup: 525px;
+$inner-width-account: 455px;
