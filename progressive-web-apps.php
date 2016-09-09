@@ -19,15 +19,13 @@ require_once('core/class-pwapp.php');
  * Used to load the required files on the plugins_loaded hook, instead of immediately.
  */
 function pwapp_frontend_init() {
-
      require_once('frontend/class-application.php');
      new PWAPP_Application();
 }
 
 function pwapp_admin_init() {
-
-    // require_once('admin/class-admin-init.php');
-    // new PWAPP_Admin_Init();
+ 	require_once('admin/class-admin-init.php');
+	new PWAPP_Admin_Init();
 }
 
 if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
@@ -43,7 +41,6 @@ if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
     if (is_admin()) {
 
         if (defined( 'DOING_AJAX' ) && DOING_AJAX) {
-
 
             require_once( PWAPP_PLUGIN_PATH . 'admin/class-admin-ajax.php' );
 
