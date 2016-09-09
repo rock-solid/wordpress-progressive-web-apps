@@ -2,7 +2,7 @@
 $app_settings = PWAPP_Application::load_app_settings();
 
 $frontend_path = plugins_url()."/".PWAPP_DOMAIN."/frontend/";
-$theme_path = $frontend_path."themes/app2"."/";
+$theme_path = $frontend_path."themes/app2/";
 
 // check fonts
 $loaded_fonts = array(
@@ -121,10 +121,7 @@ if ($texts_json_exists === false) {
             hasTwitter: <?php echo $app_settings['enable_twitter'];?>,
             hasGoogle: <?php echo $app_settings['enable_google'];?>,
             commentsToken: "<?php echo $app_settings['comments_token'];?>",
-            articlesPerCard: <?php if ($app_settings['posts_per_page'] == 'single') echo 1; elseif ($app_settings['posts_per_page'] == 'double') echo 2; else echo '"auto"' ;?>,
-            homeText: <?php echo str_replace('\n', '<br/>', json_encode($app_settings['cover_text']));?>,
-
-
+            articlesPerCard: <?php if ($app_settings['posts_per_page'] == 'single') echo 1; elseif ($app_settings['posts_per_page'] == 'double') echo 2; else echo '"auto"' ;?>
         }
     </script>
 
@@ -143,8 +140,6 @@ if ($texts_json_exists === false) {
 
     <script src="<?php echo $frontend_path.'export/content.php?content=apptexts&locale='.get_locale();?>" type="text/javascript"></script>
     <script src="<?php echo $theme_path;?>js/app.js?date=20160525" type="text/javascript"></script>
-
-
 </head>
 <body>
 <div id="appLoadingIndicator">
