@@ -14,7 +14,6 @@ function PWAPP_EDIT_THEME(){
   this.DOMDoc;
 
   this.send_btn;
-  this.enableCustomSelects = 0;
 
 
   /*****************************************************************************************************/
@@ -71,7 +70,7 @@ function PWAPP_EDIT_THEME(){
       }
     ];
 
-    jQuery('#' + this.type + '_preview_' + String(i)).magnificPopup({
+    jQuery('#' + this.type + '_preview_2').magnificPopup({
       items: snapshots,
       gallery: {
         enabled: true
@@ -79,7 +78,7 @@ function PWAPP_EDIT_THEME(){
       type: 'image' // this is default type
     });
 
-    jQuery('#' + this.type + '_preview_' + String(i)).hover(
+    jQuery('#' + this.type + '_preview_2').hover(
       function(){
         jQuery(this).parent().siblings('div.text-preview').show();
       },
@@ -117,13 +116,9 @@ function PWAPP_EDIT_THEME(){
   /*                                                                                                   */
   /*****************************************************************************************************/
   this.initCustomSelects = function(){
-
-    if (this.enableCustomSelects == 1){
-
-      jQuery('#' + JSObject.type + '_fontheadlines').selectBoxIt();
-      jQuery('#' + JSObject.type + '_fontsubtitles').selectBoxIt();
-      jQuery('#' + JSObject.type + '_fontparagraphs').selectBoxIt();
-    }
+    jQuery('#' + JSObject.type + '_fontheadlines').selectBoxIt();
+    jQuery('#' + JSObject.type + '_fontsubtitles').selectBoxIt();
+    jQuery('#' + JSObject.type + '_fontparagraphs').selectBoxIt();
   };
 
 

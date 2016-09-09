@@ -39,7 +39,7 @@
 								<div class="overlay">
 									<div class="spacer-100"></div>
 									<div class="actions">
-										<div class="preview" id="pwapp_themes_preview_2"></div>
+										<div class="preview" id="pwapp_edittheme_preview_2"></div>
 									</div>
 									<div class="spacer-10"></div>
 									<div class="text-preview">Preview theme</div>
@@ -481,8 +481,7 @@
     if (window.PWAPPJSInterface && window.PWAPPJSInterface != null){
         jQuery(document).ready(function(){
 
-            window.PWAPPJSInterface.add("UI_switchtheme","PWAPP_SWITCH_THEME",{'DOMDoc':window.document, 'baseThemesUrl': '<?php echo plugins_url()."/".PWAPP_DOMAIN.'/frontend/themes/';?>', 'selectedTheme': <?php echo PWAPP_Options::get_setting('theme');?>}, window);
-            window.PWAPPJSInterface.add("UI_customizetheme","PWAPP_EDIT_THEME",{'DOMDoc':window.document, 'enableCustomSelects': 1}, window);
+            window.PWAPPJSInterface.add("UI_customizetheme","PWAPP_EDIT_THEME",{'DOMDoc':window.document, 'baseThemesUrl': '<?php echo plugins_url()."/".PWAPP_DOMAIN.'/frontend/themes/';?>'}, window);
             window.PWAPPJSInterface.add("UI_editimages","PWAPP_EDIT_IMAGES",{'DOMDoc':window.document}, window);
             window.PWAPPJSInterface.add("UI_editcover","PWAPP_EDIT_COVER",{'DOMDoc':window.document}, window);
 
