@@ -91,25 +91,25 @@ if (class_exists('PWAPP_Core')):
     <script type="text/javascript" pagespeed_no_defer="">
 
         // @todo (Future releases) Find a more efficient way to feed params to the banner script
-        var wpmpAppBanner = wpmpAppBanner || {};
-        wpmpAppBanner.WIDGET = wpmpAppBanner.WIDGET || {};
-        wpmpAppBanner.WIDGET.appUrl = '<?php echo home_url();?>';
-        wpmpAppBanner.WIDGET.appIcon = '<?php echo $app_icon_path;?>';
-        wpmpAppBanner.WIDGET.appName = '<?php echo get_bloginfo("name");?>';
-        wpmpAppBanner.WIDGET.ref = '<?php echo $mobile_url;?>';
-        wpmpAppBanner.WIDGET.trustedDevice = 1;
-        wpmpAppBanner.WIDGET.iframeUrl = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/iframe/bar.html';
-        wpmpAppBanner.WIDGET.cssPath = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/css/style-light.min.css';
-        wpmpAppBanner.WIDGET.openAppButton = '<?php echo $open_btn_text;?>';
-        wpmpAppBanner.WIDGET.cookiePrefix = '<?php echo PWAPP_Cookie::$prefix;?>';
+        var pwappAppBanner = pwappAppBanner || {};
+        pwappAppBanner.WIDGET = pwappAppBanner.WIDGET || {};
+        pwappAppBanner.WIDGET.appUrl = '<?php echo home_url();?>';
+        pwappAppBanner.WIDGET.appIcon = '<?php echo $app_icon_path;?>';
+        pwappAppBanner.WIDGET.appName = '<?php echo get_bloginfo("name");?>';
+        pwappAppBanner.WIDGET.ref = '<?php echo $mobile_url;?>';
+        pwappAppBanner.WIDGET.trustedDevice = 1;
+        pwappAppBanner.WIDGET.iframeUrl = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/iframe/bar.html';
+        pwappAppBanner.WIDGET.cssPath = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/css/style-light.min.css';
+        pwappAppBanner.WIDGET.openAppButton = '<?php echo $open_btn_text;?>';
+        pwappAppBanner.WIDGET.cookiePrefix = '<?php echo PWAPP_Cookie::$prefix;?>';
 
         (function () {
-             var wpmp = document.createElement('script');
-             wpmp.async = true;
-             wpmp.type = 'text/javascript';
-             wpmp.src = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/js/smart-app-banner.min.js';
+             var pwapp = document.createElement('script');
+             pwapp.async = true;
+             pwapp.type = 'text/javascript';
+             pwapp.src = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/js/smart-app-banner.min.js';
              var node = document.getElementsByTagName('script')[0];
-             node.parentNode.insertBefore(wpmp, node);
+             node.parentNode.insertBefore(pwapp, node);
          })();
 
     </script>

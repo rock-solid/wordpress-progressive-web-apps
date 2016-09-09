@@ -26,6 +26,8 @@ if ( ! class_exists( 'PWAPP_Options' ) ) {
             'font_subtitles' => 1,
             'font_paragraphs' => 1,
             'font_size' => 1, // unit measure is 'rem'
+			'inactive_categories' => array(),
+			'inactive_pages' => array(),
 
 			'display_mode' => 'normal',
             'display_website_link' => 1,

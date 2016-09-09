@@ -1,4 +1,4 @@
-wpmpAppBanner = wpmpAppBanner || {};
+pwappAppBanner = pwappAppBanner || {};
 
 (function () {
 
@@ -55,6 +55,6 @@ wpmpAppBanner = wpmpAppBanner || {};
             document.cookie = c_name + "=" + c_value;
         };
 
-        wpmpAppBanner.Cookie = Cookie;
+        pwappAppBanner.Cookie = Cookie;
     }()
 );

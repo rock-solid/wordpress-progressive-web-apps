@@ -1,4 +1,4 @@
-wpmpAppBanner = wpmpAppBanner || {};
+pwappAppBanner = pwappAppBanner || {};
 
 (function () {
 
@@ -29,7 +29,7 @@ wpmpAppBanner = wpmpAppBanner || {};
     p.initialize = function () {
 
         // create cookie obj
-        this.cookie = new wpmpAppBanner.Cookie();
+        this.cookie = new pwappAppBanner.Cookie();
     };
 
 
@@ -80,7 +80,7 @@ wpmpAppBanner = wpmpAppBanner || {};
             if (document.body && document.body.clientWidth != 0) {
                 clearInterval(DOMLoadTimer);
 
-                me.bar = new wpmpAppBanner.Bar({
+                me.bar = new pwappAppBanner.Bar({
                     appIcon: me.WIDGET.appIcon,
                     appName: me.WIDGET.appName,
                     appUrl: me.WIDGET.appUrl,
@@ -110,5 +110,5 @@ wpmpAppBanner = wpmpAppBanner || {};
         }
     };
 
-    wpmpAppBanner.Stage = Stage;
+    pwappAppBanner.Stage = Stage;
 }());
