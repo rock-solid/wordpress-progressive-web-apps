@@ -1,0 +1,52 @@
+{
+	"APP_TEXTS": {
+		"LINKS": {
+			"VISIT_WEBSITE": "Înapoi către site",
+			"VISIT_APP": "Înapoi la versiunea pentru mobil",
+            "HOME": "Prima pagina",
+			"CREDITS": "Despre aplicație",
+			"CATEGORIES": "Categorii",
+			"GO_TO": "Mergi la",
+			"OTHERS": "Altele",
+			"HEADLINES": "Titluri",
+			"INSIDE": "Sumar",
+            "MENU": "Meniu",
+            "OPEN_APP": "Deschide"
+		},
+		"TEXTS": {
+			"NO_PAGES": "Nu există pagini!",
+			"NO_CATEGORIES": "Nu există categorii!",
+			"NO_ARTICLES": "Nu există articole!",
+			"NO_COMMENTS": "Nu există comentarii pentru acest articol. <br /> Adaugă tu primul comentariu!",
+			"NO_COMMENTS_SHORT": "Nu există comentarii pentru acest articol.",
+			"GOOGLE_ADS": "Reclame Google",
+			"COMMENTS": "Comentarii",
+			"LEAVE_COMMENTS": "Adaugă un comentariu",
+			"BY_AUTHOR": "de",
+			"LOADING": "Se încarcă",
+			"LOAD_MORE": "Încarcă mai mult",
+			"LATEST": "Noutăți",
+			"PAGE": "Pagina",
+			"SWIPE_FOR_MORE": "Swipe pentru mai mult",
+			"SWIPE_TO_CONTINUE": "Swipe pentru a continua",
+            "WEBSITE_CONFIRM": "Eşti sigur că vrei să accesezi varianta desktop?"
+		},
+		"PULL_REFRESH":{
+			"PULL_COMMENTS": "Trage în jos pentru comentarii noi!",
+			"RELEASE": "Eliberează pentru a reîncărca",
+			"LAST_UPDATED": "Actualizat pe"
+		},
+		"FORMS": {
+			"SEND": "Trimite",
+			"YOUR_NAME": "Numele tău",
+			"YOUR_NAME_ERROR": "Te rugăm să introduci numele tău!",
+			"YOUR_EMAIL": "Adresa ta de e-mail",
+			"YOUR_EMAIL_ERROR": "Te rugăm să introduci adresa ta de e-mail!",
+			"YOUR_EMAIL_ERROR2": "Te rugăm să introduci o adresă validă de e-mail!",
+			"YOUR_COMMENT": "Comentariul tău",
+			"YOUR_COMMENT_ERROR": "Te rugăm să introduci comentariul!",
+			"SUBMIT_ERROR": "Ne pare rău, a survenit o eroare.",
+			"AWAITING_MODERATION": "Comentariul tău va fi revizuit înainte de publicare."
+		}
+	}
+}

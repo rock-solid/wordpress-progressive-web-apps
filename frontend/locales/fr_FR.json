@@ -1,0 +1,52 @@
+{
+	"APP_TEXTS": {
+		"LINKS": {
+			"VISIT_WEBSITE": "Visitez le site web",
+			"VISIT_APP": "Passer à une version mobile",
+            "HOME": "Accueil",
+			"CREDITS": "A propos de l'application",
+			"CATEGORIES": "Catégories",
+			"GO_TO": "Aller à",
+			"OTHERS": "Autres",
+			"HEADLINES": "Gros titres",
+			"INSIDE": "À l'intérieur",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+		},
+		"TEXTS": {
+			"NO_PAGES": "Il n'y a pas de pages!",
+			"NO_CATEGORIES": "Il n'y a pas de catégories!",
+			"NO_ARTICLES": "Il n'y a pas d'articles!",
+			"NO_COMMENTS": "Aucun commentaire pour cet article <br/> Soyez le premier à commenter sur cet article",
+			"NO_COMMENTS_SHORT": "There are no comments for this article.",
+			"GOOGLE_ADS": "Ads by Google",
+			"COMMENTS": "Commentaires",
+			"LEAVE_COMMENTS": "Laissez un commentaire",
+			"BY_AUTHOR": "par",
+			"LOADING": "Chargement",
+			"LOAD_MORE": "Voir plus",
+			"LATEST": "Récents",
+			"PAGE": "Page",
+			"SWIPE_FOR_MORE": "Glissez pour plus",
+			"SWIPE_TO_CONTINUE": "Glissez pour continuer",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+		},
+		"PULL_REFRESH":{
+			"PULL_COMMENTS": "Déroulez pour plus de commentaires!",
+			"RELEASE": "Relâchez pour rafraîchir",
+			"LAST_UPDATED": "Dernière mise à"
+		},
+		"FORMS": {
+			"SEND": "Envoyer",
+			"YOUR_NAME": "Votre nom",
+			"YOUR_NAME_ERROR": "S'il vous plaît remplir votre nom!",
+			"YOUR_EMAIL": "Votre adresse e-mail",
+			"YOUR_EMAIL_ERROR": "S'il vous plaît remplissez votre adresse e-mail!",
+			"YOUR_EMAIL_ERROR2": "S'il vous plaît, mettez une adresse email valide!",
+			"YOUR_COMMENT": "Votre commentaire",
+			"YOUR_COMMENT_ERROR": "S'il vous plaît écrire un commentaire!",
+			"SUBMIT_ERROR": "Il y avait une erreur. S'il vous plaît réessayer plus tard.",
+			"AWAITING_MODERATION": "Votre commentaire est en attente d'approbation!"
+		}
+	}
+}

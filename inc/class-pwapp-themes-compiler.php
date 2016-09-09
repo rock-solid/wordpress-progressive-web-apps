@@ -116,7 +116,7 @@ if ( ! class_exists( 'PWAPP_Themes_Compiler' ) ) {
             if ($fp !== false) {
 
                 // read theme settings
-                $theme = PWAPP_Options::get_setting('theme');
+                $theme = 2;
                 $color_scheme = PWAPP_Options::get_setting('color_scheme');
 
                 if ($color_scheme == 0){
@@ -193,7 +193,7 @@ if ( ! class_exists( 'PWAPP_Themes_Compiler' ) ) {
 
                 $scss_compiler->setImportPaths(array(
                     PWAPP_FILES_UPLOADS_DIR,
-                    PWAPP_PLUGIN_PATH.'frontend/themes/app'.PWAPP_Options::get_setting('theme').'/scss/'
+                    PWAPP_PLUGIN_PATH.'frontend/themes/app2'.'/scss/'
                 ));
 
                 $scss_compiler->setFormatter('scss_formatter_compressed');

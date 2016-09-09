@@ -1,0 +1,52 @@
+{
+    "APP_TEXTS": {
+        "LINKS": {
+            "VISIT_WEBSITE": "Visit website",
+            "VISIT_APP": "Switch to mobile version",
+            "HOME": "Home",
+            "CREDITS": "Credits",
+            "CATEGORIES": "Categories",
+            "GO_TO": "Go to",
+            "OTHERS": "Others",
+            "HEADLINES": "Headlines",
+            "INSIDE": "Inside",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+        },
+        "TEXTS": {
+            "NO_PAGES": "There are no pages!",
+            "NO_CATEGORIES": "There are no categories!",
+            "NO_ARTICLES": "There are no articles!",
+            "NO_COMMENTS": "There are no comments for this article.<br/>Be the first one to comment about this!",
+            "NO_COMMENTS_SHORT": "There are no comments for this article.",
+            "GOOGLE_ADS": "Ads by Google",
+            "COMMENTS": "Comments",
+            "LEAVE_COMMENTS": "Leave a comment",
+            "BY_AUTHOR": "by",
+            "LOADING": "Loading",
+            "LOAD_MORE": "Load More",
+            "LATEST": "Latest",
+            "PAGE": "Page",
+            "SWIPE_FOR_MORE": "Swipe for more",
+            "SWIPE_TO_CONTINUE": "Swipe to continue",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+        },
+        "PULL_REFRESH": {
+            "PULL_COMMENTS": "Pull down for more new comments!",
+            "RELEASE": "Release to refresh",
+            "LAST_UPDATED": "Last Updated"
+        },
+        "FORMS": {
+            "SEND": "Send",
+            "YOUR_NAME": "Your name",
+            "YOUR_NAME_ERROR": "Please fill your name!",
+            "YOUR_EMAIL": "Your e-mail address",
+            "YOUR_EMAIL_ERROR": "Please fill your e-mail address!",
+            "YOUR_EMAIL_ERROR2": "Please enter a valid e-mail address!",
+            "YOUR_COMMENT": "Your comment",
+            "YOUR_COMMENT_ERROR": "Please type a comment!",
+            "SUBMIT_ERROR": "There was an error. Please try again later.",
+            "AWAITING_MODERATION": "Your comment is awaiting moderation!"
+        }
+    }
+}

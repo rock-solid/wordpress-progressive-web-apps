@@ -1,0 +1,52 @@
+{
+	"APP_TEXTS": {
+		"LINKS": {
+			"VISIT_WEBSITE": "Átváltás asztali verzióra",
+			"VISIT_APP": "Átváltás mobil verzióra",
+            "HOME": "Home",
+			"CREDITS": "Kreditek",
+			"CATEGORIES": "Kategóriák",
+			"GO_TO": "Aloldalak",
+			"OTHERS": "Egyéb",
+			"HEADLINES": "Aktualitások",
+			"INSIDE": "Belül",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+		},
+		"TEXTS": {
+			"NO_PAGES": "Nincsenek oldalak!",
+			"NO_CATEGORIES": "Nincsenek kategóriák!",
+			"NO_ARTICLES": "Nincsenek cikkek!",
+			"NO_COMMENTS": "Még nincsenek hozzászólások ehhez a bejegyzéshez.<br/>Legyél te az első, aki hozzászól!",
+			"NO_COMMENTS_SHORT": "Nincsenek hozzászólások ehhez a bejegyzéshez.",
+			"GOOGLE_ADS": "Ads by Google",
+			"COMMENTS": "Hozzászólások",
+			"LEAVE_COMMENTS": "Szólj hozzá",
+			"BY_AUTHOR": "via",
+			"LOADING": "Betöltés",
+			"LOAD_MORE": "Load More",
+			"LATEST": "Latest",
+			"PAGE": "Page",
+			"SWIPE_FOR_MORE": "Swipe for more",
+			"SWIPE_TO_CONTINUE": "Swipe to continue",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+		},
+		"PULL_REFRESH":{
+			"PULL_COMMENTS": "Húzd le az újabb kommentekhez!",
+			"RELEASE": "Engedd el a frissítéshez",
+			"LAST_UPDATED": "Utoljára frissítve"
+		},
+		"FORMS": {
+			"SEND": "Elküld",
+			"YOUR_NAME": "Neved",
+			"YOUR_NAME_ERROR": "Kérlek add meg a neved!",
+			"YOUR_EMAIL": "E-mail címed",
+			"YOUR_EMAIL_ERROR": "Kérlek add meg az e-mail címed!",
+			"YOUR_EMAIL_ERROR2": "Kérlek adj meg érvényes e-mail címet!",
+			"YOUR_COMMENT": "Hozzászólásod",
+			"YOUR_COMMENT_ERROR": "Kérlek szólj hozzá!",
+			"SUBMIT_ERROR": "Valami hiba történt. Később próbáld újra.",
+			"AWAITING_MODERATION": "A hozzászólásod moderációra vár!"
+		}
+	}
+}

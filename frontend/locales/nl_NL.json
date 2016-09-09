@@ -1,0 +1,52 @@
+{
+    "APP_TEXTS": {
+        "LINKS": {
+            "VISIT_WEBSITE": "Bezoek website",
+            "VISIT_APP": "Ga naar mobiele versie",
+            "HOME": "Startpagina",
+            "CREDITS": "Over",
+            "CATEGORIES": "Categoriën",
+            "GO_TO": "Ga naar",
+            "OTHERS": "Overige",
+            "HEADLINES": "Headlines",
+            "INSIDE": "Inhoud",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+        }, 
+        "TEXTS": {
+            "NO_PAGES": "Er zijn geen pagina´s!",
+            "NO_CATEGORIES": "Er zijn geen categoriën!",
+            "NO_ARTICLES": "Er zijn geen artikelen!",
+            "NO_COMMENTS": "Er zijn geen berichten voor dit artikel.<br/>Laat het eerste bericht achter!",
+            "NO_COMMENTS_SHORT": "Er zijn geen berichten voor dit artikel.",
+            "GOOGLE_ADS": "Ads by Google",
+            "COMMENTS": "Opmerkingen",
+            "LEAVE_COMMENTS": "Schrijf een bericht",
+            "BY_AUTHOR": "door",
+            "LOADING": "Laden",
+            "LOAD_MORE": "Laad meer",
+            "LATEST": "Nieuwste",
+            "PAGE": "Pagina",
+            "SWIPE_FOR_MORE": "Swipe voor meer",
+            "SWIPE_TO_CONTINUE": "Swipe om verder te gaan",
+            "WEBSITE_CONFIRM": "Weet je zeker dat je naar de desktop site wilt?"
+        },
+        "PULL_REFRESH": {
+            "PULL_COMMENTS": "Omlaag trekken voor meer nieuwe berichten!",
+            "RELEASE": "Loslaten om te verversen",
+            "LAST_UPDATED": "Laatst aangepast"
+        },
+        "FORMS": {
+            "SEND": "Verstuur",
+            "YOUR_NAME": "Je naam",
+            "YOUR_NAME_ERROR": "Geef a.u.b. je naam!",
+            "YOUR_EMAIL": "Je e-mail adres",
+            "YOUR_EMAIL_ERROR": "Geef a.u.b. je e-mail adres!",
+            "YOUR_EMAIL_ERROR2": "Geef a.u.b. je correcte e-mail adres!",
+            "YOUR_COMMENT": "Je bericht",
+            "YOUR_COMMENT_ERROR": "Laat je bericht achter!",
+            "SUBMIT_ERROR": "Fout opgetreden. Probeer het a.u.b. later nog eens.",
+            "AWAITING_MODERATION": "Je bericht wacht op controle en plaatsing!"
+        }
+    }
+}

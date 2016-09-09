@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title></title>
+
+    <script type="text/javascript">
+
+        (function() {
+
+            var appName, appUrl, appIcon, cssPath, originUrl, height;
+            var appBar,
+                    closeBtnBox,
+                    closeBtn,
+                    iconBox,
+                    appInfo,
+                    appTitle,
+                    appLink,
+                    openBtnBox,
+                    openBtn,
+                    openText;
+
+
+            var DOMLoadTimer = setInterval(function () {
+                if (/loading|loaded|complete/i.test(document.readyState)) {
+                    clearInterval(DOMLoadTimer);
+                    documentLoaded();
+                }
+            }, 10);
+
+            function documentLoaded() {
+                parseParams();
+                loadCssStyle();
+                initializeBar();
+                resizeElements();
+                translate("-100%");
+                document.body.style.display = "block";
+
+                window.onhashchange = onHashChange;
+
+                // show the bar
+                setTimeout(function(){
+                    show();
+                }, 300);
+            }
+
+            function parseParams(){
+                var hash = window.location.hash.split("#")[1];
+
+                var params = hash.split("&");
+                for (var i=0; i<params.length; i++){
+                    var item = params[i].split("=");
+                    var prop = item[0];
+                    var value = item[1];
+
+                    switch (prop){
+                        case "appName": appName = value; break;
+                        case "appUrl": appUrl = value; break;
+                        case "appIcon": appIcon = value; break;
+                        case "cssPath": cssPath = value; break;
+                        case "originUrl": originUrl = decodeURIComponent(value); break;
+                        case "height": height = value; break;
+                        case "openText": openText = decodeURIComponent(value); break;
+                        default: break;
+                    }
+                }
+            }
+
+            function loadCssStyle(){
+                var _dc = (new Date()).getTime();
+                var css = document.createElement("link");
+                css.type = 'text/css';
+                css.rel = 'stylesheet';
+                css.href = cssPath+'?_dc='+_dc;
+                css.async = true;
+                (document.head || document.getElementsByTagName('head')[0]).appendChild(css);
+            }
+
+            function initializeBar(){
+
+                appBar = document.querySelector("app-bar");
+                closeBtnBox = document.querySelector("app-box.close");
+                closeBtn = document.querySelector("app-box.close app-text");
+                iconBox = document.querySelector("app-box.icon");
+                appInfo = document.querySelector("app-info");
+                appTitle = document.querySelector("app-info app-title");
+                appLink = document.querySelector("app-info app-link");
+                openBtnBox = document.querySelector("app-box.open");
+                openBtn = document.querySelector("app-box.open app-text");
+
+                // hide icon container if the app doesn't have an icon
+                if (appIcon && appIcon.length > 0) {
+                    var icon = document.querySelector("app-box.icon app-icon");
+                    icon.style.backgroundImage = "url('" + appIcon + "')";
+                } else {
+                    iconBox.style.display = 'none';
+                }
+
+                appTitle.innerHTML = decodeURIComponent(appName);
+                appLink.innerHTML = decodeURIComponent(appUrl);
+
+                // set bar height
+                appBar.style.height = height + "px";
+
+                // set open button text
+                openBtn.innerHTML = openText;
+
+                // add events
+                closeBtnBox.addEventListener("click", function(){hide();}, false);
+                iconBox.addEventListener("click", function(){openApp();}, false);
+                appInfo.addEventListener("click", function(){openApp();}, false);
+                openBtnBox.addEventListener("click", function(){openApp();}, false);
+            }
+
+
+            function resizeElements(){
+
+                // set bar height
+                appBar.style.height = height + "px";
+
+                // resize close btn box
+                closeBtnBox.style.width = Math.round(0.35*height) + "px";
+
+                // resize close btn font size
+                closeBtn.style.fontSize = Math.round(0.22*height) + "px";
+
+                // resize icon box
+                iconBox.style.width = Math.round(0.70*height) + "px";
+                iconBox.style.height = Math.round(0.70*height) + "px";
+
+                // resize app title font size
+                appTitle.style.fontSize = Math.round(0.18*height) + "px";
+
+                // resize app link font size
+                appLink.style.fontSize = Math.round(0.13*height) + "px";
+
+                // resize app info padding left
+                appInfo.style.paddingLeft = Math.round(0.1*height) + "px";
+
+                // resize open btn box
+                openBtnBox.style.width = Math.round(0.7*height) + "px";
+
+                // resize open btn font size
+                openBtn.style.fontSize = Math.round(0.14*height) + "px";
+
+                // resize bar box shadow
+                var shadow = Math.round(height * 0.1);
+                appBar.style.boxShadow = "0px 0px "+shadow+"px rgba(164, 164, 164, 0.7)";
+            }
+
+
+            function onHashChange(){
+                parseParams();
+                resizeElements();
+            }
+
+
+            function translate(translateValue, time){
+                time = time || 0;
+
+                var style = {
+                    '-webkit-transition': 'all '+time+'s ease',
+                    '-moz-transition': 'all '+time+'s ease',
+                    '-o-transition': 'all '+time+'s ease',
+                    'transition': 'all '+time+'s ease',
+                    '-webkit-transform': 'translate3d(0px, ' + translateValue + ', 0px)',
+                    '-moz-transform': 'translate3d(0px, ' + translateValue + ', 0px)',
+                    '-ms-transform': 'translate3d(0px, ' + translateValue + ', 0px)',
+                    '-o-transform': 'translate3d(0px, ' + translateValue + ', 0px)',
+                    'transform': 'translate3d(0px, ' + translateValue + ', 0px)'
+                };
+
+                appBar = document.querySelector("app-bar");
+
+                for (var prop in style){
+                    appBar.style[prop] = style[prop];
+                }
+            }
+
+
+            function show(){
+                translate("0%", 0.3);
+            }
+
+            function hide(){
+                translate("-105%", 0.3);
+
+                // change opener window hash
+                var origin = originUrl.split("#")[0];
+                window.parent.location = origin + "#app_action=closebar";
+            }
+
+            function openApp(){
+                // change opener window hash
+                var origin = originUrl.split("#")[0];
+                window.parent.location = origin + "#app_action=openapp";
+            }
+
+        }());
+
+    </script>
+
+</head>
+
+<body style="display:none">
+<app-bar>
+    <app-box class="close"><app-text>x</app-text></app-box>
+
+    <app-box class="icon">
+        <app-icon style=""></app-icon>
+    </app-box>
+
+    <app-info>
+        <app-title></app-title>
+        <app-link></app-link>
+    </app-info>
+
+    <app-box class="open"><app-text></app-text></app-box>
+</app-bar>
+</body>
+</html>

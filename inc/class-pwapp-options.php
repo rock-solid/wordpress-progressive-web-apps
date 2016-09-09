@@ -27,6 +27,13 @@ if ( ! class_exists( 'PWAPP_Options' ) ) {
             'font_paragraphs' => 1,
             'font_size' => 1, // unit measure is 'rem'
 
+			'display_mode' => 'normal',
+            'display_website_link' => 1,
+            'posts_per_page' => 'auto',
+            'enable_facebook' => 1,
+            'enable_twitter' => 1,
+            'enable_google' => 1,
+
             // images
             'logo' => '',
             'icon' => '',

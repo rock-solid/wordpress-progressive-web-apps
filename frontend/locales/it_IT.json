@@ -1,0 +1,52 @@
+{
+    "APP_TEXTS": {
+        "LINKS": {
+            "VISIT_WEBSITE": "Visita il sito",
+            "VISIT_APP": "Passa alla visualizzazione mobile",
+            "HOME": "Home",
+            "CREDITS": "Crediti",
+            "CATEGORIES": "Categorie",
+            "GO_TO": "Vai a",
+            "OTHERS": "Altre",
+            "HEADLINES": "Titoli",
+            "INSIDE": "Leggi di più",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+        },
+        "TEXTS": {
+            "NO_PAGES": "Non è presente alcuna pagina!",
+            "NO_CATEGORIES": "Non è presente alcuna categoria!",
+            "NO_ARTICLES": "Non ci sono articoli!",
+            "NO_COMMENTS": "Non ci sono commenti per questo articolo.<br/>Sii il primo a commentare!",
+            "NO_COMMENTS_SHORT": "Non ci sono commenti per questo articolo.",
+            "GOOGLE_ADS": "Annuncio di Google",
+            "COMMENTS": "Commenti",
+            "LEAVE_COMMENTS": "Lascia un commento",
+            "BY_AUTHOR": "di",
+            "LOADING": "In caricamento",
+            "LOAD_MORE": "Carica di più",
+            "LATEST": "Più recenti",
+            "PAGE": "Pagina",
+            "SWIPE_FOR_MORE": "Scorri per vedere di più",
+            "SWIPE_TO_CONTINUE": "Scorri per continuare",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+        },
+        "PULL_REFRESH": {
+            "PULL_COMMENTS": "Trascina in basso per visualizzare nuovi commenti!",
+            "RELEASE": "Rilascia per aggiornare",
+            "LAST_UPDATED": "Aggiornati di recente"
+        },
+        "FORMS": {
+            "SEND": "Invia",
+            "YOUR_NAME": "Il tuo nome",
+            "YOUR_NAME_ERROR": "Per favore, compila con il tuo nome!",
+            "YOUR_EMAIL": "Il tuo indirizzo email",
+            "YOUR_EMAIL_ERROR": "Per favore, compila con il tuo indirizzo email!",
+            "YOUR_EMAIL_ERROR2": "Per favore, inserisci un'email valida!",
+            "YOUR_COMMENT": "Il tuo commento",
+            "YOUR_COMMENT_ERROR": "Per favore, inserisci un commento!",
+            "SUBMIT_ERROR": "C'è stato un errore. Riprova più tardi.",
+            "AWAITING_MODERATION": "Il tuo commento è in attesa di moderazione."
+        }
+    }
+}

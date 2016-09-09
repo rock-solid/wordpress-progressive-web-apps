@@ -20,8 +20,8 @@ require_once('core/class-pwapp.php');
  */
 function pwapp_frontend_init() {
 
-    // require_once('frontend/class-application.php');
-    // new PWAPP_Application();
+     require_once('frontend/class-application.php');
+     new PWAPP_Application();
 }
 
 function pwapp_admin_init() {
@@ -44,7 +44,7 @@ if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
 
         if (defined( 'DOING_AJAX' ) && DOING_AJAX) {
 
-            /*
+
             require_once( PWAPP_PLUGIN_PATH . 'admin/class-admin-ajax.php' );
 
             $pwapp_admin_ajax = new PWAPP_Admin_Ajax();
@@ -52,7 +52,7 @@ if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
             add_action('wp_ajax_pwapp_editimages', array( &$pwapp_admin_ajax, 'theme_editimages' ) );
             add_action('wp_ajax_pwapp_theme_settings', array( &$pwapp_admin_ajax, 'theme_settings' ) );
 
-            add_action('wp_ajax_pwapp_send_feedback', array( &$pwapp_admin_ajax, 'send_feedback' ) );*/
+            add_action('wp_ajax_pwapp_send_feedback', array( &$pwapp_admin_ajax, 'send_feedback' ) );
 
         } else {
             add_action('plugins_loaded', 'pwapp_admin_init');

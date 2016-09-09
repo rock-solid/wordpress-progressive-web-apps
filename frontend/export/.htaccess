@@ -1,0 +1,5 @@
+<ifModule mod_deflate.c>
+    <filesMatch "\.(php)$">
+        SetOutputFilter DEFLATE
+    </filesMatch>
+</ifModule>

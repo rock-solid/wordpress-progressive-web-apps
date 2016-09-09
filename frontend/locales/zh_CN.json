@@ -1,0 +1,52 @@
+{
+    "APP_TEXTS": {
+        "LINKS": {
+            "VISIT_WEBSITE": "访问电脑版",
+            "VISIT_APP": "切换至手机版",
+            "HOME": "主页",
+            "CREDITS": "版权信息",
+            "CATEGORIES": "目录",
+            "GO_TO": "转到",
+            "OTHERS": "其他",
+            "HEADLINES": "头条",
+            "INSIDE": "内部",
+            "MENU": "菜单",
+            "OPEN_APP": "OPEN"
+        },
+        "TEXTS": {
+            "NO_PAGES": "哎呀，出错了!",
+            "NO_CATEGORIES": "目录错了吧!",
+            "NO_ARTICLES": "文章哪去了!",
+            "NO_COMMENTS": "就等你了.<br/>快来抢沙发!",
+            "NO_COMMENTS_SHORT": "就等你了.",
+            "GOOGLE_ADS": "Ads by Google",
+            "COMMENTS": "评论",
+            "LEAVE_COMMENTS": "留下点什么呗",
+            "BY_AUTHOR": "by",
+            "LOADING": "Loading",
+            "LOAD_MORE": "更多",
+            "LATEST": "查看最新",
+            "PAGE": "页面",
+            "SWIPE_FOR_MORE": "滑动加载更多",
+            "SWIPE_TO_CONTINUE": "滑动继续",
+            "WEBSITE_CONFIRM": "确认访问电脑版?"
+        },
+        "PULL_REFRESH": {
+            "PULL_COMMENTS": "下拉查看更多评论!",
+            "RELEASE": "刷新",
+            "LAST_UPDATED": "最新版本"
+        },
+        "FORMS": {
+            "SEND": "发送",
+            "YOUR_NAME": "用户名",
+            "YOUR_NAME_ERROR": "请输入用户名!",
+            "YOUR_EMAIL": "e-mail",
+            "YOUR_EMAIL_ERROR": "请输入e-mail地址!",
+            "YOUR_EMAIL_ERROR2": "请输入有效的e-mail地址!",
+            "YOUR_COMMENT": "说点什么…",
+            "YOUR_COMMENT_ERROR": "评论不能为空!",
+            "SUBMIT_ERROR": "请稍后再试.",
+            "AWAITING_MODERATION": "Your comment is waiting moderation!"
+        }
+    }
+}

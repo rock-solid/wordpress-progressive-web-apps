@@ -1,0 +1,52 @@
+{
+    "APP_TEXTS": {
+        "LINKS": {
+            "VISIT_WEBSITE": "Ir para a versão de PC",
+            "VISIT_APP": "Ir para a versão móvel",
+            "HOME": "Home",
+            "CREDITS": "Créditos",
+            "CATEGORIES": "Categorias",
+            "GO_TO": "Ir Para",
+            "OTHERS": "Outros",
+            "HEADLINES": "Headlines",
+            "INSIDE": "Dentro",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+        },
+        "TEXTS": {
+            "NO_PAGES": "Não há páginas!",
+            "NO_CATEGORIES": "Não há categorias!",
+            "NO_ARTICLES": "Não há artigos!",
+            "NO_COMMENTS": "Não existem comentários para esse artigo.<br/>Seja o primeiro a comentar!",
+            "NO_COMMENTS_SHORT": "Não existem comentários para esse artigo.",
+            "GOOGLE_ADS": "Ads by Google",
+            "COMMENTS": "Comentários",
+            "LEAVE_COMMENTS": "Deixe um comentário",
+            "BY_AUTHOR": "por",
+            "LOADING": "Carregando",
+            "LOAD_MORE": "Carregue mais",
+            "LATEST": "Mais recentes",
+            "PAGE": "Página",
+            "SWIPE_FOR_MORE": "Swipe for more",
+            "SWIPE_TO_CONTINUE": "Swipe to continue",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+        },
+        "PULL_REFRESH": {
+            "PULL_COMMENTS": "Pressione e segure para atualizar mais comentários!",
+            "RELEASE": "Solte para atualizar",
+            "LAST_UPDATED": "Última atualização"
+        },
+        "FORMS": {
+            "SEND": "Enviar",
+            "YOUR_NAME": "Seu nome",
+            "YOUR_NAME_ERROR": "Por favor, preencha seu nome!",
+            "YOUR_EMAIL": "Seu endereço de e-mail",
+            "YOUR_EMAIL_ERROR": "Por favor, preencha seu endereço de e-mail!",
+            "YOUR_EMAIL_ERROR2": "Por favor, utilize um e-mail válido!",
+            "YOUR_COMMENT": "Seu comentário",
+            "YOUR_COMMENT_ERROR": "Por favor, digite um comentário!",
+            "SUBMIT_ERROR": "Ocorreu um erro, tente novamente.",
+            "AWAITING_MODERATION": "Comentário aguardando moderação!"
+        }
+    }
+}

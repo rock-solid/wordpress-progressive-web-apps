@@ -1,0 +1,52 @@
+{
+	"APP_TEXTS": {
+		"LINKS": {
+			"VISIT_WEBSITE": "Byt till webbplats",
+			"VISIT_APP": "Byt till mobilversion",
+            "HOME": "Home",
+			"CREDITS": "Lista över medverkande",
+			"CATEGORIES": "Kategorier",
+			"GO_TO": "Gå till",
+			"OTHERS": "övriga",
+			"HEADLINES": "Rubriker",
+			"INSIDE": "Inuti",
+            "MENU": "Menu",
+            "OPEN_APP": "OPEN"
+		},
+		"TEXTS": {
+			"NO_PAGES": "Det finns inga sidor!",
+			"NO_CATEGORIES": "Det finns inga kategorier!",
+			"NO_ARTICLES": "Det finns inga artiklar!",
+			"NO_COMMENTS": "Det finns inga kommentarer om denna artikel.<br>Bli först med att kommentera detta!",
+			"NO_COMMENTS_SHORT": "Det finns inga kommentarer om denna artikel.",
+			"GOOGLE_ADS": "Annonser från Google",
+			"COMMENTS": "Kommentarer",
+			"LEAVE_COMMENTS": "Kommentera",
+			"BY_AUTHOR": "av",
+			"LOADING": "Laddar",
+			"LOAD_MORE": "Ladda mer",
+			"LATEST": "Senaste",
+			"PAGE": "Sida",
+			"SWIPE_FOR_MORE": "Svep för mera",
+			"SWIPE_TO_CONTINUE": "Svep för att fortsätta",
+            "WEBSITE_CONFIRM": "Are you sure you want to access the desktop site?"
+		},
+		"PULL_REFRESH":{
+			"PULL_COMMENTS": "Dra nedåt för fler kommentarer!",
+			"RELEASE": "Släpp för att uppdatera",
+			"LAST_UPDATED": "Senast uppdaterad"
+		},
+		"FORMS": {
+			"SEND": "Sänd",
+			"YOUR_NAME": "Ditt namn",
+			"YOUR_NAME_ERROR": "Vänligen fyll i ditt namn!",
+			"YOUR_EMAIL": "Din e-postadress",
+			"YOUR_EMAIL_ERROR": "Vänligen fyll i din e-postadress",
+			"YOUR_EMAIL_ERROR2": "Vänligen ange en giltig e-postadress!",
+			"YOUR_COMMENT": "Din kommentar",
+			"YOUR_COMMENT_ERROR": "Vänligen skriv en kommentar",
+			"SUBMIT_ERROR": "Något gick fel. Vänligen prova igen vid ett senare tillfälle",
+			"AWAITING_MODERATION": "Din kommentar väntar på att modereras"
+		}
+	}
+}
