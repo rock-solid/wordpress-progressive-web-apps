@@ -46,8 +46,7 @@ if ( ! class_exists( 'PWAPP_Themes_Config' ) ) {
 
         public static $color_schemes = array(
 
-
-            1 => array(
+            2 => array(
                 'labels' => array(
                     'Headlines and primary texts',
                     'Article background',
