@@ -381,7 +381,7 @@
                     <div class="spacer-15"></div>
                     <div class="grey-line"></div>
                     <div class="spacer-20"></div>
-                    <p>Each theme comes with 6 abstract covers that are randomly displayed on the loading screen to give your app a magazine flavor. You can further personalize your mobile web application by uploading your own cover.</p>
+                    <p>The app comes with 6 abstract covers that are randomly displayed on the loading screen to give your app a magazine flavor. You can further personalize your mobile web application by uploading your own cover.</p>
                     <div class="spacer-20"></div>
 
                     <form name="pwapp_editcover_form" id="pwapp_editcover_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_editimages&type=upload" method="post" enctype="multipart/form-data">
