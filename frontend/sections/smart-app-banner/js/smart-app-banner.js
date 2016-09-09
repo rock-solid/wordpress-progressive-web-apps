@@ -1,14 +1,14 @@
-var wpmpAppBanner = wpmpAppBanner || {};
-wpmpAppBanner.WIDGET = wpmpAppBanner.WIDGET || {};
+var pwappAppBanner = pwappAppBanner || {};
+pwappAppBanner.WIDGET = pwappAppBanner.WIDGET || {};
 
-wpmpAppBanner.WIDGET.appUrl = wpmpAppBanner.WIDGET.appUrl || '';
-wpmpAppBanner.WIDGET.appIcon = wpmpAppBanner.WIDGET.appIcon || '';
-wpmpAppBanner.WIDGET.appName = wpmpAppBanner.WIDGET.appName || '';
-wpmpAppBanner.WIDGET.ref = wpmpAppBanner.WIDGET.ref || '';
-wpmpAppBanner.WIDGET.trustedDevice = wpmpAppBanner.WIDGET.trustedDevice || 0;
-wpmpAppBanner.WIDGET.iframeUrl = wpmpAppBanner.WIDGET.iframeUrl || '';
-wpmpAppBanner.WIDGET.cssPath = wpmpAppBanner.WIDGET.cssPath || '';
-wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN';
+pwappAppBanner.WIDGET.appUrl = pwappAppBanner.WIDGET.appUrl || '';
+pwappAppBanner.WIDGET.appIcon = pwappAppBanner.WIDGET.appIcon || '';
+pwappAppBanner.WIDGET.appName = pwappAppBanner.WIDGET.appName || '';
+pwappAppBanner.WIDGET.ref = pwappAppBanner.WIDGET.ref || '';
+pwappAppBanner.WIDGET.trustedDevice = pwappAppBanner.WIDGET.trustedDevice || 0;
+pwappAppBanner.WIDGET.iframeUrl = pwapppwappAppBanner.WIDGET.iframeUrl || '';
+pwappAppBanner.WIDGET.cssPath = pwappAppBanner.WIDGET.cssPath || '';
+pwappAppBanner.WIDGET.openAppButton = pwappAppBanner.WIDGET.openAppButton || 'OPEN';
 
 (function () {
 
@@ -65,7 +65,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
             document.cookie = c_name + "=" + c_value;
         };
 
-        wpmpAppBanner.Cookie = Cookie;
+        pwappAppBanner.Cookie = Cookie;
     }()
 );
 
@@ -288,7 +288,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
         }
     };
 
-    wpmpAppBanner.Bar = Bar;
+    pwappAppBanner.Bar = Bar;
 }());
 
 (function () {
@@ -320,7 +320,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
     p.initialize = function () {
 
         // create cookie obj
-        this.cookie = new wpmpAppBanner.Cookie();
+        this.cookie = new pwappAppBanner.Cookie();
     };
 
 
@@ -371,7 +371,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
             if (document.body && document.body.clientWidth != 0) {
                 clearInterval(DOMLoadTimer);
 
-                me.bar = new wpmpAppBanner.Bar({
+                me.bar = new pwappAppBanner.Bar({
                     appIcon: me.WIDGET.appIcon,
                     appName: me.WIDGET.appName,
                     appUrl: me.WIDGET.appUrl,
@@ -401,7 +401,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
         }
     };
 
-    wpmpAppBanner.Stage = Stage;
+    pwappAppBanner.Stage = Stage;
 }());
 
 (function() {
@@ -429,14 +429,14 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
     function documentLoaded() {
 
         // create stage
-        appticlesStage = stage = new wpmpAppBanner.Stage(wpmpAppBanner.WIDGET);
+        appticlesStage = stage = new pwappAppBanner.Stage(pwappAppBanner.WIDGET);
 
         // get saved cookies
         var cookie = stage.cookie,
-            mobileDevice = cookie.get(wpmpAppBanner.WIDGET.cookiePrefix + "mobile_device"),
-            redirect = cookie.get(wpmpAppBanner.WIDGET.cookiePrefix + "redirect"),
-            closed = cookie.get(wpmpAppBanner.WIDGET.cookiePrefix + "closed"),
-            appUrl = wpmpAppBanner.WIDGET.appUrl;
+            mobileDevice = cookie.get(pwappAppBanner.WIDGET.cookiePrefix + "mobile_device"),
+            redirect = cookie.get(pwappAppBanner.WIDGET.cookiePrefix + "redirect"),
+            closed = cookie.get(pwappAppBanner.WIDGET.cookiePrefix + "closed"),
+            appUrl = pwappAppBanner.WIDGET.appUrl;
 
         // if there was a previous detection and the device is mobile
         if (mobileDevice && Boolean(Number(String(mobileDevice))) == true && appUrl && appUrl.length > 1){
@@ -450,11 +450,11 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
             // if the URL contains a redirect param, then set up a cookie with this value
             if (urlParams.length > 1){
                 if (urlParams[urlParams.length-1].indexOf("redirect=false") != -1){
-                    cookie.set(wpmpAppBanner.WIDGET.cookiePrefix + "redirect", 0, 7);
+                    cookie.set(pwappAppBanner.WIDGET.cookiePrefix + "redirect", 0, 7);
                     redirect = false;
                 }
                 else if (urlParams[urlParams.length-1].indexOf("redirect=true") != -1){
-                    cookie.set(wpmpAppBanner.WIDGET.cookiePrefix + "redirect", 1, 7);
+                    cookie.set(pwappAppBanner.WIDGET.cookiePrefix + "redirect", 1, 7);
                     redirect = true;
                 }
             }
@@ -503,7 +503,7 @@ wpmpAppBanner.WIDGET.openAppButton = wpmpAppBanner.WIDGET.openAppButton || 'OPEN
 
                     case "closebar":
                         // set cookie
-                        appticlesStage.cookie.set(wpmpAppBanner.WIDGET.cookiePrefix + "closed", 1, 7);
+                        appticlesStage.cookie.set(pwappAppBanner.WIDGET.cookiePrefix + "closed", 1, 7);
 
                         // remove the bar
                         setTimeout(function(){

@@ -1,6 +1,6 @@
 <?php
 
-class WMPHtmlPurifier
+class PWAPPHtmlPurifier
 {
 
     /**
@@ -9,7 +9,7 @@ class WMPHtmlPurifier
      * @param $config
      * @return HTMLPurifier
      */
-    public function wmp_extended_purifier($config)
+    public function pwapp_extended_purifier($config)
     {
 
         // check if the htmlpurifier class is loaded
@@ -20,7 +20,7 @@ class WMPHtmlPurifier
             $config->set('Cache.SerializerPath', '/tmp');
 
             // Set some HTML5 properties
-            $config->set('HTML.DefinitionID', 'WPMP-VALIDATION-PAGES'); // unique id
+            $config->set('HTML.DefinitionID', 'PWAPP-VALIDATION-PAGES'); // unique id
             $config->set('HTML.DefinitionRev', 1);
 
             if ($def = $config->maybeGetRawHTMLDefinition()) {
@@ -119,6 +119,6 @@ class WMPHtmlPurifier
 
         }
 
-        // by default return false;   
+        // by default return false;
     }
 }

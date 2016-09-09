@@ -1,4 +1,4 @@
-wpmpAppBanner = wpmpAppBanner || {};
+pwappAppBanner = pwappAppBanner || {};
 
 (function () {
 
@@ -219,5 +219,5 @@ wpmpAppBanner = wpmpAppBanner || {};
         }
     };
 
-    wpmpAppBanner.Bar = Bar;
+    pwappAppBanner.Bar = Bar;
 }());
