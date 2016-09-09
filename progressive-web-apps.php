@@ -48,7 +48,6 @@ if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
 
             add_action('wp_ajax_pwapp_editimages', array( &$pwapp_admin_ajax, 'theme_editimages' ) );
             add_action('wp_ajax_pwapp_theme_settings', array( &$pwapp_admin_ajax, 'theme_settings' ) );
-
             add_action('wp_ajax_pwapp_send_feedback', array( &$pwapp_admin_ajax, 'send_feedback' ) );
 
         } else {

@@ -3,7 +3,7 @@
     <div class="spacer-10"></div>
     <p>Help us improve this plugin. We're eager to hear your feedback and be sure that we ALWAYS answer it.</p>
     <div class="spacer-10"></div>
-    <form id="pwapp_feedback_form" name="pwapp_feedback_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_pro_send_feedback" method="post">
+    <form id="pwapp_feedback_form" name="pwapp_feedback_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_send_feedback" method="post">
         <input type="hidden" name="pwapp_feedback_page" id="pwapp_feedback_page" value="look_feel" />
 
         <input type="text" name="pwapp_feedback_email" id="pwapp_feedback_email" placeholder="Your e-mail address" class="small" />
