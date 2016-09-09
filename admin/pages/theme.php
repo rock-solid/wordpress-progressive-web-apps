@@ -20,7 +20,7 @@
             <!-- add content form -->
             <div class="details">
                 <div class="spacer-10"></div>
-                <p>Select the preferred app theme and start customizing your mobile web application by choosing from the below color schemes & fonts, adding your logo and app icon. Each theme comes with 6 abstract covers that are randomly displayed on the loading screen to give your app a magazine flavor. You can further personalize your mobile web application by uploading your own cover.</p>
+                <p>Customize your progressive web application by choosing from the below color schemes & fonts, adding your logo and app icon. The app comes with 6 abstract covers that are randomly displayed on the loading screen to give your app a magazine flavor. You can further personalize your mobile web application by uploading your own cover.</p>
                 <div class="spacer-20"></div>
             </div>
             <div class="spacer-10"></div>
@@ -30,47 +30,31 @@
                 <div class="spacer_15"></div>
                 <div class="spacer-15"></div>
                 <div class="themes">
-
-                    <?php
-                        $arr_themes_names = array(
-                            2 => 'Mosaic'
-                        );
-					?>
-                        <div class="theme" data-theme="<?php echo 2;?>">
-                            <div class="corner relative <?php echo 'active';?>">
-                                <div class="indicator"></div>
-                            </div>
-                            <div class="image" style="background:url(<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/admin/images/themes/theme-<?php echo 2;?>.jpg);">
-                                <div class="relative">
-                                    <div class="overlay">
-                                        <div class="spacer-100"></div>
-                                        <div class="actions">
-                                            <div class="select" id="pwapp_themes_select_<?php echo 2;?>" style="display: <?php echo  'none'; ?>"></div>
-                                            <div class="preview" id="pwapp_themes_preview_<?php echo 2;?>"></div>
-                                        </div>
-                                        <div class="spacer-10"></div>
-                                        <div class="text-preview">Preview theme</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="name"><?php echo $arr_themes_names[2];?></div>
-                        </div>
-
+					<div class="theme" data-theme="2">
+						<div class="corner relative <?php echo 'active';?>">
+							<div class="indicator"></div>
+						</div>
+						<div class="image" style="background:url(<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/admin/images/theme-2.jpg);">
+							<div class="relative">
+								<div class="overlay">
+									<div class="spacer-100"></div>
+									<div class="actions">
+										<div class="preview" id="pwapp_themes_preview_2"></div>
+									</div>
+									<div class="spacer-10"></div>
+									<div class="text-preview">Preview theme</div>
+								</div>
+							</div>
+						</div>
+						<div class="name">Mosaic</div>
+					</div>
                 </div>
-                <p class="small">Can't find what you're looking for? We offer custom app theme implementations based on your own specifications. <a href="mailto:<?php echo PWAPP_CONTACT_EMAIL;?>">Get in touch</a>.</p>
             </div>
             <div class="spacer-10"></div>
 
             <?php
 
                 $selected_theme = PWAPP_Options::get_setting('theme');
-
-                $enable_custom_selects = false;
-
-                $blog_version = floatval(get_bloginfo('version'));
-
-                if ($blog_version >= PWAPP_Admin_Init::$customselect_enable)
-                    $enable_custom_selects = true;
 
                 if (array_key_exists($selected_theme, PWAPP_Themes_Config::$color_schemes)):
                     $theme_settings = PWAPP_Themes_Config::$color_schemes[$selected_theme];
@@ -191,20 +175,9 @@
 
                                     <select name="pwapp_edittheme_fontheadlines" id="pwapp_edittheme_fontheadlines">
 
-                                        <?php
-                                            foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):
-
-                                                if ($enable_custom_selects):
-                                        ?>
-                                                    <option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_headlines == $key+1) echo "selected";?>></option>
-
-                                                <?php else:?>
-
-                                                    <option value="<?php echo $key+1;?>" <?php if ($font_headlines == $key+1) echo "selected";?>><?php echo $font_family;?></option>
-                                        <?php
-                                                endif;
-                                            endforeach;
-                                        ?>
+                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):?>
+											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_headlines == $key+1) echo "selected";?>></option>
+                                        <?php endforeach;?>
                                     </select>
 
                                     <div class="spacer-10"></div>
@@ -217,20 +190,9 @@
 
                                     <label for="pwapp_edittheme_fontsubtitles">Subtitles</label>
                                     <select name="pwapp_edittheme_fontsubtitles" id="pwapp_edittheme_fontsubtitles">
-                                        <?php
-                                            foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):
-
-                                                if ($enable_custom_selects):
-                                        ?>
-                                                    <option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_subtitles == $key+1) echo "selected";?>></option>
-
-                                                <?php else:?>
-
-                                                    <option value="<?php echo $key+1;?>" <?php if ($font_subtitles == $key+1) echo "selected";?>><?php echo $font_family;?></option>
-                                        <?php
-                                                endif;
-                                            endforeach;
-                                        ?>
+                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family): ?>
+											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_subtitles == $key+1) echo "selected";?>></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="spacer-10"></div>
 
@@ -242,20 +204,9 @@
 
                                     <label for="pwapp_edittheme_fontparagraphs">Paragraphs</label>
                                     <select name="pwapp_edittheme_fontparagraphs" id="pwapp_edittheme_fontparagraphs">
-                                        <?php
-                                            foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):
-
-                                                if ($enable_custom_selects):
-                                        ?>
-                                                    <option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_paragraphs == $key+1) echo "selected";?>></option>
-
-                                                <?php else:?>
-
-                                                    <option value="<?php echo $key+1;?>" <?php if ($font_paragraphs == $key+1) echo "selected";?>><?php echo $font_family;?></option>
-                                        <?php
-                                                endif;
-                                            endforeach;
-                                        ?>
+                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):?>
+											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_paragraphs == $key+1) echo "selected";?>></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="spacer-20"></div>
                                 </div>
@@ -531,7 +482,7 @@
         jQuery(document).ready(function(){
 
             window.PWAPPJSInterface.add("UI_switchtheme","PWAPP_SWITCH_THEME",{'DOMDoc':window.document, 'baseThemesUrl': '<?php echo plugins_url()."/".PWAPP_DOMAIN.'/frontend/themes/';?>', 'selectedTheme': <?php echo PWAPP_Options::get_setting('theme');?>}, window);
-            window.PWAPPJSInterface.add("UI_customizetheme","PWAPP_EDIT_THEME",{'DOMDoc':window.document, 'enableCustomSelects': <?php echo intval($enable_custom_selects);?>}, window);
+            window.PWAPPJSInterface.add("UI_customizetheme","PWAPP_EDIT_THEME",{'DOMDoc':window.document, 'enableCustomSelects': 1}, window);
             window.PWAPPJSInterface.add("UI_editimages","PWAPP_EDIT_IMAGES",{'DOMDoc':window.document}, window);
             window.PWAPPJSInterface.add("UI_editcover","PWAPP_EDIT_COVER",{'DOMDoc':window.document}, window);
 
