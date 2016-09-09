@@ -7,18 +7,18 @@
         });
     }
 </script>
-<div id="wmpack-pro-admin">
+<div id="pwapp-admin">
 	<div class="spacer-60"></div>
     <!-- set title -->
     <h1><?php echo WPMP_PRO_PLUGIN_NAME.' '.WPMP_PRO_VERSION;?></h1>
 	<div class="spacer-20"></div>
 	<div class="look-and-feel">
         <div class="left-side">
-        
+
             <!-- add nav menu -->
             <?php include_once(WPMP_PRO_PLUGIN_PATH.'admin/sections/admin-menu.php'); ?>
             <div class="spacer-0"></div>
-            
+
             <!-- add content form -->
             <div class="details">
                 <div class="spacer-10"></div>
@@ -26,7 +26,7 @@
                 <div class="spacer-20"></div>
             </div>
             <div class="spacer-10"></div>
-            
+
             <div class="details theming">
                 <h2 class="title">Choose Your Mobile Theme</h2>
                 <div class="spacer_15"></div>
@@ -309,7 +309,7 @@
             <?php endif;?>
 
             <div class="details branding">
-            	
+
                 <h2 class="title">Customize Your App's Logo and Icon</h2>
                 <div class="spacer-15"></div>
                 <div class="grey-line"></div>
@@ -318,7 +318,7 @@
                 <div class="spacer-20"></div>
                 <div class="left">
                     <form name="wpmp_editimages_form" id="wpmp_editimages_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=wpmp_pro_editimages&type=upload" method="post" enctype="multipart/form-data">
-                       
+
                         <?php
                             $logo_path = WPMP_Pro_Options::get_setting('logo');
 
@@ -331,46 +331,46 @@
                             }
 
                         ?>
-    
+
                         <!-- upload logo field -->
                         <div class="wpmp_editimages_uploadlogo" style="display: <?php echo $logo_path == '' ? 'block' : 'none';?>;">
-                        
+
                             <label for="wpmp_editimages_logo">Upload your app logo</label>
-                            
+
                             <div class="custom-upload">
-                            
+
                                 <input type="file" id="wpmp_editimages_logo" name="wpmp_editimages_logo" />
                                 <div class="fake-file">
                                     <input type="text" id="fakefilelogo" disabled="disabled" />
                                     <a href="#" class="btn grey smaller">Browse</a>
                                 </div>
-                                
-                                
+
+
                                 <a href="javascript:void(0)" id="wpmp_editimages_logo_removenew" class="remove" style="display: none;"></a>
-                            </div> 
-                            
+                            </div>
+
                             <!-- cancel upload logo button -->
                             <div class="wpmp_editimages_changelogo_cancel cancel-link" style="display: none;">
                                 <a href="javascript:void(0);" class="cancel">cancel</a>
                             </div>
                             <div class="field-message error" id="error_logo_container"></div>
-                        
+
                         </div>
-                        
+
                         <!-- logo image -->
                         <div class="wpmp_editimages_logocontainer display-logo" style="display: <?php echo $logo_path != '' ? 'block' : 'none';?>;">
-                        
+
                             <label for="branding_logo">App logo</label>
                             <div class="img" id="wpmp_editimages_currentlogo" style="background:url(<?php echo $logo_path;?>); background-size:contain; background-repeat: no-repeat; background-position: center"></div>
-                            
+
                             <!-- edit/delete logo links -->
                             <a href="javascript:void(0);" class="wpmp_editimages_changelogo btn grey smaller edit">Change</a>
                             <a href="#" class="wpmp_editimages_deletelogo smaller remove">remove</a>
-                            
+
                         </div>
-                                    
+
                         <div class="spacer-20"></div>
-                        
+
                         <?php
                             $icon_path = WPMP_Pro_Options::get_setting('icon');
 
@@ -382,59 +382,59 @@
                                     $icon_path = WPMP_PRO_FILES_UPLOADS_URL . $icon_path;
                             }
                         ?>
-    
+
                         <!-- upload icon field -->
                         <div class="wpmp_editimages_uploadicon" style="display: <?php echo $icon_path == '' ? 'block' : 'none';?>;">
-                        
+
                             <label for="wpmp_editimages_icon">Upload your app icon</label>
-                            
+
                             <div class="custom-upload">
-                            
+
                                 <input type="file" id="wpmp_editimages_icon" name="wpmp_editimages_icon" />
                                 <div class="fake-file">
                                     <input type="text" id="fakefileicon" disabled="disabled" />
                                     <a href="#" class="btn grey smaller">Browse</a>
                                 </div>
-                                
+
                                 <a href="javascript:void(0)" id="wpmp_editimages_icon_removenew" class="remove" style="display: none;"></a>
-                            </div> 
+                            </div>
                             <!-- cancel upload icon button -->
                             <div class="wpmp_editimages_changeicon_cancel cancel-link" style="display: none;">
-                                <a href="javascript:void(0);" class="cancel">cancel</a>    
+                                <a href="javascript:void(0);" class="cancel">cancel</a>
                             </div>
                             <div class="field-message error" id="error_icon_container"></div>
-                        
+
                         </div>
-                        
+
                         <!-- icon image -->
                         <div class="wpmp_editimages_iconcontainer display-icon" style="display: <?php echo $icon_path != '' ? 'block' : 'none';?>;;">
-                        
+
                             <label for="branding_icon">App icon</label>
                             <img src="<?php echo $icon_path;?>" id="wpmp_editimages_currenticon" />
-                            
+
                             <!-- edit/delete icon links -->
                             <a href="javascript:void(0);" class="wpmp_editimages_changeicon btn grey smaller edit">Change</a>
                             <a href="#" class="wpmp_editimages_deleteicon smaller remove">remove</a>
                         </div>
-                                    
+
                         <div class="spacer-20"></div>
-                        
+
                         <a href="javascript:void(0);" id="wpmp_editimages_send_btn" class="btn green smaller">Save</a>
-    
-                    </form>    
+
+                    </form>
                 </div>
-                
+
                 <div class="notice notice-left right" style="width: 265px;">
                     <span>
-                        Add your logo in a .png format with a transparent background. This will be displayed on the cover of your app.<br /><br /> 
-                        Your icon should be square with a recommended size of 256 x 256 px. This will be displayed when the app will be added to the homescreen.<br /><br /> 
+                        Add your logo in a .png format with a transparent background. This will be displayed on the cover of your app.<br /><br />
+                        Your icon should be square with a recommended size of 256 x 256 px. This will be displayed when the app will be added to the homescreen.<br /><br />
                         The file size for uploaded images should not exceed 1MB.
                     </span>
                 </div>
                 <div class="spacer-0"></div>
             </div>
-            
-            
+
+
             <div class="spacer-15"></div>
 
             <?php if (array_key_exists($selected_theme, WPMP_Pro_Themes_Config::$color_schemes) && WPMP_Pro_Themes_Config::$color_schemes[$selected_theme]['cover'] == 1):?>
@@ -533,23 +533,23 @@
                 </div>
             <?php endif;?>
         </div>
-    
+
         <div class="right-side">
             <!-- add feedback form -->
             <?php include_once(WPMP_PRO_PLUGIN_PATH.'admin/sections/feedback.php'); ?>
         </div>
 	</div>
 </div>
-    
+
 <script type="text/javascript">
     if (window.WPMPJSInterface && window.WPMPJSInterface != null){
         jQuery(document).ready(function(){
-            
+
             window.WPMPJSInterface.add("UI_switchtheme","WPMP_SWITCH_THEME",{'DOMDoc':window.document, 'baseThemesUrl': '<?php echo plugins_url()."/".WPMP_PRO_DOMAIN.'/frontend/themes/';?>', 'selectedTheme': <?php echo WPMP_Pro_Options::get_setting('theme');?>}, window);
             window.WPMPJSInterface.add("UI_customizetheme","WPMP_EDIT_THEME",{'DOMDoc':window.document, 'enableCustomSelects': <?php echo intval($enable_custom_selects);?>}, window);
             window.WPMPJSInterface.add("UI_editimages","WPMP_EDIT_IMAGES",{'DOMDoc':window.document}, window);
             window.WPMPJSInterface.add("UI_editcover","WPMP_EDIT_COVER",{'DOMDoc':window.document}, window);
-            
+
         });
     }
 </script>
