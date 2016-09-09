@@ -69,32 +69,16 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
 
             // enqueue scripts
             $blog_version = floatval(get_bloginfo('version'));
-            if ($blog_version < 3.6)
-                $dependencies = array('jquery');
-            else
-                $dependencies = array('jquery-core', 'jquery-migrate');
+            $dependencies = array('jquery-core', 'jquery-migrate');
 
             // enqueue scripts
             wp_enqueue_script(PWAPP_Options::$prefix.'js_validate', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/jquery.validate.min.js'), $dependencies, '1.11.1');
             wp_enqueue_script(PWAPP_Options::$prefix.'js_validate_additional', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/validate-additional-methods.min.js'), $dependencies, '1.11.1');
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_loader', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Loader.min.js'), $dependencies, PWAPP_VERSION);
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_ajax_upload', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/AjaxUpload.min.js'), $dependencies, PWAPP_VERSION);
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_interface', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/JSInterface.min.js'), $dependencies, PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_loader', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Loader.js'), $dependencies, PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_ajax_upload', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/AjaxUpload.js'), $dependencies, PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_interface', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/JSInterface.js'), $dependencies, PWAPP_VERSION);
 
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_feedback', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Feedback/PWAPP_SEND_FEEDBACK.min.js'), array(), PWAPP_VERSION);
-
-        }
-
-
-        /**
-         *
-         * Load specific javascript files for the admin Look & Feel submenu page
-         *
-         */
-        public function pwapp_admin_load_theme_js()
-        {
-
-            $blog_version = floatval(get_bloginfo('version'));
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_feedback', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Feedback/PWAPP_SEND_FEEDBACK.js'), array(), PWAPP_VERSION);
 
             // activate custom select
 			wp_enqueue_style(PWAPP_Options::$prefix.'css_select_box_it', plugins_url(PWAPP_DOMAIN.'/admin/css/jquery.selectBoxIt.css'), array(), '3.8.1');
@@ -109,9 +93,9 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
 
             wp_enqueue_style('wp-color-picker');
 
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_edittheme', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_THEME.min.js'), array('wp-color-picker'), PWAPP_VERSION);
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editimages', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_IMAGES.min.js'), array(), PWAPP_VERSION);
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editcover', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_COVER.min.js'), array(), PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_edittheme', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_THEME.js'), array('wp-color-picker'), PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editimages', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_IMAGES.js'), array(), PWAPP_VERSION);
+            wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editcover', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_COVER.js'), array(), PWAPP_VERSION);
         }
     }
 }
