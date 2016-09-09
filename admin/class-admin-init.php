@@ -106,7 +106,6 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
 
             wp_enqueue_style(PWAPP_Options::$prefix.'css_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/css/magnific-popup.css'), array(), '0.9.9');
             wp_enqueue_script(PWAPP_Options::$prefix.'js_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/jquery.magnific-popup.min.js'), array(), '0.9.9');
-            // wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_switchtheme', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_SWITCH_THEME.min.js'), array(), PWAPP_VERSION);
 
             wp_enqueue_style('wp-color-picker');
 
