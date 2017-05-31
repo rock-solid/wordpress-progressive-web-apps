@@ -9,10 +9,10 @@
 </script>
 
 <?php
-	$upgrade_content = WMobilePack_Admin::more_updates();
+	$upgrade_content = PWAPP_Admin::more_updates();
 
 	// get themes from the upgrade json
-	$arr_pro_themes = WMobilePack_Admin::upgrade_pro_themes($upgrade_content);
+	$arr_pro_themes = PWAPP_Admin::upgrade_pro_themes($upgrade_content);
 ?>
 
 <div id="pwapp-admin">
