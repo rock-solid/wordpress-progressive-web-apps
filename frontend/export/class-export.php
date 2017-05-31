@@ -1537,8 +1537,21 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                 $arr_manifest = array(
                     'name' => $blog_name,
                     'start_url' => home_url(),
-                    'display' => 'standalone'
+                    'display' => 'standalone',
+					'orientation' => 'any',
                 );
+
+				if (!class_exists('PWAPP_Themes_Config')) {
+					require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
+				}
+
+				$background_color = PWAPP_Themes_Config::get_manifest_background();
+
+				if ($background_color !== false){
+					$arr_manifest['theme_color'] = $background_color;
+					$arr_manifest['background_color'] = $background_color;
+				}
+
 
             } else {
 
