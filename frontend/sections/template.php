@@ -24,7 +24,7 @@
 		require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
 	}
 
-	$background_color = PWAPP_Themes_Config::get_manifest_background();
+	$background_color = PWAPP_Themes_Config::get_manifest_background($app_settings['color_scheme']);
 ?>
 <!DOCTYPE HTML>
 <html manifest="" <?php language_attributes(); ?>>
