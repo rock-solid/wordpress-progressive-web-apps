@@ -17,6 +17,36 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
      */
     class PWAPP_Admin_Init
     {
+		/**
+         * The menu item's title
+         * @var string
+         */
+        private static $submenu_title = PWAPP_PLUGIN_NAME;
+
+		/**
+         * Submenu pages arrays. Each item has the following properties:
+         *
+         * - page_title = The page's and menu's title
+         * - capability = GET parameter to be sent to the admin.php page
+         * - function = The admin function that display the page (from class-admin.php)
+         * - enqueue_hook = (optional) The method that adds the Javascript & CSS files required by each page
+         *
+         * @var array
+         */
+        private static $submenu_pages = array(
+			array(
+                'page_title' => "App Themes",
+                'capability' => 'pwapp-options',
+                'function' => 'themes',
+                'enqueue_hook' => ''
+            ),
+            array(
+                'page_title' => "Look & Feel",
+                'capability' => 'pwapp-options-theme-settings',
+                'function' => 'theme_settings',
+                'enqueue_hook' => 'pwapp_admin_load_theme_settings_js'
+            )
+        );
 
         /**
          * Class constructor
@@ -44,15 +74,27 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
             // init admin object
             $PWAPPAdmin = new PWAPP_Admin();
 
-            // add menu and submenu hooks
-            add_menu_page(
-				PWAPP_PLUGIN_NAME,
-				PWAPP_PLUGIN_NAME,
-				'manage_options',
-				'pwapp-theme',
-				array( &$PWAPPAdmin, 'theme' ),
+			$menu_name = 'pwapp-options';
+
+			add_menu_page(
+				self::$submenu_title,
+			 	self::$submenu_title,
+			  	'manage_options',
+			   	$menu_name,
+			    '',
 				WP_PLUGIN_URL . '/'.PWAPP_DOMAIN.'/admin/images/appticles-logo.png'
 			);
+
+            foreach (self::$submenu_pages as $submenu_item) {
+
+                // add page in the submenu
+                $submenu_page = add_submenu_page($menu_name, $submenu_item['page_title'], $submenu_item['page_title'], 'manage_options', $submenu_item['capability'], array(&$PWAPPAdmin, $submenu_item['function']));
+
+                // enqueue js files for each subpage
+                if (isset($submenu_item['enqueue_hook']) && $submenu_item['enqueue_hook'] != '') {
+                    add_action('load-' . $submenu_page, array(&$this, $submenu_item['enqueue_hook']));
+                }
+            }
         }
 
 
@@ -80,6 +122,17 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
 
             wp_enqueue_script(PWAPP_Options::$prefix.'js_feedback', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Feedback/PWAPP_SEND_FEEDBACK.min.js'), array(), PWAPP_VERSION);
 
+        }
+
+
+		/**
+         *
+         * Load specific javascript files for the admin Look & Feel submenu page
+         *
+         */
+        public function pwapp_admin_load_theme_settings_js()
+        {
+
             // activate custom select
 			wp_enqueue_style(PWAPP_Options::$prefix.'css_select_box_it', plugins_url(PWAPP_DOMAIN.'/admin/css/jquery.selectBoxIt.css'), array(), '3.8.1');
 			wp_enqueue_script(PWAPP_Options::$prefix.'js_select_box_it', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/jquery.selectBoxIt.min.js'), array('jquery','jquery-ui-core', 'jquery-ui-widget'), '3.8.1');
@@ -88,7 +141,7 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
 			foreach ($allowed_fonts as $key => $font_family)
 				wp_enqueue_style(PWAPP_Options::$prefix.'css_font'.($key+1), plugins_url(PWAPP_DOMAIN.'/frontend/fonts/font-'.($key+1).'.css'), array(), PWAPP_VERSION);
 
-            wp_enqueue_style(PWAPP_Options::$prefix.'css_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/css/magnific-popup.css'), array(), '0.9.9');
+			wp_enqueue_style(PWAPP_Options::$prefix.'css_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/css/magnific-popup.css'), array(), '0.9.9');
             wp_enqueue_script(PWAPP_Options::$prefix.'js_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/jquery.magnific-popup.min.js'), array(), '0.9.9');
 
             wp_enqueue_style('wp-color-picker');

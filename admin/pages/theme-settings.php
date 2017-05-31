@@ -14,6 +14,8 @@
 	<div class="spacer-20"></div>
 	<div class="look-and-feel">
         <div class="left-side">
+			<!-- add nav menu -->
+            <?php include_once(PWAPP_PLUGIN_PATH.'admin/sections/admin-menu.php'); ?>
 
             <div class="spacer-0"></div>
 
@@ -24,34 +26,6 @@
                 <div class="spacer-20"></div>
             </div>
             <div class="spacer-10"></div>
-
-            <div class="details theming">
-                <h2 class="title">Mobile Theme</h2>
-                <div class="spacer_15"></div>
-                <div class="spacer-15"></div>
-                <div class="themes">
-					<div class="theme" data-theme="2">
-						<div class="corner relative <?php echo 'active';?>">
-							<div class="indicator"></div>
-						</div>
-						<div class="image" style="background:url(<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/admin/images/theme-2.jpg);">
-							<div class="relative">
-								<div class="overlay">
-									<div class="spacer-100"></div>
-									<div class="actions">
-										<div class="preview" id="pwapp_edittheme_preview_2"></div>
-									</div>
-									<div class="spacer-10"></div>
-									<div class="text-preview">Preview theme</div>
-								</div>
-							</div>
-						</div>
-						<div class="name">Mosaic</div>
-					</div>
-                </div>
-            </div>
-            <div class="spacer-10"></div>
-
             <?php
 
                 $selected_theme = PWAPP_Options::get_setting('theme');
