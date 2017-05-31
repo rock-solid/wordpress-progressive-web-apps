@@ -16,6 +16,8 @@ if ( ! class_exists( 'PWAPP_Options' ) ) {
 
         public static $prefix = 'pwapp_';
 
+		public static $transient_prefix = 'pwa_';
+
         public static $options = array(
 
             // themes
