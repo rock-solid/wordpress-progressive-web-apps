@@ -5,10 +5,11 @@ $lighten-amounth: 20%;
 $base-green: #9aca40;
 $base-purple: #ae113d;
 $base-orange: #ffbb42;
-$base-red: #ff4e40; 
+$base-red: #ff4e40;
 $base-blue: #1ca8dd;
 $base-dark-blue: #2a2d33;
 $base-grey: #fcfcfc;
+$base-turquoise: #66cc80;
 
 $base-color: #eeeff1;
 $base-color-lighter: #f5f7f7;
@@ -63,17 +64,17 @@ $label-font-size: 15px;
 	$error-bg: #fef7f7;
 	$error-color: #d0160a;
 	$error-border: #ecc2c3;
-	
+
 	//messages
 	$success-bg: #f7fef7;
 	$success-color: #4cae4c;
 	$success-border: #5cb85c;
-	
+
 	//warnings
 	$warning-bg: #fffce1;
 	$warning-color: #f89406;
 	$warning-border: #ffd79e;
-	
+
 	//notices
 	$notice-bg: #f6f9f9;
 	$notice-border: #dfeaea;

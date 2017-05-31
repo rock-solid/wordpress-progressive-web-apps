@@ -92,6 +92,16 @@
 				border: 1px solid darken($base-grey, $darken-amounth);
 			}
 		}
+		&.turquoise {
+			background: $base-turquoise;
+			color: #ffffff;
+			border: 1px solid darken($base-turquoise, $darken-amounth/2);
+
+			&:hover{
+				background: darken($base-turquoise, $darken-amounth/2);
+				border: 1px solid darken($base-turquoise, $darken-amounth);
+			}
+		}
 
         &.red-text {
             color: darken($base-red, 20%);
