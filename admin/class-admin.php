@@ -64,7 +64,7 @@ if ( ! class_exists( 'PWAPP_Admin' ) ) {
 			$json_url = ($is_secure ? PWAPP_MORE_UPDATES_HTTPS : PWAPP_MORE_UPDATES);
 
 			// get response
-			$json_response = WMobilePack::read_data($json_url);
+			$json_response = PWAPP_Core::read_data($json_url);
 
 			if ($json_response !== false && $json_response != '') {
 
