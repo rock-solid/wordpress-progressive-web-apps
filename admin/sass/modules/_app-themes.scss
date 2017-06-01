@@ -84,6 +84,10 @@
                                 margin: 0;
                             }
 
+							&.single{
+								margin: 0 $theme-box-margin $theme-box-margin 240px;
+							}
+
                             .name{
                                 font-family: 'AcordeRegular', sans-serif;
                                 font-size: 16px;

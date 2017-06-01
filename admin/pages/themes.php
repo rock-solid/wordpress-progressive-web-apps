@@ -31,7 +31,7 @@
                 <div class="spacer_15"></div>
                 <div class="spacer-15"></div>
                 <div class="themes">
-					<div class="theme" data-theme="2">
+					<div class="theme single" data-theme="2">
 						<div class="corner relative <?php echo 'active';?>">
 							<div class="indicator"></div>
 						</div>
