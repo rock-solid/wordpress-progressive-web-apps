@@ -10,17 +10,70 @@ Progressive Web Apps use modern web capabilities to deliver app-like user experi
 
 == Description ==
 
-**Progressive Web Apps WordPress Plugin empowers bloggers, publishers and other content creators to go beyond responsive web design and 'appify' their existing website.**
+Progressive Web Apps are user experiences that have the reach of the web, and are:
 
-Progressive Web Apps is **supported on**: iOS & Android. **Compatible browsers**: Safari, Google Chrome, Android - Native Browser, Firefox.
+* **Reliable** - Load instantly even in uncertain network conditions.
+* **Fast** - Respond quickly to user interactions with silky smooth animations and no janky scrolling.
+* **Engaging** - Feel like a natural app on the device, with an immersive user experience.
 
-The plugin has been tested on WordPress 3.5 and later. 
+This new level of quality allows Progressive Web Apps to earn a place on the user's home screen. More details about PWAs here: [https://developers.google.com/web/progressive-web-apps/](https://developers.google.com/web/progressive-web-apps/)
 
-Progressive Web Apps includes one app theme which is fully customizable (colors, fonts, appearance).
+The WordPress Progressive Web Apps plugin helps bloggers, publishers and other content creators to go beyond responsive web design and ‘appify' their existing mobile presence. Progressive Web Apps is supported on: iOS & Android. Compatible browsers: Safari, Google Chrome, Android – Native Browser. The plugin has been tested on WordPress 4.0 and later.
 
-We enjoy writing and maintaining this plugin. If you like it too, please rate us. But if you don't, let us know how we can improve it.
+The WordPress Progressive Web Apps plugin includes one FREE mobile app theme (MOSAIC) which is customizable (colors, fonts, appearance) via the WordPress admin area. The tech stack we use in building Progressive Web Apps includes:
 
-Have fun on your mobile adventures.
+* AngularJS/Ionic
+* ReactJS
+* Sencha Touch
+* SASS
+* Gulp
+* Bower
+* Karma
+* Jasmine
+* Protractor
+
+
+The MOSAIC mobile app theme (available for FREE) is built with Sencha Touch, but we're currently working on migrating it to AngularJS/Ionic 1. Most of the premium mobile app themes available at [WPMobilePack.com/mobile-app-themes.html](https://wpmobilepack.com/mobile-app-themes.html) are built using Angular/Ionic 1 & SASS. Each mobile app theme comes with a "production" version, which in essence is the bundled/packaged/minified collection of all the necessary JS/CSS files for the PWA to run correctly.
+
+Each of our mobile app themes are tested with Karma, Jasmine and Protractor. We have an average of 50-60% code coverage and we're working on improving this rate. While we do our best to catch any bugs out there, we are aware that some of them might escape us. Please reach out if you happen to come across a nasty one 😊.
+
+The FREE mobile app theme MOSAIC available in the WordPress Progressive Web Apps plugin is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space. It's great for publishers that have posts spanning several categories and need a way to visually structure their content.
+
+It comes with support for:
+
+* Multi-image mosaic on cover page
+* Pages & sub-pages menu
+* Side-to-side navigation with lateral swiping through categories
+* Maximum 2 articles per page
+
+There are dozens of mobile app themes available in the PRO version: [BASE](https://wpmobilepack.com/mobile-app-themes/base.html), [OBLIQ](https://wpmobilepack.com/mobile-app-themes/obliq.html), [ELEVATE](https://wpmobilepack.com/mobile-app-themes/elevate.html), [FOLIO](https://wpmobilepack.com/mobile-app-themes/folio.html), [INVISION](https://wpmobilepack.com/mobile-app-themes/invision.html), [POPSICLE](https://wpmobilepack.com/mobile-app-themes/popsicle.html), [PULSE](https://wpmobilepack.com/mobile-app-themes/pulse.html), [GHOST](https://wpmobilepack.com/mobile-app-themes/ghost.html), [PHANTOM](https://wpmobilepack.com/mobile-app-themes/phantom.html), [LUCID](https://wpmobilepack.com/mobile-app-themes/lucid.html), [EXTRUDE](https://wpmobilepack.com/mobile-app-themes/extrude.html), [VEDI](https://wpmobilepack.com/mobile-app-themes/vedi.html), [BLEND](https://wpmobilepack.com/mobile-app-themes/blend.html), [PURE](https://wpmobilepack.com/mobile-app-themes/pure.html), [GOTHAM](https://wpmobilepack.com/mobile-app-themes/gotham.html), [FUTURE](https://wpmobilepack.com/mobile-app-themes/future.html) & [PALM](https://wpmobilepack.com/mobile-app-themes/palm.html).
+
+Additional key features available in PRO:
+
+- **Rich UI/UX**
+Your users can have a cozy browsing experience on their favorite mobile device without having to go to an App Store and install anything.
+
+- **Monetization**
+Take full control of your income by easily connecting the plugin with your Google DoubleClick for Publishers account.
+
+- **Translations**
+Wordpress Mobile Pack will automatically translate your mobile web app in one of the supported languages: Chinese (zh_CN), Dutch, English, French, German, Hungarian, Italian, Polish, Portuguese (Brazil), Romanian, Spanish or Swedish.
+
+- **Google AMP Integration**
+Integrate with the official Google Accelerated Mobile Pages plugin. The Accelerated Mobile Pages (AMP) Project is an open source initiative that embodies the vision that publishers can create mobile optimized content once and have it load instantly everywhere.
+
+- **Premium Support**
+We take pride in offering fantastic maintenance and hands-on support. Our team of friendly mobile experts makes sure technology doesn't stand in your way.
+
+- **Analytics**
+Get to know your mobile users and analyze your impact with our powerful yet simple reader-centric analytics via Google Analytics integration.
+
+- **Add to Homescreen**
+Users can add your mobile web application to their homescreens making it just a tap away.
+
+We enjoy writing and maintaining this plugin. If you like it too, please rate us. But if you don't, let us know how we can improve it. 
+
+Have fun on your mobile adventures!
 
 
 == Installation ==
@@ -41,7 +94,7 @@ A more comprehensive setup process and guide to configuration is as follows.
 1. Login to the WordPress admin panel at `http://yoursite.com/wp-admin`
 1. Go to the 'Plugins' menu.
 1. Click 'Activate' for the plugin.
-1. Go to the ‘Progressive Web Apps’ admin panel.
+1. Go to the ‘Progressive Web Apps' admin panel.
 1. Choose color schemes, fonts and add your own logo and app icon.
 1. Access your site in a mobile browser and check if the application is displayed. If the app is not loading properly, make sure that the file exporting the content - http://yoursite.com/{your plugins folder}/progressive-web-apps/frontend/export/content.php - can be accessed in the browser and doesn't return a '404 Not Found' or '403 Forbidden' error.
 1. You're all done!
@@ -76,11 +129,15 @@ Please note that the progressive web app will be enabled only on supported devic
 
 == Screenshots ==
 
-
+1. The Mosaic mobile app theme
+2. "App Themes" page from the admin panel. 
+3. "App Themes" page from the admin panel with other Premium app themes
+4. "Look & Feel" page from the admin panel. Customize theme by choosing colors and fonts.
+5. "Look & Feel" page from the admin panel. Customize theme by adding your own app icon, logo & cover.
 
 == Repositories ==
 
-Here’s our Github development repository:
+Here's our Github development repository:
 
 * [https://github.com/appticles/wordpress-progressive-web-apps](https://github.com/appticles/wordpress-progressive-web-apps) - The plugin files, same as you will find for download on Wordpress.org.
 
