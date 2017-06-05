@@ -108,10 +108,6 @@ You can also download a number of mobile emulators that can run on a desktop PC 
 Please note that the progressive web app will be enabled only on supported devices: iOS & Android. Only the following browsers are compatible: Safari, Google Chrome, Android - Native Browser and Firefox (as of 2.0.2).
 
 
-== Frequently Asked Questions ==
-
-
-
 == Changelog ==
 
 = 0.5 =
@@ -121,10 +117,6 @@ Please note that the progressive web app will be enabled only on supported devic
 
 = 0.1 =
 * Initial release
-
-
-== Upgrade Notice ==
-
 
 
 == Screenshots ==
@@ -140,6 +132,3 @@ Please note that the progressive web app will be enabled only on supported devic
 Here's our Github development repository:
 
 * [https://github.com/appticles/wordpress-progressive-web-apps](https://github.com/appticles/wordpress-progressive-web-apps) - The plugin files, same as you will find for download on Wordpress.org.
-
-== Contributors ==
-
