@@ -38,7 +38,7 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
                 'page_title' => "App Themes",
                 'capability' => 'pwapp-options',
                 'function' => 'themes',
-                'enqueue_hook' => 'pwapp_admin_load_themes_js'
+                'enqueue_hook' => ''
             ),
             array(
                 'page_title' => "Look & Feel",
@@ -123,21 +123,6 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
             wp_enqueue_script(PWAPP_Options::$prefix.'js_feedback', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Feedback/PWAPP_SEND_FEEDBACK.min.js'), array(), PWAPP_VERSION);
 
         }
-
-
-
-		/**
-         *
-         * Load specific javascript files for the admin Look & Feel submenu page
-         *
-         */
-		public function pwapp_admin_load_themes_js()
-		{
-			wp_enqueue_style(PWAPP_Options::$prefix.'css_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/css/magnific-popup.css'), array(), '0.9.9');
-            wp_enqueue_script(PWAPP_Options::$prefix.'js_magnific_popup', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Interface/Lib/jquery.magnific-popup.min.js'), array(), '0.9.9');
-			wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_previewtheme', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_PREVIEW_THEME.min.js'), array(), PWAPP_VERSION);
-		}
-
 
 		/**
          *

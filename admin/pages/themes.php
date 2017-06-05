@@ -40,11 +40,8 @@
 							<div class="relative">
 								<div class="overlay">
 									<div class="spacer-100"></div>
-									<div class="actions">
-										<div class="preview" id="pwapp_previewtheme_preview_2"></div>
-									</div>
 									<div class="spacer-10"></div>
-									<div class="text-preview">Preview theme</div>
+									<div class="text-preview">Enabled</div>
 								</div>
 							</div>
 						</div>
@@ -86,11 +83,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-    if (window.PWAPPJSInterface && window.PWAPPJSInterface != null){
-        jQuery(document).ready(function(){
-            window.PWAPPJSInterface.add("UI_previewtheme","PWAPP_PREVIEW_THEME",{'DOMDoc':window.document, 'baseThemesUrl': '<?php echo plugins_url()."/".PWAPP_DOMAIN.'/frontend/themes/';?>'}, window);
-        });
-    }
-</script>
 
