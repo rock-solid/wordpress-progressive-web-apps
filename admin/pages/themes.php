@@ -27,9 +27,9 @@
 
             <div class="spacer-0"></div>
             <div class="details theming">
-                <h2 class="title">Mobile Theme</h2>
+                <h2 class="title">Mobile App Theme</h2>
 				<div class="spacer-30"></div>
-				<p>It's the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space.</p>
+				<p>The Mosaic mobile app theme is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space.</p>
 				<div class="spacer-30"></div>
                 <div class="themes">
 					<div class="theme single" data-theme="2">
