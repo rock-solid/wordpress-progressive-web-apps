@@ -150,5 +150,67 @@ if ( ! class_exists( 'PWAPP_Core' ) ) {
 
             return $active_plugin;
         }
+
+
+		/**
+         *
+         * Static method used to request the content of different pages using curl or fopen
+         * This method returns false if both curl and fopen are dissabled and an empty string ig the json could not be read
+         *
+         */
+        public static function read_data($json_url) {
+
+            // check if curl is enabled
+            if (extension_loaded('curl')) {
+
+                $send_curl = curl_init($json_url);
+
+                // set curl options
+                curl_setopt($send_curl, CURLOPT_URL, $json_url);
+                curl_setopt($send_curl, CURLOPT_HEADER, false);
+                curl_setopt($send_curl, CURLOPT_CONNECTTIMEOUT, 2);
+                curl_setopt($send_curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($send_curl, CURLOPT_HTTPHEADER,array('Accept: application/json', "Content-type: application/json"));
+                curl_setopt($send_curl, CURLOPT_FAILONERROR, FALSE);
+                curl_setopt($send_curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+                curl_setopt($send_curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+                $json_response = curl_exec($send_curl);
+
+                // get request status
+                $status = curl_getinfo($send_curl, CURLINFO_HTTP_CODE);
+                curl_close($send_curl);
+
+                // return json if success
+                if ($status == 200)
+                    return $json_response;
+
+            } elseif (ini_get( 'allow_url_fopen' )) { // check if allow_url_fopen is enabled
+
+                // open file
+                $json_file = fopen( $json_url, 'rb' );
+
+                if($json_file) {
+
+                    $json_response = '';
+
+                    // read contents of file
+                    while (!feof($json_file)) {
+                        $json_response .= fgets($json_file);
+                    }
+                }
+
+                // return json response
+                if($json_response)
+                    return $json_response;
+
+            } else
+                // both curl and fopen are disabled
+                return false;
+
+            // by default return an empty string
+            return '';
+
+        }
+
     }
 }

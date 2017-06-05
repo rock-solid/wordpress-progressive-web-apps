@@ -1,0 +1,268 @@
+#pwapp-admin{
+	.app-themes{
+		display: table;
+
+		.left-side{
+			width: 100%;
+			display: table;
+			vertical-align: top;
+
+            $theme-box-width: 195px;
+            $theme-box-height: 320px;
+            $theme-box-margin: 25px;
+            $theme-box-subsection-height: 41px;
+
+			.corner{
+				z-index: 1;
+
+				&.active{
+					.indicator{
+						@include wbz-inline-icon(active, 11px);
+						color: #ffffff;
+
+                        top: 0px;
+                        left: $theme-box-width - 44px;
+
+						&::before{
+							top: -40px;
+							right: 18px;
+						}
+					}
+				}
+			}
+			.details{
+				padding:30px;
+				background-color: $box-color;
+
+				h2.title{
+					font-family: 'OlRoundGothicLight', sans-serif;
+					font-size: 25px;
+					line-height: normal;
+					color: $base-text-color;
+				}
+				.section-header{
+					font-family: 'AcorderSemiBold', sans-serif;
+					font-size: 18px;
+					line-height: normal;
+					color: $base-dark-blue;
+				}
+
+				.ribbon{
+					float:right;
+
+					.starred{
+						background: url(../images/ribbon-premium.png);
+						width: 67px;
+						height: 68px;
+						position: absolute;
+						top: -35px;
+						right: -35px;
+					}
+				}
+
+                &.theming{
+                    display: table;
+                    width: 100%;
+
+                    h2.title {
+                        text-align: center;
+                    }
+
+                    .themes{
+                        display: block;
+                        width: ($theme-box-width + $theme-box-margin) * 3 + 20;
+                        margin: 0 auto;
+
+                        .theme{
+                            display: inline-block;
+                            width: $theme-box-width;
+                            height: $theme-box-height;
+                            margin: 0 $theme-box-margin $theme-box-margin 0;
+                            position: relative;
+
+                            &:nth-child(3){
+                                margin: 0;
+                            }
+
+							&.single{
+								margin: 0 $theme-box-margin $theme-box-margin 240px;
+							}
+
+                            .name{
+                                font-family: 'AcordeRegular', sans-serif;
+                                font-size: 16px;
+                                color: $base-text-color;
+                                background: $base-color-lighter;
+                                height: $theme-box-subsection-height;
+                                border-bottom: 1px solid #dce0e0;
+                                padding: 10px;
+                                text-transform: uppercase;
+								text-align: center;
+                            }
+                            .content{
+								font-size: 14px;
+                                color: $base-p-color;
+                                height: $theme-box-subsection-height;
+                                padding: 5px 5px;
+								text-align: center;
+                            }
+                            .image{
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                width: 100%;
+                                height: $theme-box-height - $theme-box-subsection-height * 2;
+                                overflow: hidden;
+                                position: relative;
+
+                                &:hover{
+                                    .overlay{
+                                        visibility: visible;
+                                        @include wbz-transform(translateX(0%));
+                                        @include wbz-opacity(1);
+                                        @include wbz-transition(all 0.3s ease-in-out);
+                                    }
+                                }
+                            }
+                            .overlay{
+                                background: rgba(154,202,64,0.9);
+                                position: absolute;
+                                width: $theme-box-width;
+                                height: $theme-box-height - $theme-box-subsection-height * 2;
+                                text-align: center;
+
+                                @include wbz-transform(translateX(-100%));
+                                @include wbz-opacity(0);
+                                @include wbz-transition(all 0.3s ease-in-out);
+
+                                .actions {
+                                    @include wbz-display-box();
+                                    display: flex;
+                                    @include wbz-box-orient(horizontal);
+                                    @include wbz-box-align(center);
+                                    @include wbz-box-pack(center);
+
+                                    .preview, .select {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        @include wbz-border-radius(33px);
+                                        width: 33px;
+                                        height: 33px;
+                                        margin: 0 2px;
+                                        float: none;
+
+                                        &:hover {
+                                            cursor: pointer;
+                                            background: lighten(#333333, 10%);
+                                        }
+
+                                        &::before {
+                                            width: 33px;
+                                            height: 33px;
+                                            line-height: 33px;
+                                        }
+                                    }
+
+									.preview {
+                                        @include wbz-inline-icon(preview, 20px);
+                                    }
+
+                                    .select {
+                                        @include wbz-inline-icon(active, 14px);
+                                    }
+                                }
+
+                                [class^="text"] {
+                                    font-family: "OpenSansSemiBold", sans-serif;
+                                    font-size: 13px;
+                                    color: #333333;
+                                    text-align: center;
+                                }
+                            }
+							span.price {
+								border-radius: 50px;
+								background: $base-orange;
+								color: #ffffff;
+								padding: 3px 5px;
+							}
+                            &.premium{
+                                .overlay{
+                                    background: rgba(#fdf7d3,0.9);
+
+                                    .unlock{
+                                        @include wbz-inline-icon(unlock, 17px);
+                                        color: #ffffff;
+                                        background: $base-orange;
+                                        @include wbz-border-radius(33px);
+                                        width: 33px;
+                                        height: 33px;
+                                        margin: 0 2px;
+                                        float: none;
+
+                                        &:hover{
+                                            cursor: pointer;
+                                            background: lighten($base-orange, 10%);
+                                        }
+
+                                        &::before{
+                                            width: 33px;
+                                            height: 33px;
+                                            top: 7px;
+                                            left: 0px;
+                                        }
+                                    }
+                                    .preview{
+                                        background: $base-orange;
+
+                                        &:hover{
+                                            background: lighten($base-orange, 10%);
+                                        }
+                                    }
+                                    .text{
+                                        font-family: "OpenSansSemiBold", sans-serif;
+                                        font-size: 13px;
+                                        color: $base-text-color;
+                                        text-align: center;
+                                        display: block;
+
+                                        &:last-child{
+                                            font-size: 12px;
+                                            font-family: "OpenSansRegular", sans-serif;
+                                        }
+                                        span{
+                                            font-size: 15px;
+                                            color: $base-text-color;
+                                            display: block;
+                                        }
+                                    }
+                                    .btn{
+                                        margin: 0 auto;
+                                        width: 150px;
+                                    }
+                                    .info{
+                                        margin: 0 auto;
+                                        width: $input-size-smaller + $btn-size-smallest + 10px;
+
+                                        input[type="text"]{
+                                            float: left;
+                                            background: rgba(250,250,250,0.8);
+                                        }
+                                        .btn{
+                                            float: left;
+                                            margin: 0 0 0 10px;
+                                        }
+                                    }
+                                }
+								.content {
+									a.btn.smaller {
+										width: 100%;
+										line-height: normal;
+									}
+								}
+                            }
+                        }
+                    }
+                }
+			}
+		}
+	}
+}

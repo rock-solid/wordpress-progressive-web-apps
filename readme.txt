@@ -2,8 +2,8 @@
 Contributors: cborodescu, anghelalexandra
 Tags: progressive web apps, pwa, mobile, mobile web, mobile internet, smartphone, iphone, android, windows, webkit, chrome, safari, mobile web app, html5, responsive ui
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 0.1
+Tested up to: 4.7.5
+Stable tag: 0.5
 License: GPLv2 or later
 
 Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
@@ -12,11 +12,11 @@ Progressive Web Apps use modern web capabilities to deliver app-like user experi
 
 **Progressive Web Apps WordPress Plugin empowers bloggers, publishers and other content creators to go beyond responsive web design and 'appify' their existing website.**
 
-Progressive Web Apps 0.1 is **supported on**: iOS & Android. **Compatible browsers**: Safari, Google Chrome, Android - Native Browser, Firefox.
+Progressive Web Apps is **supported on**: iOS & Android. **Compatible browsers**: Safari, Google Chrome, Android - Native Browser, Firefox.
 
 The plugin has been tested on WordPress 3.5 and later. 
 
-Progressive Web Apps 0.1 includes one app theme which is fully customizable (colors, fonts, appearance).
+Progressive Web Apps includes one app theme which is fully customizable (colors, fonts, appearance).
 
 We enjoy writing and maintaining this plugin. If you like it too, please rate us. But if you don't, let us know how we can improve it.
 
@@ -60,6 +60,11 @@ Please note that the progressive web app will be enabled only on supported devic
 
 
 == Changelog ==
+
+= 0.5 =
+* Various bug fixes for the Mosaic mobile app theme
+* Add separate tab for App Themes
+* Add manifest background color, to improve PWA score
 
 = 0.1 =
 * Initial release

@@ -1,24 +1,30 @@
 <?php
-$app_settings = PWAPP_Application::load_app_settings();
+	$app_settings = PWAPP_Application::load_app_settings();
 
-$frontend_path = plugins_url()."/".PWAPP_DOMAIN."/frontend/";
-$theme_path = $frontend_path."themes/app2/";
+	$frontend_path = plugins_url()."/".PWAPP_DOMAIN."/frontend/";
+	$theme_path = $frontend_path."themes/app2/";
 
-// check fonts
-$loaded_fonts = array(
-    $app_settings['font_headlines'],
-    $app_settings['font_subtitles'],
-    $app_settings['font_paragraphs'],
-);
+	// check fonts
+	$loaded_fonts = array(
+		$app_settings['font_headlines'],
+		$app_settings['font_subtitles'],
+		$app_settings['font_paragraphs'],
+	);
 
-$loaded_fonts = array_unique($loaded_fonts);
+	$loaded_fonts = array_unique($loaded_fonts);
 
-// check if locale file exists
-$texts_json_exists = PWAPP_Application::check_language_file(get_locale());
+	// check if locale file exists
+	$texts_json_exists = PWAPP_Application::check_language_file(get_locale());
 
-if ($texts_json_exists === false) {
-    echo "ERROR, unable to load language file. Please check the '".PWAPP_DOMAIN."/frontend/locales/' folder.";
-}
+	if ($texts_json_exists === false) {
+		echo "ERROR, unable to load language file. Please check the '".PWAPP_DOMAIN."/frontend/locales/' folder.";
+	}
+
+	if (!class_exists('PWAPP_Themes_Config')) {
+		require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
+	}
+
+	$background_color = PWAPP_Themes_Config::get_manifest_background($app_settings['color_scheme']);
 ?>
 <!DOCTYPE HTML>
 <html manifest="" <?php language_attributes(); ?>>
@@ -32,11 +38,16 @@ if ($texts_json_exists === false) {
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="<?php echo $frontend_path."export/content.php?content=androidmanifest";?>" />
 
+	<?php if ($background_color !== false) :?>
+		<meta name="theme-color" content="<?php echo $background_color; ?>">
+	<?php endif;?>
+
     <?php if ($app_settings['icon'] != ''): // icon path for Firefox ?>
         <link rel="shortcut icon" href="<?php echo $app_settings['icon'];?>"/>
     <?php endif;?>
 
     <title><?php echo get_bloginfo("name");?></title>
+	<noscript>Your browser does not support JavaScript!</noscript>
     <style type="text/css">
         /**
         * Example of an initial loading indicator.

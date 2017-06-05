@@ -6,7 +6,7 @@
  * Description: Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
  * Author: Appticles.com
  * Author URI: http://www.appticles.com/
- * Version: 0.1
+ * Version: 0.5
  * Copyright (c) 2016 Appticles.com
  * License: The Progressive Web Apps is Licensed under the Apache License, Version 2.0
  * Text Domain: progressive-web-apps
