@@ -4,10 +4,10 @@
  * Plugin Name:  Progressive Web Apps
  * Plugin URI:  http://wordpress.org/plugins/progressive-web-apps/
  * Description: Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
- * Author: WPMobilePack.com
- * Author URI: https://www.wpmobilepack.com/
+ * Author: PWAThemes.com
+ * Author URI: https://pwathemes.com/
  * Version: 0.5
- * Copyright (c) 2017 WPMobilePack.com
+ * Copyright (c) 2017 PWAThemes.com
  * License: The Progressive Web Apps is Licensed under the Apache License, Version 2.0
  * Text Domain: progressive-web-apps
  */
