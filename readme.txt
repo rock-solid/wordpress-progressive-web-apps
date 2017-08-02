@@ -3,7 +3,7 @@ Contributors: cborodescu, anghelalexandra
 Tags: progressive web apps, pwa, mobile, mobile web, mobile internet, smartphone, iphone, android, windows, webkit, chrome, safari, mobile web app, html5, responsive ui
 Requires at least: 4.0
 Tested up to: 4.7.5
-Stable tag: 0.5
+Stable tag: 0.5.1
 License: GPLv2 or later
 
 Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
@@ -33,7 +33,7 @@ The WordPress Progressive Web Apps plugin includes one FREE mobile app theme (MO
 * Protractor
 
 
-The MOSAIC mobile app theme (available for FREE) is built with Sencha Touch, but we're currently working on migrating it to AngularJS/Ionic 1. Most of the premium mobile app themes available at [WPMobilePack.com/mobile-app-themes.html](https://wpmobilepack.com/mobile-app-themes.html) are built using Angular/Ionic 1 & SASS. Each mobile app theme comes with a "production" version, which in essence is the bundled/packaged/minified collection of all the necessary JS/CSS files for the PWA to run correctly.
+The MOSAIC mobile app theme (available for FREE) is built with Sencha Touch, but we're currently working on migrating it to AngularJS/Ionic 1. Most of the premium mobile app themes available at [PWAThemes.com/progressive-web-app-themes.html](https://pwathemes.com/progressive-web-app-themes.html) are built using Angular/Ionic 1 & SASS. Each mobile app theme comes with a "production" version, which in essence is the bundled/packaged/minified collection of all the necessary JS/CSS files for the PWA to run correctly.
 
 Each of our mobile app themes are tested with Karma, Jasmine and Protractor. We have an average of 50-60% code coverage and we're working on improving this rate. While we do our best to catch any bugs out there, we are aware that some of them might escape us. Please reach out if you happen to come across a nasty one 😊.
 
@@ -46,7 +46,7 @@ It comes with support for:
 * Side-to-side navigation with lateral swiping through categories
 * Maximum 2 articles per page
 
-There are dozens of mobile app themes available in the PRO version: [BASE](https://wpmobilepack.com/mobile-app-themes/base.html), [OBLIQ](https://wpmobilepack.com/mobile-app-themes/obliq.html), [ELEVATE](https://wpmobilepack.com/mobile-app-themes/elevate.html), [FOLIO](https://wpmobilepack.com/mobile-app-themes/folio.html), [INVISION](https://wpmobilepack.com/mobile-app-themes/invision.html), [POPSICLE](https://wpmobilepack.com/mobile-app-themes/popsicle.html), [PULSE](https://wpmobilepack.com/mobile-app-themes/pulse.html), [GHOST](https://wpmobilepack.com/mobile-app-themes/ghost.html), [PHANTOM](https://wpmobilepack.com/mobile-app-themes/phantom.html), [LUCID](https://wpmobilepack.com/mobile-app-themes/lucid.html), [EXTRUDE](https://wpmobilepack.com/mobile-app-themes/extrude.html), [VEDI](https://wpmobilepack.com/mobile-app-themes/vedi.html), [BLEND](https://wpmobilepack.com/mobile-app-themes/blend.html), [PURE](https://wpmobilepack.com/mobile-app-themes/pure.html), [GOTHAM](https://wpmobilepack.com/mobile-app-themes/gotham.html), [FUTURE](https://wpmobilepack.com/mobile-app-themes/future.html) & [PALM](https://wpmobilepack.com/mobile-app-themes/palm.html).
+There are dozens of mobile app themes available in the PRO version: [BASE](https://pwathemes.com/progressive-web-app-themes/base.html), [OBLIQ](https://pwathemes.com/progressive-web-app-themes/obliq.html), [ELEVATE](https://pwathemes.com/progressive-web-app-themes/elevate.html), [FOLIO](https://pwathemes.com/progressive-web-app-themes/folio.html), [INVISION](https://pwathemes.com/progressive-web-app-themes/invision.html), [POPSICLE](https://pwathemes.com/progressive-web-app-themes/popsicle.html), [PULSE](https://pwathemes.com/progressive-web-app-themes/pulse.html), [GHOST](https://pwathemes.com/progressive-web-app-themes/ghost.html), [PHANTOM](https://pwathemes.com/progressive-web-app-themes/phantom.html), [LUCID](https://pwathemes.com/progressive-web-app-themes/lucid.html), [EXTRUDE](https://pwathemes.com/progressive-web-app-themes/extrude.html), [VEDI](https://pwathemes.com/progressive-web-app-themes/vedi.html), [BLEND]https://pwathemes.com/progressive-web-app-themes/blend.html), [PURE](https://pwathemes.com/progressive-web-app-themes/pure.html), [GOTHAM](https://pwathemes.com/progressive-web-app-themes/gotham.html), [FUTURE](https://pwathemes.com/progressive-web-app-themes/future.html) & [PALM](https://pwathemes.com/progressive-web-app-themes/palm.html).
 
 Additional key features available in PRO:
 
@@ -109,6 +109,9 @@ Please note that the progressive web app will be enabled only on supported devic
 
 
 == Changelog ==
+
+= 0.5.1 =
+* Add links to PWAThemes.com
 
 = 0.5 =
 * Various bug fixes for the Mosaic mobile app theme
