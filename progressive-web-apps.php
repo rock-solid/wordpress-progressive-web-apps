@@ -6,7 +6,7 @@
  * Description: Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
  * Author: PWAThemes.com
  * Author URI: https://pwathemes.com/
- * Version: 0.5
+ * Version: 0.5.1
  * Copyright (c) 2017 PWAThemes.com
  * License: The Progressive Web Apps is Licensed under the Apache License, Version 2.0
  * Text Domain: progressive-web-apps
