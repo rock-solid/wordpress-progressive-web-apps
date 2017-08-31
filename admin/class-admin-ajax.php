@@ -353,6 +353,69 @@ if ( ! class_exists( 'PWAPP_Admin_Ajax' ) ) {
 
 
         /**
+         * Resize & copy image using Wordpress methods
+         *
+         * @param $file_type = icon, logo, cover or category_icon
+         * @param $file_path
+         * @param $file_name
+         * @param string $error_message
+         * @return bool
+         *
+         */
+        protected function resize_image($file_type, $file_path, $file_name, &$error_message = '')
+        {
+
+            $copied_and_resized = false;
+
+            if (array_key_exists($file_type, PWAPP_Uploads::$allowed_files)) {
+
+                $arrMaximumSize = PWAPP_Uploads::$allowed_files[$file_type];
+
+                $image = wp_get_image_editor($file_path);
+
+                if (!is_wp_error($image)) {
+
+					$image_size = $image->get_size();
+
+					if ($file_type == 'icon') {
+
+						foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+
+							$manifest_image = wp_get_image_editor($file_path);
+							$manifest_image->resize($manifest_size, $manifest_size, true);
+							$manifest_image->save(PWAPP_FILES_UPLOADS_DIR . $manifest_size . $file_name);
+						}
+
+					}
+
+                    // if the image exceeds the size limits
+                    if ($image_size['width'] > $arrMaximumSize['max_width'] || $image_size['height'] > $arrMaximumSize['max_height']) {
+
+                        // resize and copy to the plugin uploads folder
+                        $image->resize($arrMaximumSize['max_width'], $arrMaximumSize['max_height']);
+                        $image->save(PWAPP_FILES_UPLOADS_DIR . $file_name);
+
+                        $copied_and_resized = true;
+
+                    } else {
+
+                        // copy file without resizing to the plugin uploads folder
+                        $copied_and_resized = copy($file_path, PWAPP_FILES_UPLOADS_DIR . $file_name);
+                    }
+
+                } else {
+
+                    $error_message = "We encountered a problem resizing your " . ($file_type == 'category_icon' ? 'image' : $file_type) . ". Please choose another image!";
+                }
+
+            }
+
+            return $copied_and_resized;
+		}
+
+
+
+        /**
          *
          * Remove image using the corresponding option's value for the filename
          *
@@ -500,8 +563,11 @@ if ( ! class_exists( 'PWAPP_Admin_Ajax' ) ) {
                                                     /*										*/
                                                     /****************************************/
 
-													// @todo Add resize image
-													$copied_and_resized = copy($movefile['file'], PWAPP_FILES_UPLOADS_DIR . $uniqueFilename);
+													$copied_and_resized = $this->resize_image($file_type, $movefile['file'], $uniqueFilename, $error_message);
+
+													if ($error_message != ''){
+														$arr_response["messages"][] = $error_message;
+                                                    }
 
                                                     /****************************************/
                                                     /*										*/
