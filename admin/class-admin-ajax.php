@@ -429,8 +429,14 @@ if ( ! class_exists( 'PWAPP_Admin_Ajax' ) ) {
 
             // check the file exists and remove it
             if ($previous_file_path != '') {
-
                 $PWAPP_Uploads = $this->get_uploads_manager();
+
+				if ($file_type == 'icon') {
+					foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+						$PWAPP_Uploads->remove_uploaded_file($manifest_size . $previous_file_path);
+					}
+				}
+
                 return $PWAPP_Uploads->remove_uploaded_file($previous_file_path);
             }
 
