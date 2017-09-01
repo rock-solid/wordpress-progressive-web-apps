@@ -226,6 +226,29 @@
                 <div class="spacer-20"></div>
                 <p>You can also personalize your app by adding <strong>your own logo and icon</strong>. The logo will be displayed on the home page of your mobile web app, while the icon will be used when readers add your app to their homescreen.</p>
                 <div class="spacer-20"></div>
+				<?php
+					$warning_message = '';
+					$icon_filename = PWAPP_Options::get_setting('icon');
+
+					if ($icon_filename == '') {
+						$warning_message = 'Upload an App Icon to take advantage of the Add To Home Screen functionality!';
+
+					} elseif ($icon_filename != '' && file_exists(PWAPP_FILES_UPLOADS_DIR . $icon_filename)) {
+						foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+							if (!file_exists(PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename)) {
+								$warning_message = 'Progressive Web Apps 0.6 comes with Add To Home Screen functionality which requires you to reupload your App Icon.';
+								break;
+							}
+						}
+					}
+				?>
+				<div id="pwapp_editimages_warning" class="message-container warning" style="display:<?php echo ($warning_message != '') ? 'block':'none' ?>">
+					<div class="wrapper">
+						<div class="relative"><a class="close-x"></a></div>
+						<span><?php echo $warning_message; ?></span>
+					</div>
+					<div class="spacer-10"></div>
+				</div>
                 <div class="left">
                     <form name="pwapp_editimages_form" id="pwapp_editimages_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_editimages&type=upload" method="post" enctype="multipart/form-data">
 

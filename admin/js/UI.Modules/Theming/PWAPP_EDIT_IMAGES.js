@@ -463,6 +463,12 @@ function PWAPP_EDIT_IMAGES(){
       JSObject.validate();
     });
     JSObject.enableButton(this.send_btn);
+
+    // close button action for the inactive categories warning
+    jQuery( '#' + JSObject.type + '_warning a.close-x', JSObject.DOMDoc).on('click', function(){
+      jQuery('#'+JSObject.type+'_warning', JSObject.DOMDoc).hide();
+    });
+
   };
 
 
