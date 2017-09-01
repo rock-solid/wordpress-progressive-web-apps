@@ -353,6 +353,39 @@ if ( ! class_exists( 'PWAPP_Admin_Ajax' ) ) {
 
 
         /**
+         *
+         * Save service worker setting
+         *
+         */
+        public function settings_save()
+        {
+
+            if (current_user_can( 'manage_options' )) {
+                $status = 0;
+
+                if (isset($_POST) && is_array($_POST) && !empty($_POST)) {
+
+					if (isset($_POST['pwapp_option_service_worker_installed']) && $_POST['pwapp_option_service_worker_installed'] != '' && is_numeric($_POST['pwapp_option_service_worker_installed'])) {
+
+						$enabled_option = intval($_POST['pwapp_option_service_worker_installed']);
+
+						if ($enabled_option == 0 || $enabled_option == 1) {
+
+							$status = 1;
+							// save option
+							PWAPP_Options::update_settings('service_worker_installed', $enabled_option);
+						}
+					}
+
+                }
+
+                echo $status;
+            }
+
+            exit();
+        }
+
+        /**
          * Resize & copy image using Wordpress methods
          *
          * @param $file_type = icon, logo, cover or category_icon
