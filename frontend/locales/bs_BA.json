@@ -1,0 +1,52 @@
+{
+  "APP_TEXTS": {
+    "LINKS": {
+        "VISIT_WEBSITE": "Posjeti sajt",
+        "VISIT_APP": "Promijeni na mobilnu verziju",
+        "HOME": "Poèetna",
+        "CREDITS": "Zahvalnica",
+        "CATEGORIES": "Kategorije",
+        "GO_TO": "Idi na",
+        "OTHERS": "Drugi",
+        "HEADLINES": "Naslovnice",
+        "INSIDE": "Unutra",
+        "MENU": "Meni",
+        "OPEN_APP": "OTVORI"
+    },
+    "TEXTS": {
+        "NO_PAGES": "Nema stranica!",
+        "NO_CATEGORIES": "Nema kategorija!",
+        "NO_ARTICLES": "Nema postova!",
+        "NO_COMMENTS": "Nema komentara na ovaj post. Budite prvi koji æe komentarisati!",
+        "NO_COMMENTS_SHORT": "Nema komentara na ovaj post.",
+        "GOOGLE_ADS": "Google reklame",
+        "COMMENTS": "Komentari",
+        "LEAVE_COMMENTS": "Ostavi komentar",
+        "BY_AUTHOR": "od",
+        "LOADING": "Uèitavanje",
+        "LOAD_MORE": "Uèitaj još",
+        "LATEST": "Najnovije",
+        "PAGE": "Stranica",
+        "SWIPE_FOR_MORE": "Pritisni za još",
+        "SWIPE_TO_CONTINUE": "Pritisni da nastaviš",
+        "WEBSITE_CONFIRM": "Da li ste sigurni da želite pristupiti desktop verziji?"
+    },
+    "PULL_REFRESH": {
+        "PULL_COMMENTS": "Povucite dole za više komentara",
+        "RELEASE": "Pustite za više komentara",
+        "LAST_UPDATED": "Zadnje ažurirano"
+    },
+    "FORMS": {
+        "SEND": "Šalji",
+        "YOUR_NAME": "Vaše ime",
+        "YOUR_NAME_ERROR": "Molimo unesite Vaše ime!",
+        "YOUR_EMAIL": "Unesite E-mail adresu!",
+        "YOUR_EMAIL_ERROR": "Molimo unesite Vašu E-mail adresu",
+        "YOUR_EMAIL_ERROR2": "Molimo da unesete validnu E-mail adresu",
+        "YOUR_COMMENT": "Vaš komentar",
+        "YOUR_COMMENT_ERROR": "Molimo unesite komentar!",
+        "SUBMIT_ERROR": "Desila se greška. Molimo da pokušate kasnije.",
+        "AWAITING_MODERATION": "Vaš komentar èeka na moderiranje"
+    }
+  }
+}

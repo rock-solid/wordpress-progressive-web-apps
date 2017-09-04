@@ -1,6 +1,6 @@
 <?php
 
-define("PWAPP_VERSION", '0.5.1');
+define("PWAPP_VERSION", '0.6');
 define('PWAPP_PLUGIN_NAME', 'Progressive Web Apps');
 define('PWAPP_DOMAIN', 'progressive-web-apps');
 

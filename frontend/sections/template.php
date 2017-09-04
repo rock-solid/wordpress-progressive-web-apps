@@ -151,6 +151,13 @@
 
     <script src="<?php echo $frontend_path.'export/content.php?content=apptexts&locale='.get_locale();?>" type="text/javascript"></script>
     <script src="<?php echo $theme_path;?>js/app.js?date=20160525" type="text/javascript"></script>
+	<?php if ($app_settings['service_worker_installed'] == 1): ?>
+		<script type="text/javascript" pagespeed_no_defer="">
+			if ('serviceWorker' in navigator) {
+ 				navigator.serviceWorker.register('/sw.js');
+ 			}
+ 		</script>
+ 	<?php endif; ?>
 </head>
 <body>
 <div id="appLoadingIndicator">

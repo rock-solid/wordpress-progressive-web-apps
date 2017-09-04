@@ -109,7 +109,33 @@ if ( ! class_exists( 'PWAPP_Core' ) ) {
             if (version_compare(PHP_VERSION, '5.4') < 0) {
                 echo '<div class="error"><p><b>Warning!</b> The ' . PWAPP_PLUGIN_NAME . ' plugin requires at least PHP 5.4.0!</p></div>';
             }
+
+			$this->display_icon_reupload_notice();
         }
+
+
+		/**
+		 *
+		 * Display icon reupload notice if icon is uploaded and manifest icon sizes are missing.
+		 *
+		 */
+		public function display_icon_reupload_notice(){
+
+			$icon_filename = PWAPP_Options::get_setting('icon');
+
+			if ($icon_filename == '') {
+				echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps: Upload an <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a> to take advantage of the Add To Home Screen functionality!</p></div>';
+
+			} elseif ($icon_filename != '' && file_exists(PWAPP_FILES_UPLOADS_DIR  . $icon_filename)) {
+				foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+					if (!file_exists(PWAPP_FILES_UPLOADS_DIR  . $manifest_size . $icon_filename)) {
+						echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 0.6 comes with Add To Home Screen functionality which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
+						return;
+					}
+				}
+			}
+		}
+
 
         /**
          *

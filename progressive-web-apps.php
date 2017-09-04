@@ -6,7 +6,7 @@
  * Description: Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
  * Author: PWAThemes.com
  * Author URI: https://pwathemes.com/
- * Version: 0.5.1
+ * Version: 0.6
  * Copyright (c) 2017 PWAThemes.com
  * License: The Progressive Web Apps is Licensed under the Apache License, Version 2.0
  * Text Domain: progressive-web-apps
@@ -49,6 +49,7 @@ if (class_exists( 'PWAPP_Core' ) && class_exists( 'PWAPP_Core' )) {
             add_action('wp_ajax_pwapp_editimages', array( &$pwapp_admin_ajax, 'theme_editimages' ) );
             add_action('wp_ajax_pwapp_theme_settings', array( &$pwapp_admin_ajax, 'theme_settings' ) );
             add_action('wp_ajax_pwapp_send_feedback', array( &$pwapp_admin_ajax, 'send_feedback' ) );
+			add_action('wp_ajax_pwapp_settings_save', array( &$pwapp_admin_ajax, 'settings_save' ) );
 
         } else {
             add_action('plugins_loaded', 'pwapp_admin_init');

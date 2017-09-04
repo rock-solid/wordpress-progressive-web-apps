@@ -37,6 +37,8 @@ if (!class_exists('PWAPP_Uploads')) {
             ),
         );
 
+		public static $manifest_sizes = array(48, 96, 144, 196);
+
         protected static $htaccess_template = 'frontend/sections/htaccess-template.txt';
 
         /* ----------------------------------*/
@@ -117,7 +119,14 @@ if (!class_exists('PWAPP_Uploads')) {
 
             foreach (array('icon','logo','cover') as $image_type) {
 
-                $image_path = PWAPP_Options::get_setting($image_type);
+				$image_path = PWAPP_Options::get_setting($image_type);
+
+				if ($image_path != '' && $image_type == 'icon'){
+					foreach (self::$manifest_sizes as $manifest_size) {
+						$this->remove_uploaded_file($manifest_size . $image_path);
+					}
+				}
+
                 $this->remove_uploaded_file($image_path);
             }
 

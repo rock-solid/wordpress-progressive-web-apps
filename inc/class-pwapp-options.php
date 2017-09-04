@@ -41,6 +41,7 @@ if ( ! class_exists( 'PWAPP_Options' ) ) {
             'enable_facebook' => 1,
             'enable_twitter' => 1,
             'enable_google' => 1,
+			'service_worker_installed' => 0,
 
             // images
             'logo' => '',

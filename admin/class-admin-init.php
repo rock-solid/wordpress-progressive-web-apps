@@ -145,6 +145,7 @@ if ( ! class_exists( 'PWAPP_Admin_Init' ) ) {
             wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_edittheme', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_THEME.min.js'), array('wp-color-picker'), PWAPP_VERSION);
             wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editimages', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_IMAGES.min.js'), array(), PWAPP_VERSION);
             wp_enqueue_script(PWAPP_Options::$prefix.'js_theming_editcover', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_EDIT_COVER.min.js'), array(), PWAPP_VERSION);
+			wp_enqueue_script(PWAPP_Options::$prefix.'js_service_worker', plugins_url(PWAPP_DOMAIN.'/admin/js/UI.Modules/Theming/PWAPP_SERVICE_WORKER.min.js'), array(), PWAPP_VERSION);
         }
     }
 }

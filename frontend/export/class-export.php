@@ -1535,7 +1535,8 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             if (isset($_GET['content']) && $_GET['content'] == 'androidmanifest') {
 
                 $arr_manifest = array(
-                    'name' => $blog_name,
+					'name' => $blog_name,
+					'short_name' => $blog_name,
                     'start_url' => home_url(),
                     'display' => 'standalone',
 					'orientation' => 'any',
@@ -1572,30 +1573,37 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             // load icon from the local settings and folder
             $icon_path = PWAPP_Options::get_setting('icon');
 
-            if ($icon_path != '') {
+            if ($icon_path != '' && $_GET['content'] == 'androidmanifest') {
 
+				$base_path = $icon_path;
+				$arr_manifest['icons'] = array();
                 $PWAPP_Uploads = $this->get_uploads_manager();
-                $icon_path = $PWAPP_Uploads->get_file_url($icon_path);
-            }
 
-            // set icon depending on the manifest file type
-            if ($icon_path != '') {
+				foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
 
-                if ($_GET['content'] == 'androidmanifest') {
+					$icon_path = $PWAPP_Uploads->get_file_url($manifest_size . $base_path);
 
-                    $arr_manifest['icons'] = array(
-                        array(
-                            "src" => $icon_path,
-                            "sizes" => "192x192"
-                        )
-                    );
+					if ($icon_path != '') {
 
-                } else {
-                    $arr_manifest['icons'] = array(
-                        '152' => $icon_path,
-                    );
-                }
-            }
+						$arr_manifest['icons'][] = array(
+							"src" => $icon_path,
+							"sizes" => $manifest_size . 'x' . $manifest_size,
+							"type" => "image/png"
+						);
+					}
+				}
+			} elseif ($icon_path != '') {
+				$WMP_Uploads = $this->get_uploads_manager();
+
+				$icon_path = $WMP_Uploads->get_file_url($icon_path);
+
+				if ($icon_path != '') {
+
+					$arr_manifest['icons'] = array(
+						'152' => $icon_path,
+					);
+				}
+			}
 
             return json_encode($arr_manifest);
 
