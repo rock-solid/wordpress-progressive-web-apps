@@ -113,6 +113,7 @@ Please note that the progressive web app will be enabled only on supported devic
 = 0.6 =
 * Add  Web App Install Banner( Add to Home Screen ) functionality
 * Translate app to Bosnian
+* Add resize image method for logo, icon and cover
 
 = 0.5.1 =
 * Add links to PWAThemes.com
