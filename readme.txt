@@ -3,7 +3,7 @@ Contributors: cborodescu, anghelalexandra
 Tags: progressive web apps, pwa, mobile, mobile web, mobile internet, smartphone, iphone, android, windows, webkit, chrome, safari, mobile web app, html5, responsive ui
 Requires at least: 4.0
 Tested up to: 4.8.1
-Stable tag: 0.6
+Stable tag: 0.7
 License: GPLv2 or later
 
 Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
@@ -110,6 +110,9 @@ Please note that the progressive web app will be enabled only on supported devic
 
 == Changelog ==
 
+= 0.7 = 
+* Security fix, replaced Smart App Banner script with jQuery Noty plugin
+
 = 0.6 =
 * Add  Web App Install Banner( Add to Home Screen ) functionality
 * Translate app to Bosnian
@@ -125,6 +128,11 @@ Please note that the progressive web app will be enabled only on supported devic
 
 = 0.1 =
 * Initial release
+
+== Upgrade Notice == 
+
+= 0.7 = 
+* The latest version comes with a security fix for the smart app banner.
 
 
 == Screenshots ==
