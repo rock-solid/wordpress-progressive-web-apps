@@ -85,32 +85,40 @@ if (class_exists('PWAPP_Core')):
     $open_btn_text = 'Open';
     if ($pwapp_texts_json !== false && isset($pwapp_texts_json['APP_TEXTS']['LINKS']) && isset($pwapp_texts_json['APP_TEXTS']['LINKS']['OPEN_APP'])){
         $open_btn_text = $pwapp_texts_json['APP_TEXTS']['LINKS']['OPEN_APP'];
-    }
+	}
+
+	$app_name = get_bloginfo("name");
+	if (strlen($app_name) > 20) {
+		$app_name = substr($app_name, 0, 20).' ... ';
+	}
+
+	$app_url = home_url();
+	if (strlen($app_url) > 20) {
+		$app_url = substr($app_url, 0, 20).' ... ';
+	}
+
+	$is_secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443;
 
 ?>
+
+	<link href="<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/notification-banner/lib/noty.css" rel="stylesheet">
+	<script src="<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/notification-banner/lib/noty.min.js" type="text/javascript" pagespeed_no_defer=""></script>
+	<script src="<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/notification-banner/notification-banner.js" type="text/javascript" pagespeed_no_defer=""></script>
+
     <script type="text/javascript" pagespeed_no_defer="">
+		jQuery(document).ready(function(){
 
-        // @todo (Future releases) Find a more efficient way to feed params to the banner script
-        var pwappAppBanner = pwappAppBanner || {};
-        pwappAppBanner.WIDGET = pwappAppBanner.WIDGET || {};
-        pwappAppBanner.WIDGET.appUrl = '<?php echo home_url();?>';
-        pwappAppBanner.WIDGET.appIcon = '<?php echo $app_icon_path;?>';
-        pwappAppBanner.WIDGET.appName = '<?php echo get_bloginfo("name");?>';
-        pwappAppBanner.WIDGET.ref = '<?php echo $mobile_url;?>';
-        pwappAppBanner.WIDGET.trustedDevice = 1;
-        pwappAppBanner.WIDGET.iframeUrl = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/iframe/bar.html';
-        pwappAppBanner.WIDGET.cssPath = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/css/style-light.min.css';
-        pwappAppBanner.WIDGET.openAppButton = '<?php echo $open_btn_text;?>';
-        pwappAppBanner.WIDGET.cookiePrefix = '<?php echo PWAPP_Cookie::$prefix;?>';
+			const pwappIconPath = "<?php echo esc_attr($app_icon_path);?>";
 
-        (function () {
-             var pwapp = document.createElement('script');
-             pwapp.async = true;
-             pwapp.type = 'text/javascript';
-             pwapp.src = '<?php echo plugins_url()."/".PWAPP_DOMAIN;?>/frontend/sections/smart-app-banner/js/smart-app-banner.min.js';
-             var node = document.getElementsByTagName('script')[0];
-             node.parentNode.insertBefore(pwapp, node);
-         })();
+			PWAPPAppBanner.message =
+				(pwappIconPath !== '' ? '<img src="<?php echo esc_attr($app_icon_path);?>" />' : '') +
+				'<p><?php echo $app_name;?><br/> ' +
+				'<span><?php echo $app_url;?></span></p>' +
+				'<a href="<?php echo $mobile_url;?>"><span><?php echo $open_btn_text;?></span></a>';
 
-    </script>
+			PWAPPAppBanner.cookiePrefix = "<?php echo PWAPP_Cookie::$prefix;?>";
+			PWAPPAppBanner.isSecure = <?php echo $is_secure ? "true" : "false";?>;
+		});
+	</script>
+
 <?php endif; ?>

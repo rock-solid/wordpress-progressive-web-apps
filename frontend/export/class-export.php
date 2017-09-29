@@ -1593,9 +1593,9 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 					}
 				}
 			} elseif ($icon_path != '') {
-				$WMP_Uploads = $this->get_uploads_manager();
+				$PWAPP_Uploads = $this->get_uploads_manager();
 
-				$icon_path = $WMP_Uploads->get_file_url($icon_path);
+				$icon_path = $PWAPP_Uploads->get_file_url($icon_path);
 
 				if ($icon_path != '') {
 
