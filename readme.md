@@ -13,6 +13,8 @@ Progressive Web Apps
 
 [Progressive Web Apps](https://pwathemes.com/) use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
 
+DEMO: [https://demo-wpmp.appticles.com/?app_theme=2](https://demo-wpmp.appticles.com/?app_theme=2)
+
 ### Description
 
 Progressive Web Apps are user experiences that have the reach of the web, and are:
