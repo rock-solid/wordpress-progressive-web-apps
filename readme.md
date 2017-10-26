@@ -1,5 +1,8 @@
-Progressive Web Apps 
-=================
+<div align="center">
+<a href="https://pwathemes.com"><img width="100" heigth="100" src="https://github.com/appticles/wordpress-progressive-web-apps/blob/master/pwa-logo.png"></a>
+  <br>
+  <br> 
+
 [![GitHub release](https://img.shields.io/github/release/appticles/wordpress-progressive-web-apps.svg)](https://github.com/appticles/wordpress-progressive-web-apps )
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/appticles/wordpress-progressive-web-apps.svg)](https://github.com/appticles/wordpress-progressive-web-apps)
 
@@ -8,6 +11,9 @@ Progressive Web Apps
 [![WordPress rating](https://img.shields.io/wordpress/plugin/r/progressive-web-apps.svg)](https://wordpress.org/plugins/progressive-web-apps/)
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://wordpress.org/plugins/progressive-web-apps/)
 
+# [Progressive Web Apps](https://pwathemes.com) &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Progressive%20Web%20Apps%20plugin%20for%20@WordPress&url=https://pwathemes.com&via=appticles&hashtags=pwa,mobile,javascript,wordpress)
+
+</div>
 
  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](https://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/jfbnuN2.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/UQY7TDs.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/AtI7537.gif) &nbsp; &nbsp;  &nbsp; &nbsp;
 
