@@ -15,13 +15,13 @@
 
 </div>
 
- &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](https://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/jfbnuN2.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/UQY7TDs.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/AtI7537.gif) &nbsp; &nbsp;  &nbsp; &nbsp;
-
 [Progressive Web Apps](https://pwathemes.com/) use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
 
 DEMO: [https://bit.ly/pwa-mosaic](https://bit.ly/pwa-mosaic)
 
-### Description
+ &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](https://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/jfbnuN2.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/UQY7TDs.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/AtI7537.gif) &nbsp; &nbsp;  &nbsp; &nbsp;
+
+<h2>Introduction</h2>
 
 Progressive Web Apps are user experiences that have the reach of the web, and are:
 
@@ -31,7 +31,7 @@ Progressive Web Apps are user experiences that have the reach of the web, and ar
 
 This new level of quality allows Progressive Web Apps to earn a place on the user's home screen. More details about PWAs here: [https://developers.google.com/web/progressive-web-apps/](https://developers.google.com/web/progressive-web-apps/)
 
-The WordPress Progressive Web Apps plugin helps bloggers, publishers and other content creators to go beyond responsive web design and ‘appify' their existing mobile presence. Progressive Web Apps is supported on: iOS & Android. Compatible browsers: Safari, Google Chrome, Android – Native Browser. The plugin has been tested on WordPress 4.0 and later.
+The **WordPress Progressive Web Apps** plugin helps bloggers, publishers and other content creators to go beyond responsive web design and ‘appify' their existing mobile presence. Progressive Web Apps are supported on: iOS & Android. Compatible browsers: Safari, Google Chrome, Android – Native Browser. The plugin has been tested on WordPress 4.0 and later.
 
 The WordPress Progressive Web Apps plugin includes one FREE mobile app theme (MOSAIC) which is customizable (colors, fonts, appearance) via the WordPress admin area. The tech stack we use in building Progressive Web Apps includes:
 
