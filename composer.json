@@ -1,0 +1,19 @@
+{
+  "name": "PWAThemes",
+  "description": "",
+  "version": "0.1",
+  "autoload": {
+    "classmap": [
+      "core/",
+      "admin/",
+      "frontend/",
+      "inc/"
+    ]
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "mobiledetect/mobiledetectlib": "^2.8",
+    "ezyang/htmlpurifier": "^4.10.0",
+    "leafo/scssphp": "^0.7.5"
+  }
+}
