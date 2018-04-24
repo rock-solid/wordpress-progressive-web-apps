@@ -28,10 +28,10 @@
             <div class="spacer-10"></div>
             <?php
 
-                $selected_theme = PWAPP_Options::get_setting('theme');
+                $selected_theme = \PWAPP\Inc\Options::get_setting('theme');
 
-                if (array_key_exists($selected_theme, PWAPP_Themes_Config::$color_schemes)):
-                    $theme_settings = PWAPP_Themes_Config::$color_schemes[$selected_theme];
+                if (array_key_exists($selected_theme, \PWAPP\Inc\Themes_Config::$color_schemes)):
+                    $theme_settings = \PWAPP\Inc\Themes_Config::$color_schemes[$selected_theme];
             ?>
                     <div class="details">
                         <h2 class="title">Customize Color Schemes and Fonts</h2>
@@ -39,181 +39,171 @@
                         <div class="grey-line"></div>
                         <div class="spacer-30"></div>
 
-                        <?php if (version_compare(PHP_VERSION, '5.3') < 0) :?>
-                            <div class="message-container warning">
-                                <div class="wrapper">
-                                    <span>Customizing a theme's colors and fonts requires PHP5.3 or greater. Your PHP version (<?php echo PHP_VERSION;?>) is not supported.</span>
-                                </div>
-                            </div>
-                            <div class="spacer-20"></div>
-                        <?php else:?>
+						<form name="pwapp_edittheme_form" id="pwapp_edittheme_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_theme_settings" method="post">
 
-                            <form name="pwapp_edittheme_form" id="pwapp_edittheme_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_theme_settings" method="post">
+							<div class="color-schemes">
+								<p class="section-header">Select Color Scheme</p>
+								<div class="spacer-20"></div>
 
-                                <div class="color-schemes">
-                                    <p class="section-header">Select Color Scheme</p>
-                                    <div class="spacer-20"></div>
+								<!-- add labels -->
+								<div class="colors description">
+									<?php foreach ($theme_settings['labels'] as $key => $description):?>
+										<div class="color-" title="<?php echo $description;?>"><?php echo $key+1;?></div>
+									<?php endforeach; ?>
+								</div>
+								<div class="spacer-15"></div>
 
-                                    <!-- add labels -->
-                                    <div class="colors description">
-                                        <?php foreach ($theme_settings['labels'] as $key => $description):?>
-                                            <div class="color-" title="<?php echo $description;?>"><?php echo $key+1;?></div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                    <div class="spacer-15"></div>
+								<!-- add presets radio buttons & colors -->
+								<?php
+									$selected_color_scheme = \PWAPP\Inc\Options::get_setting('color_scheme');
+									if ($selected_color_scheme == '')
+										$selected_color_scheme = 1;
 
-                                    <!-- add presets radio buttons & colors -->
-                                    <?php
-                                        $selected_color_scheme = PWAPP_Options::get_setting('color_scheme');
-                                        if ($selected_color_scheme == '')
-                                            $selected_color_scheme = 1;
+									foreach ($theme_settings['presets'] as $color_scheme => $default_colors):
+								?>
+									<input type="radio" name="pwapp_edittheme_colorscheme" id="pwapp_edittheme_colorscheme" value="<?php echo $color_scheme;?>" <?php if ($color_scheme == $selected_color_scheme) echo 'checked="checked"';?> autocomplete="off" />
+									<div class="colors">
 
-                                        foreach ($theme_settings['presets'] as $color_scheme => $default_colors):
-                                    ?>
-                                        <input type="radio" name="pwapp_edittheme_colorscheme" id="pwapp_edittheme_colorscheme" value="<?php echo $color_scheme;?>" <?php if ($color_scheme == $selected_color_scheme) echo 'checked="checked"';?> autocomplete="off" />
-                                        <div class="colors">
+										<?php foreach ($theme_settings['labels'] as $key => $description):?>
+											<div class="color-<?php echo $color_scheme.'-'.$key;?>" title="<?php echo $description;?>" style="background: <?php echo $theme_settings['presets'][$color_scheme][$key];?>"></div>
+										<?php endforeach;?>
 
-                                            <?php foreach ($theme_settings['labels'] as $key => $description):?>
-                                                <div class="color-<?php echo $color_scheme.'-'.$key;?>" title="<?php echo $description;?>" style="background: <?php echo $theme_settings['presets'][$color_scheme][$key];?>"></div>
-                                            <?php endforeach;?>
+									</div>
+									<div class="spacer-20"></div>
+								<?php endforeach;?>
 
-                                        </div>
-                                        <div class="spacer-20"></div>
-                                    <?php endforeach;?>
+								<!-- add custom scheme radio button -->
+								<input type="radio" name="pwapp_edittheme_colorscheme" id="pwapp_edittheme_colorscheme" value="0" <?php echo $selected_color_scheme == 0 ? 'checked="checked"' : '';?> autocomplete="off" />
+								<p>Edit custom colors</p>
+							</div>
 
-                                    <!-- add custom scheme radio button -->
-                                    <input type="radio" name="pwapp_edittheme_colorscheme" id="pwapp_edittheme_colorscheme" value="0" <?php echo $selected_color_scheme == 0 ? 'checked="checked"' : '';?> autocomplete="off" />
-                                    <p>Edit custom colors</p>
-                                </div>
+							<!-- start notice -->
+							<div class="notice notice-left left" style="width: 50%;">
+								<span>
+									The color scheme will impact the following sections within the mobile web application:<br/><br/>
+									<?php
+										foreach ($theme_settings['labels'] as $key => $description)
+											echo ($key+1).'.&nbsp;'.$description.'<br/>';
+									?>
+								</span>
+							</div>
 
-                                <!-- start notice -->
-                                <div class="notice notice-left left" style="width: 50%;">
-                                    <span>
-                                        The color scheme will impact the following sections within the mobile web application:<br/><br/>
-                                        <?php
-                                            foreach ($theme_settings['labels'] as $key => $description)
-                                                echo ($key+1).'.&nbsp;'.$description.'<br/>';
-                                        ?>
-                                    </span>
-                                </div>
+							<div class="spacer-20"></div>
 
-                                <div class="spacer-20"></div>
+							<!-- start color pickers -->
+							<div class="color-schemes-custom" style="display: <?php echo $selected_color_scheme == 0 ? 'block' : 'none';?>;">
 
-                                <!-- start color pickers -->
-                                <div class="color-schemes-custom" style="display: <?php echo $selected_color_scheme == 0 ? 'block' : 'none';?>;">
+								<p class="section-header">Your Custom Scheme</p>
+								<div class="spacer-20"></div>
 
-                                    <p class="section-header">Your Custom Scheme</p>
-                                    <div class="spacer-20"></div>
+								<div class="set">
+									<?php
+										// display color pickers and divide them into two columns
+										$half = ceil( count($theme_settings['labels']) / 2);
 
-                                    <div class="set">
-                                        <?php
-                                            // display color pickers and divide them into two columns
-                                            $half = ceil( count($theme_settings['labels']) / 2);
+										// read the custom colors options array
+										$selected_custom_colors = \PWAPP\Inc\Options::get_setting('custom_colors');
 
-                                            // read the custom colors options array
-                                            $selected_custom_colors = PWAPP_Options::get_setting('custom_colors');
+										foreach ($theme_settings['labels'] as $key => $description):
 
-                                            foreach ($theme_settings['labels'] as $key => $description):
+											$color_value = '';
+											if (!empty($selected_custom_colors) && array_key_exists($key, $selected_custom_colors))
+												$color_value = $selected_custom_colors[$key];
+									?>
+										<label for="pwapp_edittheme_customcolor<?php echo $key;?>"><?php echo ($key+1).'. '.$description;?></label>
+										<input type="text" name="pwapp_edittheme_customcolor<?php echo $key;?>" id="pwapp_edittheme_customcolor<?php echo $key;?>" value="<?php echo $color_value;?>" autocomplete="off" />
+										<div class="spacer-10"></div>
 
-                                                $color_value = '';
-                                                if (!empty($selected_custom_colors) && array_key_exists($key, $selected_custom_colors))
-                                                    $color_value = $selected_custom_colors[$key];
-                                        ?>
-                                            <label for="pwapp_edittheme_customcolor<?php echo $key;?>"><?php echo ($key+1).'. '.$description;?></label>
-                                            <input type="text" name="pwapp_edittheme_customcolor<?php echo $key;?>" id="pwapp_edittheme_customcolor<?php echo $key;?>" value="<?php echo $color_value;?>" autocomplete="off" />
-                                            <div class="spacer-10"></div>
+										<?php if ($key + 1 == $half):?>
+											</div>
+											<div class="set">
+										<?php endif;?>
 
-                                            <?php if ($key + 1 == $half):?>
-                                                </div>
-                                                <div class="set">
-                                            <?php endif;?>
+									<?php endforeach;?>
+								</div>
+							</div>
+							<div class="spacer-20"></div>
 
-                                        <?php endforeach;?>
-                                    </div>
-                                </div>
-                                <div class="spacer-20"></div>
+							<!-- choose fonts -->
+							<div class="font-chooser">
+								<p class="section-header">Select Fonts</p>
+								<div class="spacer-20"></div>
 
-                                <!-- choose fonts -->
-                                <div class="font-chooser">
-                                    <p class="section-header">Select Fonts</p>
-                                    <div class="spacer-20"></div>
+								<!-- add radio buttons -->
+								<?php
+									$font_headlines = \PWAPP\Inc\Options::get_setting('font_headlines');
+									if ($font_headlines == '')
+										$font_headlines = 1;
+								?>
 
-                                    <!-- add radio buttons -->
-                                    <?php
-                                        $font_headlines = PWAPP_Options::get_setting('font_headlines');
-                                        if ($font_headlines == '')
-                                            $font_headlines = 1;
-                                    ?>
+								<label for="pwapp_edittheme_fontheadlines">Headlines</label>
 
-                                    <label for="pwapp_edittheme_fontheadlines">Headlines</label>
+								<select name="pwapp_edittheme_fontheadlines" id="pwapp_edittheme_fontheadlines">
 
-                                    <select name="pwapp_edittheme_fontheadlines" id="pwapp_edittheme_fontheadlines">
+									<?php foreach (\PWAPP\Inc\Themes_Config::$allowed_fonts as $key => $font_family):?>
+										<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_headlines == $key+1) echo "selected";?>></option>
+									<?php endforeach;?>
+								</select>
 
-                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):?>
-											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_headlines == $key+1) echo "selected";?>></option>
-                                        <?php endforeach;?>
-                                    </select>
+								<div class="spacer-10"></div>
 
-                                    <div class="spacer-10"></div>
+								<?php
+									$font_subtitles = \PWAPP\Inc\Options::get_setting('font_subtitles');
+									if ($font_subtitles == '')
+										$font_subtitles = 1;
+								?>
 
-                                    <?php
-                                        $font_subtitles = PWAPP_Options::get_setting('font_subtitles');
-                                        if ($font_subtitles == '')
-                                            $font_subtitles = 1;
-                                    ?>
+								<label for="pwapp_edittheme_fontsubtitles">Subtitles</label>
+								<select name="pwapp_edittheme_fontsubtitles" id="pwapp_edittheme_fontsubtitles">
+									<?php foreach (\PWAPP\Inc\Themes_Config::$allowed_fonts as $key => $font_family): ?>
+										<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_subtitles == $key+1) echo "selected";?>></option>
+									<?php endforeach; ?>
+								</select>
+								<div class="spacer-10"></div>
 
-                                    <label for="pwapp_edittheme_fontsubtitles">Subtitles</label>
-                                    <select name="pwapp_edittheme_fontsubtitles" id="pwapp_edittheme_fontsubtitles">
-                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family): ?>
-											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_subtitles == $key+1) echo "selected";?>></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <div class="spacer-10"></div>
+								<?php
+									$font_paragraphs = \PWAPP\Inc\Options::get_setting('font_paragraphs');
+									if ($font_paragraphs == '')
+										$font_paragraphs = 1;
+								?>
 
-                                    <?php
-                                        $font_paragraphs = PWAPP_Options::get_setting('font_paragraphs');
-                                        if ($font_paragraphs == '')
-                                            $font_paragraphs = 1;
-                                    ?>
+								<label for="pwapp_edittheme_fontparagraphs">Paragraphs</label>
+								<select name="pwapp_edittheme_fontparagraphs" id="pwapp_edittheme_fontparagraphs">
+									<?php foreach (\PWAPP\Inc\Themes_Config::$allowed_fonts as $key => $font_family):?>
+										<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_paragraphs == $key+1) echo "selected";?>></option>
+									<?php endforeach; ?>
+								</select>
+								<div class="spacer-20"></div>
+							</div>
 
-                                    <label for="pwapp_edittheme_fontparagraphs">Paragraphs</label>
-                                    <select name="pwapp_edittheme_fontparagraphs" id="pwapp_edittheme_fontparagraphs">
-                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts as $key => $font_family):?>
-											<option value="<?php echo $key+1;?>" data-text='<span style="font-family:<?php echo str_replace(" ", "", $font_family);?>"><?php echo $font_family;?></span>' <?php if ($font_paragraphs == $key+1) echo "selected";?>></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <div class="spacer-20"></div>
-                                </div>
+							<div class="spacer-20"></div>
+							<!-- choose font size -->
+							<div class="font-chooser left">
+								<?php
+								$font_size = \PWAPP\Inc\Options::get_setting('font_size');
+								if ($font_size == '')
+									$font_size = 1;
+								?>
+								<label for="pwapp_edittheme_fontsize">Font size</label>
+								<div class="toggle-container">
+									<?php foreach (\PWAPP\Inc\Themes_Config::$allowed_fonts_sizes as $key => $allowed_font_size):?>
+										<div class="toggle-button">
+											<input type="radio" name="pwapp_edittheme_fontsize" id="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>" autocomplete="off" value="<?php echo $allowed_font_size['size'];?>" <?php if ($font_size == $allowed_font_size['size']) echo 'checked' ;?>>
+											<div class="font-size font-size-<?php echo strtolower($allowed_font_size['label']);?>" id="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>"></div>
+											<label for="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>"><?php echo $allowed_font_size['label'];?></label>
+										</div>
+									<?php endforeach;?>
+								</div>
+							</div>
+							<div class="notice notice-left right" style="width: 50%;">
+								<span>
+									The headlines, subtitles and paragraphs font sizes will be calculated depending on the paragraph font size. The 3 sizes have been carefully chosen with readibility in mind, based on our own research into the display of text content from large publishers such as the NY Times and other high-profile publishers.
+								</span>
+							</div>
 
-                                <div class="spacer-20"></div>
-                                <!-- choose font size -->
-                                <div class="font-chooser left">
-                                    <?php
-                                    $font_size = PWAPP_Options::get_setting('font_size');
-                                    if ($font_size == '')
-                                        $font_size = 1;
-                                    ?>
-                                    <label for="pwapp_edittheme_fontsize">Font size</label>
-                                    <div class="toggle-container">
-                                        <?php foreach (PWAPP_Themes_Config::$allowed_fonts_sizes as $key => $allowed_font_size):?>
-                                            <div class="toggle-button">
-                                                <input type="radio" name="pwapp_edittheme_fontsize" id="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>" autocomplete="off" value="<?php echo $allowed_font_size['size'];?>" <?php if ($font_size == $allowed_font_size['size']) echo 'checked' ;?>>
-                                                <div class="font-size font-size-<?php echo strtolower($allowed_font_size['label']);?>" id="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>"></div>
-                                                <label for="pwapp_edittheme_fontsize_option_<?php echo $key+1;?>"><?php echo $allowed_font_size['label'];?></label>
-                                            </div>
-                                        <?php endforeach;?>
-                                    </div>
-                                </div>
-                                <div class="notice notice-left right" style="width: 50%;">
-                                    <span>
-                                        The headlines, subtitles and paragraphs font sizes will be calculated depending on the paragraph font size. The 3 sizes have been carefully chosen with readibility in mind, based on our own research into the display of text content from large publishers such as the NY Times and other high-profile publishers.
-                                    </span>
-                                </div>
-
-                                <div class="spacer-20"></div>
-                                <a href="javascript:void(0);" id="pwapp_edittheme_send_btn" class="btn green smaller" >Save</a>
-                            </form>
-                        <?php endif; ?>
+							<div class="spacer-20"></div>
+							<a href="javascript:void(0);" id="pwapp_edittheme_send_btn" class="btn green smaller" >Save</a>
+						</form>
                     </div>
                     <div class="spacer-15"></div>
             <?php endif;?>
@@ -228,13 +218,13 @@
                 <div class="spacer-20"></div>
 				<?php
 					$warning_message = '';
-					$icon_filename = PWAPP_Options::get_setting('icon');
+					$icon_filename = \PWAPP\Inc\Options::get_setting('icon');
 
 					if ($icon_filename == '') {
 						$warning_message = 'Upload an App Icon to take advantage of the Add To Home Screen functionality!';
 
 					} elseif ($icon_filename != '' && file_exists(PWAPP_FILES_UPLOADS_DIR . $icon_filename)) {
-						foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+						foreach (\PWAPP\Inc\Uploads::$manifest_sizes as $manifest_size) {
 							if (!file_exists(PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename)) {
 								$warning_message = 'Progressive Web Apps 0.7 comes with Add To Home Screen functionality which requires you to reupload your App Icon.';
 								break;
@@ -253,7 +243,7 @@
                     <form name="pwapp_editimages_form" id="pwapp_editimages_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_editimages&type=upload" method="post" enctype="multipart/form-data">
 
                         <?php
-                            $logo_path = PWAPP_Options::get_setting('logo');
+                            $logo_path = \PWAPP\Inc\Options::get_setting('logo');
 
                             if ($logo_path != "") {
 
@@ -305,7 +295,7 @@
                         <div class="spacer-20"></div>
 
                         <?php
-                            $icon_path = PWAPP_Options::get_setting('icon');
+                            $icon_path = \PWAPP\Inc\Options::get_setting('icon');
 
                             if ($icon_path != "") {
 
@@ -380,7 +370,7 @@
 				<div class="spacer-30"></div>
 
 				<form name="pwapp_service_worker_form" id="pwapp_service_worker_form" class="left" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_settings_save" method="post" style="min-width: 300px;">
-					<?php $installed = PWAPP_Options::get_setting('service_worker_installed'); ?>
+					<?php $installed = \PWAPP\Inc\Options::get_setting('service_worker_installed'); ?>
 					<div class="left">
 						<input type="hidden" name="pwapp_option_service_worker_installed" id="pwapp_option_service_worker_installed" value="<?php echo $installed; ?>"/>
 						<input type="checkbox" name="pwapp_service_worker_installed_check" id="pwapp_service_worker_installed_check" value="1" <?php if ($installed == 1) echo "checked" ;?> />
@@ -393,7 +383,7 @@
 			</div>
             <div class="spacer-15"></div>
 
-            <?php if (array_key_exists($selected_theme, PWAPP_Themes_Config::$color_schemes) && PWAPP_Themes_Config::$color_schemes[$selected_theme]['cover'] == 1):?>
+            <?php if (array_key_exists($selected_theme, \PWAPP\Inc\Themes_Config::$color_schemes) && \PWAPP\Inc\Themes_Config::$color_schemes[$selected_theme]['cover'] == 1):?>
 
                 <div class="details branding">
 
@@ -407,7 +397,7 @@
                     <form name="pwapp_editcover_form" id="pwapp_editcover_form" action="<?php echo admin_url('admin-ajax.php'); ?>?action=pwapp_editimages&type=upload" method="post" enctype="multipart/form-data">
                         <div class="left">
                             <?php
-                                $cover_path = PWAPP_Options::get_setting('cover');
+                                $cover_path = \PWAPP\Inc\Options::get_setting('cover');
 
                                 if ($cover_path != "") {
 
@@ -455,7 +445,7 @@
                             </div>
                         </div>
 
-                        <?php if (PWAPP_Themes_Config::$color_schemes[$selected_theme]['cover_text'] == 1):?>
+                        <?php if (\PWAPP\Inc\Themes_Config::$color_schemes[$selected_theme]['cover_text'] == 1):?>
                             <div class="spacer-10"></div>
                             <div class="notice notice-top left" style="width: 100%;">
                         <?php else: ?>
@@ -467,12 +457,12 @@
                             </span>
                         </div>
 
-                        <?php if (PWAPP_Themes_Config::$color_schemes[$selected_theme]['cover_text'] == 1):?>
+                        <?php if (\PWAPP\Inc\Themes_Config::$color_schemes[$selected_theme]['cover_text'] == 1):?>
                             <div class="spacer-20"></div>
                             <p>App cover text:</p>
                             <?php
                                 $args = array("textarea_name" => "pwapp_editcover_text", 'media_buttons' => false);
-                                wp_editor( PWAPP_Options::get_setting('cover_text'), 'pwapp_editcover_text', $args);
+                                wp_editor( \PWAPP\Inc\Options::get_setting('cover_text'), 'pwapp_editcover_text', $args);
                             ?>
                             <div class="notice notice-left right" style="width: 275px;">
                             <span>
