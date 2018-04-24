@@ -120,9 +120,7 @@
         var appticles = {
             exportPath: "<?php echo $frontend_path."export/";?>",
 
-            <?php if ($app_settings['display_website_link']):?>
-                websiteUrl: '<?php echo home_url(); echo parse_url(home_url(), PHP_URL_QUERY) ? '&' : '?'; echo PWAPP_Options::$prefix; ?>theme_mode=desktop',
-            <?php endif;?>
+            websiteUrl: '<?php echo home_url(); echo parse_url(home_url(), PHP_URL_QUERY) ? '&' : '?'; echo PWAPP_Options::$prefix; ?>theme_mode=desktop',
 
             logo: "<?php echo $app_settings['logo'];?>",
             icon: "<?php echo $app_settings['icon'];?>",
@@ -131,8 +129,7 @@
             hasFacebook: <?php echo $app_settings['enable_facebook'];?>,
             hasTwitter: <?php echo $app_settings['enable_twitter'];?>,
             hasGoogle: <?php echo $app_settings['enable_google'];?>,
-            commentsToken: "<?php echo $app_settings['comments_token'];?>",
-            articlesPerCard: <?php if ($app_settings['posts_per_page'] == 'single') echo 1; elseif ($app_settings['posts_per_page'] == 'double') echo 2; else echo '"auto"' ;?>
+            commentsToken: "<?php echo $app_settings['comments_token'];?>"
         }
     </script>
 
