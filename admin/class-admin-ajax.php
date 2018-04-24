@@ -383,7 +383,7 @@ class Admin_Ajax
 	/**
 	 * Resize & copy image using Wordpress methods
 	 *
-	 * @param $file_type = icon, logo, cover or category_icon
+	 * @param $file_type = icon, logo or cover
 	 * @param $file_path
 	 * @param $file_name
 	 * @param string $error_message
@@ -433,7 +433,7 @@ class Admin_Ajax
 
 			} else {
 
-				$error_message = "We encountered a problem resizing your " . ($file_type == 'category_icon' ? 'image' : $file_type) . ". Please choose another image!";
+				$error_message = "We encountered a problem resizing your " . $file_type . ". Please choose another image!";
 			}
 
 		}
@@ -531,24 +531,17 @@ class Admin_Ajax
 									$file_type = 'logo';
 								} elseif ($file == 'pwapp_editcover_cover') {
 									$file_type = 'cover';
-								} elseif ($file == 'pwapp_categoryedit_icon') {
-									$file_type = 'category_icon';
 								}
 
 								if ($info['error'] >= 1 || $info['size'] <= 0 && array_key_exists($file_type, Uploads::$allowed_files)) {
 
 									$arr_response['status'] = 0;
-									$arr_response["messages"][] = "We encountered a problem processing your " . ($file_type == 'category_icon' ? 'image' : $file_type) . ". Please choose another image!";
+									$arr_response["messages"][] = "We encountered a problem processing your " . $file_type . ". Please choose another image!";
 
 								} elseif ($info['size'] > 1048576) {
 
 									$arr_response['status'] = 0;
-									$arr_response["messages"][] = "Do not exceed the 1MB file size limit when uploading your custom " . ($file_type == 'category_icon' ? 'image' : $file_type) . ".";
-
-								} elseif ($file_type == 'category_icon' && (!isset($_POST['pwapp_categoryedit_id']) || !is_numeric($_POST['pwapp_categoryedit_id']))) {
-
-									// If the category icon file is NOT accompanied by the category ID, default to the error message
-									$arr_response['status'] = 0;
+									$arr_response["messages"][] = "Do not exceed the 1MB file size limit when uploading your custom " . $file_type . ".";
 
 								} else {
 
@@ -567,7 +560,7 @@ class Admin_Ajax
 									// check file extension
 									if (!in_array(strtolower($fileExtension), $arrAllowedExtensions)) {
 
-										$arr_response['messages'][] = "Error saving image, please add a " . implode(' or ', $arrAllowedExtensions) . " image for your " . ($file_type == 'category_icon' ? 'category' : $file_type) . "!";
+										$arr_response['messages'][] = "Error saving image, please add a " . implode(' or ', $arrAllowedExtensions) . " image for your " . $file_type . "!";
 
 									} else {
 

@@ -33,11 +33,6 @@ class Uploads
 			'max_height' => 1000,
 			'extensions' => array('jpg', 'jpeg', 'png','gif')
 		),
-		'category_icon' => array(
-			'max_width' => 500,
-			'max_height' => 500,
-			'extensions' => array('jpg', 'jpeg', 'png','gif')
-		),
 	);
 
 	public static $manifest_sizes = array(48, 96, 144, 196);
