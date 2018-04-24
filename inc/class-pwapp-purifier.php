@@ -1,6 +1,10 @@
 <?php
 
-class PWAPPHtmlPurifier
+namespace PWAPP\Inc;
+
+use Ezyang\HTMLPurifier;
+
+class ExtendedHtmlPurifier
 {
 
     /**
