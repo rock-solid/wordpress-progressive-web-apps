@@ -39,6 +39,8 @@ class Options
 		'logo' => '',
 		'icon' => '',
 		'cover' => '',
+		'inactive_categories' => array(),
+		'inactive_pages' => array()
 	);
 
 

@@ -35,9 +35,9 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
          */
         public function __construct()
         {
-            $this->purifier = PWAPP_Formatter::init_purifier();
-            $this->inactive_categories = PWAPP_Options::get_setting('inactive_categories');
-            $this->inactive_pages = PWAPP_Options::get_setting('inactive_pages');
+            $this->purifier = PWAPP\Inc\Formatter::init_purifier();
+            $this->inactive_categories = PWAPP\Inc\Options::get_setting('inactive_categories');
+            $this->inactive_pages = PWAPP\Inc\Options::get_setting('inactive_pages');
         }
 
 
@@ -50,7 +50,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
          */
         protected function get_uploads_manager()
         {
-            return new PWAPP_Uploads();
+            return new PWAPP\Inc\Uploads();
         }
 
 
@@ -111,7 +111,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                 "author" => get_the_author_meta('display_name'),
                 "link" => get_permalink(),
                 "image" => !empty($image_details) ? $image_details : "",
-                "date" => PWAPP_Formatter::format_date(strtotime($post->post_date)),
+                "date" => PWAPP\Inc\Formatter::format_date(strtotime($post->post_date)),
                 "timestamp" => strtotime($post->post_date),
                 "description" => apply_filters('the_excerpt', get_the_excerpt()),
                 "content" => '',
@@ -145,7 +145,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             $content = apply_filters("the_content", $post->post_content);
 
             // remove script tags
-            $content = PWAPP_Formatter::remove_script_tags($content);
+            $content = PWAPP\Inc\Formatter::remove_script_tags($content);
             $content = $this->purifier->purify($content);
 
             // remove all urls from attachment images
@@ -158,7 +158,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 
             } else {
 
-                $description = PWAPP_Formatter::truncate_html(strip_tags($content), 100, '...', false, false);
+                $description = PWAPP\Inc\Formatter::truncate_html(strip_tags($content), 100, '...', false, false);
                 $description = apply_filters('the_excerpt', $description);
             }
 
@@ -177,7 +177,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                 "author_avatar" => $avatar,
                 "link" => get_permalink($post->ID),
                 "image" => !empty($image_details) ? $image_details : "",
-                "date" => PWAPP_Formatter::format_date(strtotime($post->post_date)),
+                "date" => PWAPP\Inc\Formatter::format_date(strtotime($post->post_date)),
                 "timestamp" => strtotime($post->post_date),
                 "description" => $description,
                 "content" => $content,
@@ -235,7 +235,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             if (!empty($arr_categories)) {
 
                 // check if the categories were ordered from the admin panel
-                $order_categories = PWAPP_Options::get_setting('ordered_categories');
+                $order_categories = PWAPP\Inc\Options::get_setting('ordered_categories');
 
                 // check if we have a latest category (should be the first one to appear)
                 $has_latest = 0;
@@ -338,7 +338,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 
             $categories_images = array();
 
-            $categories_details = PWAPP_Options::get_setting('categories_details');
+            $categories_details = PWAPP\Inc\Options::get_setting('categories_details');
 
             // create an uploads manager object
             $PWAPP_Uploads = $this->get_uploads_manager();
@@ -361,8 +361,8 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                             // so we can use the default width / height in the exports
                             $categories_images[$category_id] = array(
                                 'src' => $icon_path,
-                                'width' => PWAPP_Uploads::$allowed_files['category_icon']['max_width'],
-                                'height' => PWAPP_Uploads::$allowed_files['category_icon']['max_height']
+                                'width' => PWAPP\Inc\Uploads::$allowed_files['category_icon']['max_width'],
+                                'height' => PWAPP\Inc\Uploads::$allowed_files['category_icon']['max_height']
                             );
                         }
                     }
@@ -544,7 +544,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             add_filter('get_terms', array($this, 'get_terms_filter'), 10, 3);
 
             // get categories that have posts
-            $categories = get_terms('category', 'hide_empty=1');
+			$categories = get_terms('category', 'hide_empty=1');
 
             // build array with the active categories ids
             $active_categories_ids = array();
@@ -732,7 +732,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 
                 if ($the_category && !in_array($the_category->term_id, $this->inactive_categories)) {
 
-                    $category_details = PWAPP_Options::get_setting('categories_details');
+                    $category_details = PWAPP\Inc\Options::get_setting('categories_details');
 
                     if (is_array($category_details) && !empty($category_details)) {
 
@@ -752,8 +752,8 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 
                                 $category_image = array(
                                     'src' => $icon_path,
-                                    'width' => PWAPP_Uploads::$allowed_files['category_icon']['max_width'],
-                                    'height' => PWAPP_Uploads::$allowed_files['category_icon']['max_height']
+                                    'width' => PWAPP\Inc\Uploads::$allowed_files['category_icon']['max_width'],
+                                    'height' => PWAPP\Inc\Uploads::$allowed_files['category_icon']['max_height']
                                 );
                             }
                         }
@@ -1116,7 +1116,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                                     'id' => $comment->comment_ID,
                                     'author' => $comment->comment_author != '' ? ucfirst($comment->comment_author) : 'Anonymous',
                                     'author_url' => $comment->comment_author_url,
-                                    'date' => PWAPP_Formatter::format_date(strtotime($comment->comment_date)),
+                                    'date' => PWAPP\Inc\Formatter::format_date(strtotime($comment->comment_date)),
                                     'content' => $this->purifier->purify($comment->comment_content),
                                     'article_id' => $post->ID,
                                     'article_title' => strip_tags(trim($post->post_title)),
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                         }
 
                         // if the token is valid, go ahead and save comment to the DB
-                        if (PWAPP_Tokens::check_token($_GET['code'])) {
+                        if (PWAPP\Inc\Tokens::check_token($_GET['code'])) {
 
                             $arr_response = array(
                                 'status' => 0,
@@ -1396,10 +1396,10 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                             // read featured image
                             $image_details = $this->get_post_image($page->ID);
 
-                            if (get_option(PWAPP_Options::$prefix.'page_' . $page->ID) === false)
+                            if (get_option(PWAPP\Inc\Options::$prefix.'page_' . $page->ID) === false)
                                 $content = apply_filters("the_content", $page->post_content);
                             else
-                                $content = apply_filters("the_content", get_option(PWAPP_Options::$prefix.'page_' . $page->ID));
+                                $content = apply_filters("the_content", get_option(PWAPP\Inc\Options::$prefix.'page_' . $page->ID));
 
                             // if we have a pages hierarchy, use the order from that array
                             if (!empty($order_pages)) {
@@ -1485,13 +1485,13 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
                         $image_details = $this->get_post_image($post->ID);
 
                         // for the content, first check if the admin edited the content for this page
-                        if (get_option(PWAPP_Options::$prefix.'page_' . $post->ID) === false)
+                        if (get_option(PWAPP\Inc\Options::$prefix.'page_' . $post->ID) === false)
                             $content = apply_filters("the_content", $post->post_content);
                         else
-                            $content = apply_filters("the_content", get_option(PWAPP_Options::$prefix.'page_' . $post->ID));
+                            $content = apply_filters("the_content", get_option(PWAPP\Inc\Options::$prefix.'page_' . $post->ID));
 
                         // remove script tags
-                        $content = PWAPP_Formatter::remove_script_tags($content);
+                        $content = PWAPP\Inc\Formatter::remove_script_tags($content);
                         $content = $this->purifier->purify($content);
 
                         // remove all urls from attachment images
@@ -1546,7 +1546,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 					require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
 				}
 
-				$background_color = PWAPP_Themes_Config::get_manifest_background();
+				$background_color = PWAPP\Inc\Themes_Config::get_manifest_background();
 
 				if ($background_color !== false){
 					$arr_manifest['theme_color'] = $background_color;
@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             }
 
             // load icon from the local settings and folder
-            $icon_path = PWAPP_Options::get_setting('icon');
+            $icon_path = PWAPP\Inc\Options::get_setting('icon');
 
             if ($icon_path != '' && $_GET['content'] == 'androidmanifest') {
 
@@ -1579,7 +1579,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
 				$arr_manifest['icons'] = array();
                 $PWAPP_Uploads = $this->get_uploads_manager();
 
-				foreach (PWAPP_Uploads::$manifest_sizes as $manifest_size) {
+				foreach (PWAPP\Inc\Uploads::$manifest_sizes as $manifest_size) {
 
 					$icon_path = $PWAPP_Uploads->get_file_url($manifest_size . $base_path);
 
@@ -1627,7 +1627,7 @@ if ( ! class_exists( 'PWAPP_Export' ) ) {
             if (!class_exists('PWAPP_Application'))
                 require_once(PWAPP_PLUGIN_PATH.'frontend/class-application.php');
 
-            $language_file = PWAPP_Application::check_language_file($locale);
+            $language_file = PWAPP\Frontend\Application::check_language_file($locale);
 
             if ($language_file !== false) {
 

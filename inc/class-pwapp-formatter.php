@@ -23,7 +23,7 @@ class Formatter
 	public static function init_purifier()
 	{
 
-		$config = HTMLPurifier_Config::createDefault();
+		$config = \HTMLPurifier_Config::createDefault();
 
 		$config->set('Cache.DefinitionImpl', null); // disable cache
 		$config->set('Core.Encoding', 'UTF-8');

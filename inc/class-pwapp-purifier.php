@@ -2,7 +2,7 @@
 
 namespace PWAPP\Inc;
 
-use Ezyang\HTMLPurifier;
+// use Ezyang\HTMLPurifier;
 
 class ExtendedHtmlPurifier
 {
@@ -105,9 +105,9 @@ class ExtendedHtmlPurifier
                 // add custom CSS3 properties
                 $css_definition = $config->getDefinition('CSS');
 
-                $info['min-width'] = $info['min-height'] = new HTMLPurifier_AttrDef_CSS_Composite(array(
-                        new HTMLPurifier_AttrDef_CSS_Length('0'),
-                        new HTMLPurifier_AttrDef_CSS_Percentage(true)
+                $info['min-width'] = $info['min-height'] = new \HTMLPurifier_AttrDef_CSS_Composite(array(
+                        new \HTMLPurifier_AttrDef_CSS_Length('0'),
+                        new \HTMLPurifier_AttrDef_CSS_Percentage(true)
                     )
                 );
 
@@ -115,11 +115,11 @@ class ExtendedHtmlPurifier
                 // CSS.AllowImportant should be set to 1 to allow !important
                 $allow_important = $config->get('CSS.AllowImportant');
                 foreach ($info as $k => $v) {
-                    $css_definition->info[$k] = new HTMLPurifier_AttrDef_CSS_ImportantDecorator($v, $allow_important);
+                    $css_definition->info[$k] = new \HTMLPurifier_AttrDef_CSS_ImportantDecorator($v, $allow_important);
                 }
             }
 
-            return new HTMLPurifier($config);
+            return new \HTMLPurifier($config);
 
         }
 

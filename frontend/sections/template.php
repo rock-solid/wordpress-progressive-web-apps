@@ -1,5 +1,5 @@
 <?php
-	$app_settings = PWAPP_Application::load_app_settings();
+	$app_settings = PWAPP\Frontend\Application::load_app_settings();
 
 	$frontend_path = plugins_url()."/".PWAPP_DOMAIN."/frontend/";
 	$theme_path = $frontend_path."themes/app2/";
@@ -14,7 +14,7 @@
 	$loaded_fonts = array_unique($loaded_fonts);
 
 	// check if locale file exists
-	$texts_json_exists = PWAPP_Application::check_language_file(get_locale());
+	$texts_json_exists = PWAPP\Frontend\Application::check_language_file(get_locale());
 
 	if ($texts_json_exists === false) {
 		echo "ERROR, unable to load language file. Please check the '".PWAPP_DOMAIN."/frontend/locales/' folder.";
@@ -24,7 +24,7 @@
 		require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
 	}
 
-	$background_color = PWAPP_Themes_Config::get_manifest_background($app_settings['color_scheme']);
+	$background_color = PWAPP\Inc\Themes_Config::get_manifest_background($app_settings['color_scheme']);
 ?>
 <!DOCTYPE HTML>
 <html manifest="" <?php language_attributes(); ?>>
@@ -120,7 +120,7 @@
         var appticles = {
             exportPath: "<?php echo $frontend_path."export/";?>",
 
-            websiteUrl: '<?php echo home_url(); echo parse_url(home_url(), PHP_URL_QUERY) ? '&' : '?'; echo PWAPP_Options::$prefix; ?>theme_mode=desktop',
+            websiteUrl: '<?php echo home_url(); echo parse_url(home_url(), PHP_URL_QUERY) ? '&' : '?'; echo PWAPP\Inc\Options::$prefix; ?>theme_mode=desktop',
 
             logo: "<?php echo $app_settings['logo'];?>",
             icon: "<?php echo $app_settings['icon'];?>",
