@@ -27,7 +27,7 @@ class Admin_Ajax
 	 */
 	protected function get_theme_manager()
 	{
-		return Themes_Compiler();
+		return new Themes_Compiler();
 
 	}
 
@@ -247,10 +247,10 @@ class Admin_Ajax
 
 			// handle color schemes and fonts (look & feel page)
 			if (isset($_POST['pwapp_edittheme_colorscheme']) && is_numeric($_POST['pwapp_edittheme_colorscheme']) &&
-				isset($_POST['pwapp_edittheme_fontheadlines']) && is_numeric($_POST['pwapp_edittheme_fontheadlines']) &&
-				isset($_POST['pwapp_edittheme_fontsubtitles']) && is_numeric($_POST['pwapp_edittheme_fontsubtitles']) &&
-				isset($_POST['pwapp_edittheme_fontparagraphs']) && is_numeric($_POST['pwapp_edittheme_fontparagraphs']) &&
-				isset($_POST['pwapp_edittheme_fontsize']) && is_numeric($_POST['pwapp_edittheme_fontsize'])){
+			isset($_POST['pwapp_edittheme_fontheadlines']) && is_numeric($_POST['pwapp_edittheme_fontheadlines']) &&
+			isset($_POST['pwapp_edittheme_fontsubtitles']) && is_numeric($_POST['pwapp_edittheme_fontsubtitles']) &&
+			isset($_POST['pwapp_edittheme_fontparagraphs']) && is_numeric($_POST['pwapp_edittheme_fontparagraphs']) &&
+			isset($_POST['pwapp_edittheme_fontsize']) && is_numeric($_POST['pwapp_edittheme_fontsize'])){
 
 				// build array with the allowed fonts sizes
 				$allowed_fonts_sizes = array();
@@ -259,10 +259,10 @@ class Admin_Ajax
 				}
 
 				if (in_array($_POST['pwapp_edittheme_colorscheme'], array(0,1,2,3)) &&
-					in_array($_POST['pwapp_edittheme_fontheadlines']-1, array_keys(Themes_Config::$allowed_fonts)) &&
-					in_array($_POST['pwapp_edittheme_fontsubtitles']-1, array_keys(Themes_Config::$allowed_fonts)) &&
-					in_array($_POST['pwapp_edittheme_fontparagraphs']-1, array_keys(Themes_Config::$allowed_fonts)) &&
-					in_array($_POST['pwapp_edittheme_fontsize'], $allowed_fonts_sizes)){
+				in_array($_POST['pwapp_edittheme_fontheadlines']-1, array_keys(Themes_Config::$allowed_fonts)) &&
+				in_array($_POST['pwapp_edittheme_fontsubtitles']-1, array_keys(Themes_Config::$allowed_fonts)) &&
+				in_array($_POST['pwapp_edittheme_fontparagraphs']-1, array_keys(Themes_Config::$allowed_fonts)) &&
+				in_array($_POST['pwapp_edittheme_fontsize'], $allowed_fonts_sizes)){
 
 					// check if the theme compiler can be successfully loaded
 					$pwapp_pro_themes_compiler = $this->get_theme_manager();
