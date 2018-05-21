@@ -193,7 +193,7 @@ class Themes_Compiler
 				PWAPP_PLUGIN_PATH.'frontend/themes/app2'.'/scss/'
 			));
 
-			$scss_compiler->setFormatter('scss_formatter_compressed');
+			$scss_compiler->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
 
 			try {
 
