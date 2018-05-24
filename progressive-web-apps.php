@@ -32,6 +32,11 @@ function pwapp_frontend_init() {
 	new Frontend\Application();
 }
 
+$progressive_web_apps = new Inc\PWAPP_API();
+
+add_action('rest_api_init', [ $progressive_web_apps, 'register_pwapp_routes' ]);
+
+
 // // Add hooks for activating & deactivating the plugin
 register_activation_hook( __FILE__, [ $progressive_web_apps, 'activate' ] );
 register_deactivation_hook( __FILE__, [ $progressive_web_apps, 'deactivate' ] );

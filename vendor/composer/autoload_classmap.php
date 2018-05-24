@@ -17,9 +17,10 @@ return array(
     'PWAPP\\Inc\\ExtendedHtmlPurifier' => $baseDir . '/inc/class-pwapp-purifier.php',
     'PWAPP\\Inc\\Formatter' => $baseDir . '/inc/class-pwapp-formatter.php',
     'PWAPP\\Inc\\Options' => $baseDir . '/inc/class-pwapp-options.php',
+    'PWAPP\\Inc\\PWAPP_API' => $baseDir . '/inc/class-pwapp-api.php',
+    'PWAPP\\Inc\\PWAPP_Export' => $baseDir . '/inc/class-pwapp-export.php',
     'PWAPP\\Inc\\Themes_Compiler' => $baseDir . '/inc/class-pwapp-themes-compiler.php',
     'PWAPP\\Inc\\Themes_Config' => $baseDir . '/inc/class-pwapp-themes-config.php',
     'PWAPP\\Inc\\Tokens' => $baseDir . '/inc/class-pwapp-tokens.php',
     'PWAPP\\Inc\\Uploads' => $baseDir . '/inc/class-pwapp-uploads.php',
-    'PWAPP_Export' => $baseDir . '/frontend/export/class-export.php',
 );

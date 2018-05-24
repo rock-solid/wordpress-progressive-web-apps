@@ -53,11 +53,12 @@ class ComposerStaticInit34e34073e74725f1df186ae5aafc7b86
         'PWAPP\\Inc\\ExtendedHtmlPurifier' => __DIR__ . '/../..' . '/inc/class-pwapp-purifier.php',
         'PWAPP\\Inc\\Formatter' => __DIR__ . '/../..' . '/inc/class-pwapp-formatter.php',
         'PWAPP\\Inc\\Options' => __DIR__ . '/../..' . '/inc/class-pwapp-options.php',
+        'PWAPP\\Inc\\PWAPP_API' => __DIR__ . '/../..' . '/inc/class-pwapp-api.php',
+        'PWAPP\\Inc\\PWAPP_Export' => __DIR__ . '/../..' . '/inc/class-pwapp-export.php',
         'PWAPP\\Inc\\Themes_Compiler' => __DIR__ . '/../..' . '/inc/class-pwapp-themes-compiler.php',
         'PWAPP\\Inc\\Themes_Config' => __DIR__ . '/../..' . '/inc/class-pwapp-themes-config.php',
         'PWAPP\\Inc\\Tokens' => __DIR__ . '/../..' . '/inc/class-pwapp-tokens.php',
         'PWAPP\\Inc\\Uploads' => __DIR__ . '/../..' . '/inc/class-pwapp-uploads.php',
-        'PWAPP_Export' => __DIR__ . '/../..' . '/frontend/export/class-export.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
