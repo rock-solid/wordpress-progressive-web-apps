@@ -81,10 +81,10 @@ class Admin_Init {
 		foreach ( self::$submenu_pages as $submenu_item ) {
 
 			// add page in the submenu
-			$submenu_page = add_submenu_page( $menu_name, $submenu_item['page_title'], $submenu_item['page_title'], 'manage_options', $submenu_item['capability'], array( &$PWAPPAdmin, $submenu_item['function'] ) );
+			$submenu_page = add_submenu_page( $menu_name, $submenu_item['page_title'], $submenu_item['page_title'], 'manage_options', $submenu_item['capability'], array( &$admin, $submenu_item['function'] ) );
 
 			// enqueue js files for each subpage
-			if ( isset( $submenu_item['enqueue_hook'] ) && $submenu_item['enqueue_hook'] != '' ) {
+			if ( isset( $submenu_item['enqueue_hook'] ) && '' != $submenu_item['enqueue_hook'] ) {
 				add_action( 'load-' . $submenu_page, array( &$this, $submenu_item['enqueue_hook'] ) );
 			}
 		}
