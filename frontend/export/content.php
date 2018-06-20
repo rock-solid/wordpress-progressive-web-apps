@@ -1,12 +1,12 @@
 <?php
+namespace PWAPP\Frontend\Export;
+
+use \PWAPP\Frontend\Export\PWAPP_Export;
 
 header( 'Content-Type: application/json; charset=UTF-8' );
 
 require_once( '../../../../../wp-config.php' );
 
-if ( ! class_exists( 'PWAPP_Export' ) ) {
-	require_once( PWAPP_PLUGIN_PATH . 'frontend/export/class-export.php' );
-}
 
 // Disable error reporting because these methods are used as callbacks by the mobile web app
 //error_reporting( 0 );
