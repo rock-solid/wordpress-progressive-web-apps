@@ -10,8 +10,8 @@ use PWAPP\Core\PWAPP;
  * Admin class for managing the admin area for the plugin
  *
  */
-class Admin
-{
+class Admin {
+
 
 	/**
 	 *
@@ -20,7 +20,7 @@ class Admin
 	 */
 	public function themes() {
 
-		include(PWAPP_PLUGIN_PATH.'admin/pages/themes.php');
+		include( PWAPP_PLUGIN_PATH . 'admin/pages/themes.php' );
 	}
 
 	/**
@@ -30,7 +30,7 @@ class Admin
 	 */
 	public function theme_settings() {
 
-		include(PWAPP_PLUGIN_PATH.'admin/pages/theme-settings.php');
+		include( PWAPP_PLUGIN_PATH . 'admin/pages/theme-settings.php' );
 	}
 
 	/**
@@ -41,52 +41,51 @@ class Admin
 	 */
 	public static function more_updates() {
 
-		$json_data =  get_transient(Options::$transient_prefix.'more_updates');
+		$json_data = get_transient( Options::$transient_prefix . 'more_updates' );
 
-		if ($json_data){
+		if ( $json_data ) {
 
-			if ($json_data == 'warning') {
+			if ( 'warning' == $json_data ) {
 				return $json_data;
 			}
 
 			// get response
-			$response = json_decode($json_data, true);
+			$response = json_decode( $json_data, true );
 
-			if (isset($response["content"]) && is_array($response["content"]) && !empty($response["content"])) {
+			if ( isset( $response['content'] ) && is_array( $response['content'] ) && ! empty( $response['content'] ) ) {
 
-				if (isset($response['content']['version']) && $response['content']['version'] == PWAPP_MORE_UPDATES_VERSION) {
-					return $response["content"];
+				if ( isset( $response['content']['version'] ) && PWAPP_MORE_UPDATES_VERSION == $response['content']['version'] ) {
+					return $response['content'];
 				}
 			}
 		}
 
 		// check if we have a https connection
-		$is_secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443;
+		$is_secure = ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== $_SERVER['HTTPS'] ) || 443 == $_SERVER['SERVER_PORT'];
 
 		// JSON URL that should be requested
-		$json_url = ($is_secure ? PWAPP_MORE_UPDATES_HTTPS : PWAPP_MORE_UPDATES);
+		$json_url = ( $is_secure ? PWAPP_MORE_UPDATES_HTTPS : PWAPP_MORE_UPDATES );
 
 		// get response
-		$json_response = PWAPP::read_data($json_url);
+		$json_response = PWAPP::read_data( $json_url );
 
-		if ($json_response !== false && $json_response != '') {
+		if ( false !== $json_response && '' != $json_response ) {
 
 			// Store this data in a transient
-			set_transient(Options::$transient_prefix.'more_updates', $json_response, 3600*24*2);
+			set_transient( Options::$transient_prefix . 'more_updates', $json_response, 3600 * 24 * 2 );
 
 			// get response
-			$response = json_decode($json_response, true);
+			$response = json_decode( $json_response, true );
 
-			if (isset($response["content"]) && is_array($response["content"]) && !empty($response["content"])){
+			if ( isset( $response['content'] ) && is_array( $response['content'] ) && ! empty( $response['content'] ) ) {
 
 				// return response
-				return $response["content"];
+				return $response['content'];
 			}
-
-		} elseif ($json_response == false) {
+		} elseif ( false == $json_response ) {
 
 			// Store this data in a transient
-			set_transient(Options::$transient_prefix.'more_updates', 'warning', 3600*24*2 );
+			set_transient( Options::$transient_prefix . 'more_updates', 'warning', 3600 * 24 * 2 );
 
 			// return message
 			return 'warning';
@@ -101,26 +100,27 @@ class Admin
 	 *
 	 * @return string
 	 */
-	public static function upgrade_pro_themes($upgrade_content = false){
+	public static function upgrade_pro_themes( $upgrade_content = false ) {
 
 		$themes = array();
 
-		if ($upgrade_content === false)
+		if ( false === $upgrade_content ) {
 			$upgrade_content = self::more_updates();
+		}
 
-		if  (is_array($upgrade_content) && !empty($upgrade_content)){
+		if ( is_array( $upgrade_content ) && ! empty( $upgrade_content ) ) {
 
-			if (array_key_exists('premium', $upgrade_content) && array_key_exists('themes', $upgrade_content['premium'])) {
+			if ( array_key_exists( 'premium', $upgrade_content ) && array_key_exists( 'themes', $upgrade_content['premium'] ) ) {
 
-				if (array_key_exists('list', $upgrade_content['premium']['themes']) && is_array($upgrade_content['premium']['themes']['list'])) {
+				if ( array_key_exists( 'list', $upgrade_content['premium']['themes'] ) && is_array( $upgrade_content['premium']['themes']['list'] ) ) {
 
-					foreach ($upgrade_content['premium']['themes']['list'] as $theme){
+					foreach ( $upgrade_content['premium']['themes']['list'] as $theme ) {
 
-						if (isset($theme['title']) &&
-							isset($theme['icon']) && filter_var($theme['icon'], FILTER_VALIDATE_URL) &&
-							(!isset($theme['demo']['link']) || filter_var($theme['demo']['link'], FILTER_VALIDATE_URL)) &&
-							(!isset($theme['details']['link']) || filter_var($theme['details']['link'], FILTER_VALIDATE_URL))
-						){
+						if ( isset( $theme['title'] ) &&
+							isset( $theme['icon'] ) && filter_var( $theme['icon'], FILTER_VALIDATE_URL ) &&
+							( ! isset( $theme['demo']['link'] ) || filter_var( $theme['demo']['link'], FILTER_VALIDATE_URL ) ) &&
+							( ! isset( $theme['details']['link'] ) || filter_var( $theme['details']['link'], FILTER_VALIDATE_URL ) )
+						) {
 							$themes[] = $theme;
 						}
 					}
