@@ -7,8 +7,8 @@ namespace PWAPP\Inc;
  *
  * Contains different methods for setting / getting tokens
  */
-class Tokens
-{
+class Tokens {
+
 
 	/**
 	 *
@@ -19,13 +19,12 @@ class Tokens
 	 * @return string
 	 *
 	 */
-	public static function get_token()
-	{
+	public static function get_token() {
 
-		$token = md5(md5(get_bloginfo("wpurl")).PWAPP_CODE_KEY);
+		$token = md5( md5( get_bloginfo( 'wpurl' ) ) . PWAPP_CODE_KEY );
 
 		// encode token again
-		$token = base64_encode($token.'_'.strtotime('+1 hour'));
+		$token = base64_encode( $token . '_' . strtotime( '+1 hour' ) );
 
 		// generate token
 		return $token;
@@ -42,30 +41,30 @@ class Tokens
 	 * @return bool
 	 *
 	 */
-	public static function check_token($token)
-	{
+	public static function check_token( $token ) {
 
-		if (base64_decode($token,true)){
+		if ( base64_decode( $token, true ) ) {
 
 			// decode token to get timestamp and encoded url
-			$decoded_token = base64_decode($token,true);
+			$decoded_token = base64_decode( $token, true );
 
-			if (strpos($decoded_token, "_") !== FALSE) {
+			if ( strpos( $decoded_token, '_' ) !== false ) {
 
 				// get params
-				$arrParams = explode('_',$decoded_token);
+				$arr_params = explode( '_', $decoded_token );
 
-				if (is_array($arrParams) && !empty($arrParams) && count($arrParams) == 2) {
+				if ( is_array( $arr_params ) && ! empty( $arr_params ) && 2 == count( $arr_params ) ) {
 
 					// check timestamp
-					if (time() < $arrParams[1]) {
+					if ( time() < $arr_params[1] ) {
 
 						// get the generated encoded domain
-						$generated_url = md5(md5(get_bloginfo("wpurl")).PWAPP_CODE_KEY);
+						$generated_url = md5( md5( get_bloginfo( 'wpurl' ) ) . PWAPP_CODE_KEY );
 
 						// check encoded domain
-						if ($arrParams[0] ==  $generated_url)
+						if ( $arr_params[0] == $generated_url ) {
 							return true;
+						}
 					}
 				}
 			}
