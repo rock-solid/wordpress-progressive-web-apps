@@ -18,18 +18,6 @@ use PWAPP\Inc\Formatter;
 class Admin_Ajax
 {
 
-	/**
-	 *
-	 * Create a theme management object and return it
-	 *
-	 * @return object
-	 *
-	 */
-	protected function get_theme_manager()
-	{
-		return new Themes_Compiler();
-
-	}
 
 	/**
 	 *
@@ -212,7 +200,7 @@ class Admin_Ajax
 
 		if ($theme_timestamp != ''){
 
-			$pwapp_pro_themes_compiler = $this->get_theme_manager();
+			$pwapp_pro_themes_compiler = new PWAPP\Inc\Themes_Compiler();
 
 			if ($pwapp_pro_themes_compiler !== false) {
 
@@ -265,7 +253,7 @@ class Admin_Ajax
 				in_array($_POST['pwapp_edittheme_fontsize'], $allowed_fonts_sizes)){
 
 					// check if the theme compiler can be successfully loaded
-					$pwapp_pro_themes_compiler = $this->get_theme_manager();
+					$pwapp_pro_themes_compiler = new PWAPP\Inc\Themes_Compiler();
 
 					if ($pwapp_pro_themes_compiler === false) {
 
