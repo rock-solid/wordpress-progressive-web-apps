@@ -10,7 +10,6 @@ use PWAPP\Frontend\Detect;
 /**
  *
  * Main class for managing frontend apps
- *
  */
 class Application {
 
@@ -18,8 +17,7 @@ class Application {
 	/**
 	 * Class constructor
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->check_load();
 	}
 
@@ -28,10 +26,8 @@ class Application {
 	 * Create a cookie management object and return it
 	 *
 	 * @return object
-	 *
 	 */
-	protected function get_cookie_manager()
-	{
+	protected function get_cookie_manager() {
 		return new Cookie();
 	}
 
@@ -44,10 +40,8 @@ class Application {
 	 * - the user comes from a supported mobile device and browser
 	 * - the user has not deactivated the view of the mobile theme by switching to desktop mode
 	 * - the display mode of the app is set to 'normal' or is set to 'preview' and an admin is logged in
-	 *
 	 */
-	public function check_load()
-	{
+	public function check_load() {
 
 		// Set app as visible by default
 		$visible_app = true;
@@ -55,17 +49,17 @@ class Application {
 		// Assume the app will not be loaded
 		$load_app = false;
 
-		if ($visible_app) {
+		if ( $visible_app ) {
 
 			// Check if the load app cookie is 1 or the user came from a mobile device
-			$cookie_manager = $this->get_cookie_manager();
-			$load_app_cookie = $cookie_manager->get_cookie('load_app');
+			$cookie_manager  = $this->get_cookie_manager();
+			$load_app_cookie = $cookie_manager->get_cookie( 'load_app' );
 
 			// If the load_app cookie is not set, verify the device
-			if ($load_app_cookie === null) {
+			if ( $load_app_cookie === null ) {
 				$load_app = $this->check_device();
 
-			} elseif ($load_app_cookie == 1) {
+			} elseif ( $load_app_cookie == 1 ) {
 
 				// The cookie was already set for the device, so we can load the app
 				$load_app = true;
@@ -76,12 +70,12 @@ class Application {
 		$show_alternate = true;
 
 		// We have a mobile device and the app is visible, so we can load the app
-		if ($load_app) {
+		if ( $load_app ) {
 
 			// Check if the user deactivated the app display
 			$desktop_mode = $this->check_desktop_mode();
 
-			if ($desktop_mode == false) {
+			if ( $desktop_mode == false ) {
 
 				// We're loading the mobile web app, so we don't need the rel=alternate links
 				$show_alternate = false;
@@ -90,16 +84,16 @@ class Application {
 			} else {
 
 				// Add hook in header (for smart app banner)
-				add_action('wp_head', array(&$this, 'show_smart_app_banner'));
+				add_action( 'wp_head', array( &$this, 'show_smart_app_banner' ) );
 
 				// Add hook in footer to show the switch to mobile link
-				add_action('wp_footer', array(&$this,'show_mobile_link'));
+				add_action( 'wp_footer', array( &$this, 'show_mobile_link' ) );
 			}
 		}
 
 		// Add hook in header (for rel=alternate)
-		if ($show_alternate){
-			add_action('wp_head', array(&$this, 'show_rel'));
+		if ( $show_alternate ) {
+			add_action( 'wp_head', array( &$this, 'show_rel' ) );
 		}
 	}
 
@@ -108,12 +102,11 @@ class Application {
 	 * Call the mobile detection method to verify if we have a supported device
 	 *
 	 * @return bool
-	 *
 	 */
-	protected function check_device(){
+	protected function check_device() {
 
-		$WMobileDetect = new Detect();
-		return $WMobileDetect->detect_device();
+		$mobile_detect = new Detect();
+		return $mobile_detect->detect_device();
 	}
 
 
@@ -127,34 +120,33 @@ class Application {
 	 * - Mobile mode can be reactivated from the footer of the website or smart app banner.
 	 *
 	 * @return bool
-	 *
 	 */
-	protected function check_desktop_mode()
-	{
+	protected function check_desktop_mode() {
 
 		$desktop_mode = false;
 
 		$cookie_manager = $this->get_cookie_manager();
-		$param_name = Options::$prefix.'theme_mode';
+		$param_name     = Options::$prefix . 'theme_mode';
 
-		if (isset($_GET[$param_name]) && is_string($_GET[$param_name])){
+		if ( isset( $_GET[ $param_name ] ) && is_string( $_GET[ $param_name ] ) ) {
 
-			$theme_mode = $_GET[$param_name];
+			$theme_mode = $_GET[ $param_name ];
 
-			if ($theme_mode == "desktop" || $theme_mode == "mobile"){
-				$cookie_manager->set_cookie('theme_mode', $theme_mode, 3600*30*24);
+			if ( 'desktop'  ==  $theme_mode || $theme_mode == 'mobile' ) {
+				$cookie_manager->set_cookie( 'theme_mode', $theme_mode, 3600 * 30 * 24 );
 			}
 
-			if ($theme_mode == "desktop")
+			if ( $theme_mode == 'desktop' ) {
 				$desktop_mode = true;
-
+			}
 		} else {
 
-			$theme_mode_cookie = $cookie_manager->get_cookie('theme_mode');
+			$theme_mode_cookie = $cookie_manager->get_cookie( 'theme_mode' );
 
-			if ($theme_mode_cookie){
-				if ($theme_mode_cookie == "desktop")
+			if ( $theme_mode_cookie ) {
+				if ( $theme_mode_cookie == 'desktop' ) {
 					$desktop_mode = true;
+				}
 			}
 		}
 
@@ -168,21 +160,19 @@ class Application {
 	 *
 	 * The theme url and theme name from the WP installation are overwritten by the settings below.
 	 */
-	public function load_app()
-	{
-		add_filter("stylesheet", array(&$this, "app_theme"), 11);
-		add_filter("template", array(&$this, "app_theme"), 11);
+	public function load_app() {
+		add_filter( 'stylesheet', array( &$this, 'app_theme' ), 11 );
+		add_filter( 'template', array( &$this, 'app_theme' ), 11 );
 
-		add_filter('theme_root', array( &$this, 'app_theme_root' ), 11);
-		add_filter('theme_root_uri', array( &$this, 'app_theme_root' ), 11);
+		add_filter( 'theme_root', array( &$this, 'app_theme_root' ), 11 );
+		add_filter( 'theme_root_uri', array( &$this, 'app_theme_root' ), 11 );
 	}
 
 
 	/**
 	 * Return the theme name
 	 */
-	public function app_theme()
-	{
+	public function app_theme() {
 		return 'app2';
 	}
 
@@ -190,8 +180,7 @@ class Application {
 	/**
 	 * Return path to the mobile themes folder
 	 */
-	public function app_theme_root()
-	{
+	public function app_theme_root() {
 		return PWAPP_PLUGIN_PATH . 'frontend/themes';
 	}
 
@@ -202,11 +191,9 @@ class Application {
 	 * Method used to display a rel=alternate link in the header of the desktop theme
 	 *
 	 * This method is called from check_load()
-	 *
 	 */
-	public function show_rel()
-	{
-		include(PWAPP_PLUGIN_PATH.'frontend/sections/show-rel.php');
+	public function show_rel() {
+		include PWAPP_PLUGIN_PATH . 'frontend/sections/show-rel.php';
 	}
 
 	/**
@@ -215,11 +202,9 @@ class Application {
 	 * when the mobile theme is disabled.
 	 *
 	 * This method is called from check_load()
-	 *
 	 */
-	public function show_smart_app_banner()
-	{
-		include(PWAPP_PLUGIN_PATH.'frontend/sections/smart-app-banner.php');
+	public function show_smart_app_banner() {
+		include PWAPP_PLUGIN_PATH . 'frontend/sections/smart-app-banner.php';
 	}
 
 	/**
@@ -228,11 +213,9 @@ class Application {
 	 *
 	 * This method is called from check_load()
 	 * The box contains a link that sets the cookie and loads the app
-	 *
 	 */
-	public function show_mobile_link()
-	{
-		include(PWAPP_PLUGIN_PATH.'frontend/sections/show-mobile-link.php');
+	public function show_mobile_link() {
+		include PWAPP_PLUGIN_PATH . 'frontend/sections/show-mobile-link.php';
 	}
 
 
@@ -241,8 +224,7 @@ class Application {
 	 *
 	 * @return array
 	 */
-	public static function load_app_settings()
-	{
+	public static function load_app_settings() {
 
 		// load basic settings
 		$frontend_options = array(
@@ -252,39 +234,37 @@ class Application {
 			'font_subtitles',
 			'font_paragraphs',
 			'enable_facebook',
-			'enable_twitter' ,
+			'enable_twitter',
 			'enable_google',
-			'service_worker_installed'
+			'service_worker_installed',
 		);
 
 		$settings = array();
 
-		foreach ($frontend_options as $option_name){
-			$settings[$option_name] = Options::get_setting($option_name);
+		foreach ( $frontend_options as $option_name ) {
+			$settings[ $option_name ] = Options::get_setting( $option_name );
 		}
 
-
-
 		// check if custom theme exists and the file size is greater than zero
-		if ($settings['theme_timestamp'] != ''){
+		if ( $settings['theme_timestamp'] != '' ) {
 
-			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR.'theme-'.$settings['theme_timestamp'].'.css';
+			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR . 'theme-' . $settings['theme_timestamp'] . '.css';
 
-			if (!file_exists($custom_theme_path) || filesize($custom_theme_path) == 0){
+			if ( ! file_exists( $custom_theme_path ) || filesize( $custom_theme_path ) == 0 ) {
 				$settings['theme_timestamp'] = '';
 			}
 		}
 
 		// load images
-		foreach (array('icon', 'logo', 'cover') as $file_type){
+		foreach ( array( 'icon', 'logo', 'cover' ) as $file_type ) {
 
-			$file_path = Options::get_setting($file_type);
+			$file_path = Options::get_setting( $file_type );
 
-			if ($file_path == '' || !file_exists(PWAPP_FILES_UPLOADS_DIR.$file_path))
-				$settings[$file_type] = '';
-			else
-				$settings[$file_type] = PWAPP_FILES_UPLOADS_URL.$file_path;
-
+			if ( $file_path == '' || ! file_exists( PWAPP_FILES_UPLOADS_DIR . $file_path ) ) {
+				$settings[ $file_type ] = '';
+			} else {
+				$settings[ $file_type ] = PWAPP_FILES_UPLOADS_URL . $file_path;
+			}
 		}
 
 		// generate comments token
@@ -300,15 +280,14 @@ class Application {
 	 * @param $locale
 	 * @return bool|string
 	 */
-	public static function check_language_file($locale)
-	{
-		$language_file_path = PWAPP_PLUGIN_PATH.'frontend/locales/'.strip_tags($locale).'.json';
+	public static function check_language_file( $locale ) {
+		$language_file_path = PWAPP_PLUGIN_PATH . 'frontend/locales/' . strip_tags( $locale ) . '.json';
 
-		if (!file_exists($language_file_path)) {
-			$language_file_path = PWAPP_PLUGIN_PATH."frontend/locales/default.json";
+		if ( ! file_exists( $language_file_path ) ) {
+			$language_file_path = PWAPP_PLUGIN_PATH . 'frontend/locales/default.json';
 		}
 
-		if (file_exists($language_file_path)){
+		if ( file_exists( $language_file_path ) ) {
 			return $language_file_path;
 		}
 
