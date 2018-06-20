@@ -33,8 +33,8 @@ class PWAPP
 
 		// create uploads folder and define constants
 		if ( !defined( 'PWAPP_FILES_UPLOADS_DIR' ) && !defined( 'PWAPP_FILES_UPLOADS_URL' ) ) {
-			$PWAUploads = new Uploads();
-			$PWAUploads->define_uploads_dir();
+			$pwapp_uploads = new Uploads();
+			$pwapp_uploads->define_uploads_dir();
 		}
 
 		if ( is_admin() ) {
@@ -72,10 +72,10 @@ class PWAPP
 		Options::deactivate();
 
 		// remove the cookies
-		$PWAPP_Cookie = new Cookie();
+		$pwapp_cookie = new Cookie();
 
-		$PWAPP_Cookie->set_cookie("theme_mode", false, -3600);
-		$PWAPP_Cookie->set_cookie("load_app", false, -3600);
+		$pwapp_cookie->set_cookie("theme_mode", false, -3600);
+		$pwapp_cookie->set_cookie("load_app", false, -3600);
 	}
 
 
