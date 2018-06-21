@@ -2,11 +2,11 @@
 
 namespace PWAPP\Admin;
 
-use \PWAPP\Inc\Themes_Config;
-use \PWAPP\Inc\Themes_Compiler;
-use \PWAPP\Inc\Options;
-use \PWAPP\Inc\Uploads;
-use \PWAPP\Inc\Formatter;
+use PWAPP\Inc\Themes_Config;
+use PWAPP\Inc\Themes_Compiler;
+use PWAPP\Inc\Options;
+use PWAPP\Inc\Uploads;
+use PWAPP\Inc\Formatter;
 
 /**
  *

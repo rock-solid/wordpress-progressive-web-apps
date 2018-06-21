@@ -56,10 +56,10 @@ class Application {
 			$load_app_cookie = $cookie_manager->get_cookie( 'load_app' );
 
 			// If the load_app cookie is not set, verify the device
-			if ( $load_app_cookie === null ) {
+			if ( null === $load_app_cookie ) {
 				$load_app = $this->check_device();
 
-			} elseif ( $load_app_cookie == 1 ) {
+			} elseif ( 1 == $load_app_cookie ) {
 
 				// The cookie was already set for the device, so we can load the app
 				$load_app = true;
@@ -75,7 +75,7 @@ class Application {
 			// Check if the user deactivated the app display
 			$desktop_mode = $this->check_desktop_mode();
 
-			if ( $desktop_mode == false ) {
+			if ( false == $desktop_mode ) {
 
 				// We're loading the mobile web app, so we don't need the rel=alternate links
 				$show_alternate = false;
@@ -132,11 +132,11 @@ class Application {
 
 			$theme_mode = $_GET[ $param_name ];
 
-			if ( 'desktop'  ==  $theme_mode || $theme_mode == 'mobile' ) {
+			if ( 'desktop' == $theme_mode || 'mobile' == $theme_mode ) {
 				$cookie_manager->set_cookie( 'theme_mode', $theme_mode, 3600 * 30 * 24 );
 			}
 
-			if ( $theme_mode == 'desktop' ) {
+			if ( 'desktop' == $theme_mode ) {
 				$desktop_mode = true;
 			}
 		} else {
@@ -144,7 +144,7 @@ class Application {
 			$theme_mode_cookie = $cookie_manager->get_cookie( 'theme_mode' );
 
 			if ( $theme_mode_cookie ) {
-				if ( $theme_mode_cookie == 'desktop' ) {
+				if ( 'desktop' == $theme_mode_cookie ) {
 					$desktop_mode = true;
 				}
 			}
@@ -246,7 +246,7 @@ class Application {
 		}
 
 		// check if custom theme exists and the file size is greater than zero
-		if ( $settings['theme_timestamp'] != '' ) {
+		if ( '' != $settings['theme_timestamp'] ) {
 
 			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR . 'theme-' . $settings['theme_timestamp'] . '.css';
 
@@ -260,7 +260,7 @@ class Application {
 
 			$file_path = Options::get_setting( $file_type );
 
-			if ( $file_path == '' || ! file_exists( PWAPP_FILES_UPLOADS_DIR . $file_path ) ) {
+			if ( '' == $file_path || ! file_exists( PWAPP_FILES_UPLOADS_DIR . $file_path ) ) {
 				$settings[ $file_type ] = '';
 			} else {
 				$settings[ $file_type ] = PWAPP_FILES_UPLOADS_URL . $file_path;

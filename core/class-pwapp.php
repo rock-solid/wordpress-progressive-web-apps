@@ -111,7 +111,7 @@ class PWAPP {
 
 		$icon_filename = Options::get_setting( 'icon' );
 
-		if ( '' !=  $icon_filename  && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
+		if ( '' != $icon_filename && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
 			foreach ( Uploads::$manifest_sizes as $manifest_size ) {
 				if ( ! file_exists( PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename ) ) {
 					echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 0.7 comes with Add To Home Screen functionality which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
@@ -150,7 +150,7 @@ class PWAPP {
 			curl_close( $send_curl );
 
 			// return json if success
-			if ( $status == 200 ) {
+			if ( 200 == $status ) {
 				return $json_response;
 			}
 		} elseif ( ini_get( 'allow_url_fopen' ) ) { // check if allow_url_fopen is enabled
