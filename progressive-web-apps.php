@@ -17,7 +17,7 @@ namespace PWAPP;
 use PWAPP\Admin\Admin_Init;
 use PWAPP\Admin\Admin_Ajax;
 use PWAPP\Frontend\Application;
-use PWAPP\Inc\PWAPP_API;
+use PWAPP\Inc\Api;
 use PWAPP\Core\PWAPP;
 
 require_once 'vendor/autoload.php';
@@ -38,9 +38,9 @@ function pwapp_frontend_init() {
 	new Application();
 }
 
-$pwapp_api = new PWAPP_API();
+$api = new Api();
 
-// add_action( 'rest_api_init', [ $pwapp_api, 'register_pwapp_routes' ] );
+add_action( 'rest_api_init', [ $api, 'register_pwapp_routes' ] );
 
 
 // // Add hooks for activating & deactivating the plugin
@@ -52,12 +52,12 @@ if ( is_admin() ) {
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
-		$pwapp_admin_ajax = new Admin_Ajax();
+		$admin_ajax = new Admin_Ajax();
 
-		add_action( 'wp_ajax_pwapp_editimages', [ $pwapp_admin_ajax, 'theme_editimages' ] );
-		add_action( 'wp_ajax_pwapp_theme_settings', [ $pwapp_admin_ajax, 'theme_settings' ] );
-		add_action( 'wp_ajax_pwapp_send_feedback', [ $pwapp_admin_ajax, 'send_feedback' ] );
-		add_action( 'wp_ajax_pwapp_settings_save', [ $pwapp_admin_ajax, 'settings_save' ] );
+		add_action( 'wp_ajax_pwapp_editimages', [ $admin_ajax, 'theme_editimages' ] );
+		add_action( 'wp_ajax_pwapp_theme_settings', [ $admin_ajax, 'theme_settings' ] );
+		add_action( 'wp_ajax_pwapp_send_feedback', [ $admin_ajax, 'send_feedback' ] );
+		add_action( 'wp_ajax_pwapp_settings_save', [ $admin_ajax, 'settings_save' ] );
 
 	} else {
 		add_action( 'plugins_loaded', 'PWAPP\pwapp_admin_init' );
