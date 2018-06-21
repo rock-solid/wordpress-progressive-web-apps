@@ -8,8 +8,8 @@ use PWAPP\Inc\Options;
  * Overall Themes Config class
  *
  */
-class Themes_Config
-{
+class Themes_Config {
+
 
 	/* ----------------------------------*/
 	/* Properties						 */
@@ -24,7 +24,7 @@ class Themes_Config
 		'Roboto Slab Light',
 		'Helvetica Neue Light Condensed',
 		'Helvetica Neue Bold Condensed',
-		'Gotham Book'
+		'Gotham Book',
 	);
 
 	/**
@@ -34,22 +34,22 @@ class Themes_Config
 	public static $allowed_fonts_sizes = array(
 		array(
 			'label' => 'Small',
-			'size' => 0.875
+			'size'  => 0.875,
 		),
 		array(
 			'label' => 'Normal',
-			'size' => 1
+			'size'  => 1,
 		),
 		array(
 			'label' => 'Large',
-			'size' => 1.125
-		)
+			'size'  => 1.125,
+		),
 	);
 
 	public static $color_schemes = array(
 
 		2 => array(
-			'labels' => array(
+			'labels'     => array(
 				'Headlines and primary texts',
 				'Article background',
 				'Article border',
@@ -60,9 +60,9 @@ class Themes_Config
 				'Buttons icon',
 				'Menu',
 				'Forms',
-				'Cover text color'
+				'Cover text color',
 			),
-			'vars' => array(
+			'vars'       => array(
 				'base-text-color',
 				'base-bg-color',
 				'article-border-color',
@@ -73,9 +73,9 @@ class Themes_Config
 				'buttons-color',
 				'actions-panel-color',
 				'form-color',
-				'cover-text-color'
+				'cover-text-color',
 			),
-			'presets' => array(
+			'presets'    => array(
 				1 => array(
 					'#303030',
 					'#ffffff',
@@ -87,7 +87,7 @@ class Themes_Config
 					'#747474',
 					'#32394a',
 					'#5c5c5c',
-					'#ffffff'
+					'#ffffff',
 				),
 				2 => array(
 					'#445256',
@@ -100,7 +100,7 @@ class Themes_Config
 					'#34799f',
 					'#616d6f',
 					'#7c9197',
-					'#ffffff'
+					'#ffffff',
 				),
 				3 => array(
 					'#647279',
@@ -113,12 +113,12 @@ class Themes_Config
 					'#ea6c55',
 					'#2d4d45',
 					'#709cb1',
-					'#ffffff'
-				)
+					'#ffffff',
+				),
 			),
-			'cover' => 1,
+			'cover'      => 1,
 			'cover_text' => 0,
-		)
+		),
 	);
 
 
@@ -130,26 +130,25 @@ class Themes_Config
 	*
 	* @todo Update this method to use a separate color variable.
 	*/
-	public static function get_manifest_background($color_scheme = null)
-	{
-		if ($color_scheme == null){
-			$color_scheme = Options::get_setting('color_scheme');
+	public static function get_manifest_background( $color_scheme = null ) {
+		if ( $color_scheme == null ) {
+			$color_scheme = Options::get_setting( 'color_scheme' );
 		}
 
-		switch ($color_scheme) {
+		switch ( $color_scheme ) {
 
-			case 0 :
-				$custom_colors = Options::get_setting('custom_colors');
+			case 0:
+				$custom_colors = Options::get_setting( 'custom_colors' );
 
-				if (is_array($custom_colors) && isset($custom_colors[1])) {
+				if ( is_array( $custom_colors ) && isset( $custom_colors[1] ) ) {
 					return $custom_colors[1];
 				}
 				break;
 
-			case 1 :
-			case 2 :
-			case 3 :
-				return self::$color_schemes['2']['presets'][$color_scheme][1];
+			case 1:
+			case 2:
+			case 3:
+				return self::$color_schemes['2']['presets'][ $color_scheme ][1];
 		}
 
 		return false;
