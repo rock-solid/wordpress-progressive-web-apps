@@ -14,27 +14,33 @@
 
 namespace PWAPP;
 
+use PWAPP\Admin\Admin_Init;
+use PWAPP\Admin\Admin_Ajax;
+use PWAPP\Frontend\Application;
+use PWAPP\Inc\PWAPP_API;
+use PWAPP\Core\PWAPP;
+
 require_once 'vendor/autoload.php';
 require_once 'core/config.php';
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 global $progressive_web_apps;
-$progressive_web_apps = new Core\PWAPP();
+$progressive_web_apps = new PWAPP();
 
 /**
  * Used to load the required files on the plugins_loaded hook, instead of immediately.
  */
 function pwapp_admin_init() {
-	new Admin\Admin_Init();
+	new  Admin_Init();
 }
 
 function pwapp_frontend_init() {
-	new Frontend\Application();
+	new Application();
 }
 
-$pwapp_api = new Inc\PWAPP_API();
+$pwapp_api = new PWAPP_API();
 
-add_action('rest_api_init', [ $pwapp_api, 'register_pwapp_routes' ]);
+// add_action( 'rest_api_init', [ $pwapp_api, 'register_pwapp_routes' ] );
 
 
 // // Add hooks for activating & deactivating the plugin
@@ -42,11 +48,11 @@ register_activation_hook( __FILE__, [ $progressive_web_apps, 'activate' ] );
 register_deactivation_hook( __FILE__, [ $progressive_web_apps, 'deactivate' ] );
 
 // Initialize the plugin's check logic and rendering
-if (is_admin()) {
+if ( is_admin() ) {
 
-	if (defined( 'DOING_AJAX' ) && DOING_AJAX) {
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
-		$pwapp_admin_ajax = new Admin\Admin_Ajax();
+		$pwapp_admin_ajax = new Admin_Ajax();
 
 		add_action( 'wp_ajax_pwapp_editimages', [ $pwapp_admin_ajax, 'theme_editimages' ] );
 		add_action( 'wp_ajax_pwapp_theme_settings', [ $pwapp_admin_ajax, 'theme_settings' ] );
@@ -56,7 +62,6 @@ if (is_admin()) {
 	} else {
 		add_action( 'plugins_loaded', 'PWAPP\pwapp_admin_init' );
 	}
-
 } else {
 	add_action( 'plugins_loaded', 'PWAPP\pwapp_frontend_init' );
 }
