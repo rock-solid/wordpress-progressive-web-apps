@@ -131,7 +131,7 @@ class Themes_Config {
 	* @todo Update this method to use a separate color variable.
 	*/
 	public static function get_manifest_background( $color_scheme = null ) {
-		if ( $color_scheme == null ) {
+		if ( null == $color_scheme ) {
 			$color_scheme = Options::get_setting( 'color_scheme' );
 		}
 
