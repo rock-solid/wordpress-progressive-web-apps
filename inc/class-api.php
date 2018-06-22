@@ -18,11 +18,77 @@ class Api {
 	public function register_pwapp_routes() {
 
 		register_rest_route(
-			'pwapp', '/manifest', [
+			'pwapp', '/manifest', array(
 				'methods'  => 'GET',
-				'callback' => [ $this, 'export_manifest' ],
-			]
+				'callback' => array( $this, 'export_manifest' ),
+			)
 		);
+
+		register_rest_route(
+			'pwapp', '/categories', array(
+				'methods'  => 'GET',
+				'callback' => array( $this, 'export_categories' ),
+				'args'     => array(
+					'per_page' => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+					'page	'  => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+					'id'       => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+				),
+			)
+		);
+
+	}
+
+	public function export_categories( \WP_REST_Request $request ) {
+
+		if ( isset( $request['per_page'] ) && isset( $request['page'] ) ) {
+
+			$offset = 1 == $request['page'] ? '' : $request['per_page'] - 2;
+
+			$categories = get_terms(
+				array(
+					'taxonomy'   => 'category',
+					'number'     => $request['per_page'],
+					'hide_empty' => false,
+					'offset'     => $offset,
+				)
+			);
+
+			$refined_categories = [];
+
+			foreach ( $categories as $category ) {
+				$refined_categories[] = [
+					'id'   => $category->term_id,
+					'slug' => $category->slug,
+					'name' => $category->name,
+				];
+			}
+
+			echo wp_json_encode( $refined_categories );
+			exit();
+		}
+
+		if ( isset( $request['id'] ) ) {
+
+			$category = get_the_category( $request['id'] );
+
+			echo wp_json_encode(
+				[
+					'id'   => $category[0]->id,
+					'slug' => $category[0]->slug,
+					'name' => $category[0]->name,
+				]
+			);
+			exit();
+		}
 
 	}
 
@@ -77,10 +143,6 @@ class Api {
 		exit();
 
 	}
-
-
-
-
 
 }
 
