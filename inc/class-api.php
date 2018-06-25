@@ -79,15 +79,15 @@ class Api {
 
 		if ( isset( $request['id'] ) ) {
 
-			$category = get_the_category( $request['id'] );
+			$category = get_category( $request['id'] );
 
-			return  wp_json_encode(
+			return
 				[
-					'id'   => $category[0]->id,
-					'slug' => $category[0]->slug,
-					'name' => $category[0]->name,
-				]
-			);
+					'id'    => $category->term_id,
+					'slug'  => $category->slug,
+					'name'  => $category->name,
+					'image' => $this->get_category_image( $category->term_id ),
+				];
 
 		}
 
