@@ -66,13 +66,14 @@ class Api {
 
 			foreach ( $categories as $category ) {
 				$refined_categories[] = [
-					'id'   => $category->term_id,
-					'slug' => $category->slug,
-					'name' => $category->name,
+					'id'    => $category->term_id,
+					'slug'  => $category->slug,
+					'name'  => $category->name,
+					'image' => $this->get_category_image( $category->term_id ),
 				];
 			}
 
-			echo wp_json_encode( $refined_categories );
+			return   $refined_categories;
 			exit();
 		}
 
@@ -80,16 +81,40 @@ class Api {
 
 			$category = get_the_category( $request['id'] );
 
-			echo wp_json_encode(
+			return  wp_json_encode(
 				[
 					'id'   => $category[0]->id,
 					'slug' => $category[0]->slug,
 					'name' => $category[0]->name,
 				]
 			);
-			exit();
+
 		}
 
+		exit();
+
+	}
+
+
+	/**
+	 * Get the first featured image of a post that is not password protected from a category
+	 */
+	public function get_category_image( $category_id ) {
+		$query = new \WP_Query(
+			array(
+				'posts_per_page' => 1,
+				'meta_key'       => '_thumbnail_id',
+				'post_type'      => 'post',
+				'cat'            => $category_id,
+				'has_password'   => false,
+			)
+		);
+
+		if ( $query->have_posts() ) {
+			return get_the_post_thumbnail_url( $query->post->ID );
+		}
+
+		return '';
 	}
 
 	/**
@@ -139,8 +164,7 @@ class Api {
 			}
 		}
 
-		echo wp_json_encode( $arr_manifest );
-		exit();
+		return $arr_manifest;
 
 	}
 
