@@ -18,7 +18,6 @@ return array(
     'PWAPP\\Inc\\Cookie' => $baseDir . '/inc/class-cookie.php',
     'PWAPP\\Inc\\Formatter' => $baseDir . '/inc/class-formatter.php',
     'PWAPP\\Inc\\Options' => $baseDir . '/inc/class-options.php',
-    'PWAPP\\Inc\\PWAPP_Export' => $baseDir . '/inc/class-pwapp-export.php',
     'PWAPP\\Inc\\Purifier' => $baseDir . '/inc/class-purifier.php',
     'PWAPP\\Inc\\Themes_Compiler' => $baseDir . '/inc/class-themes-compiler.php',
     'PWAPP\\Inc\\Themes_Config' => $baseDir . '/inc/class-themes-config.php',

@@ -54,7 +54,6 @@ class ComposerStaticInit34e34073e74725f1df186ae5aafc7b86
         'PWAPP\\Inc\\Cookie' => __DIR__ . '/../..' . '/inc/class-cookie.php',
         'PWAPP\\Inc\\Formatter' => __DIR__ . '/../..' . '/inc/class-formatter.php',
         'PWAPP\\Inc\\Options' => __DIR__ . '/../..' . '/inc/class-options.php',
-        'PWAPP\\Inc\\PWAPP_Export' => __DIR__ . '/../..' . '/inc/class-pwapp-export.php',
         'PWAPP\\Inc\\Purifier' => __DIR__ . '/../..' . '/inc/class-purifier.php',
         'PWAPP\\Inc\\Themes_Compiler' => __DIR__ . '/../..' . '/inc/class-themes-compiler.php',
         'PWAPP\\Inc\\Themes_Config' => __DIR__ . '/../..' . '/inc/class-themes-config.php',
