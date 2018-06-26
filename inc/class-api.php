@@ -73,7 +73,7 @@ class Api {
 				];
 			}
 
-			return   $refined_categories;
+			return   new \WP_REST_Response( $refined_categories, 200 );
 			exit();
 		}
 
@@ -81,13 +81,14 @@ class Api {
 
 			$category = get_category( $request['id'] );
 
-			return
+			return new \WP_REST_Response(
 				[
 					'id'    => $category->term_id,
 					'slug'  => $category->slug,
 					'name'  => $category->name,
 					'image' => $this->get_category_image( $category->term_id ),
-				];
+				], 200
+			);
 
 		}
 
@@ -164,7 +165,7 @@ class Api {
 			}
 		}
 
-		return $arr_manifest;
+		return new \WP_REST_Response( $arr_manifest, 200 );
 
 	}
 
