@@ -445,7 +445,6 @@ use \PWAPP\Inc\Uploads;
 
 			window.PWAPPJSInterface.add("UI_customizetheme","PWAPP_EDIT_THEME",{'DOMDoc':window.document}, window);
 			window.PWAPPJSInterface.add("UI_editimages","PWAPP_EDIT_IMAGES",{'DOMDoc':window.document}, window);
-			window.PWAPPJSInterface.add("UI_editcover","PWAPP_EDIT_COVER",{'DOMDoc':window.document}, window);
 			window.PWAPPJSInterface.add("UI_service_worker","PWAPP_SERVICE_WORKER",{'DOMDoc':window.document}, window);
 
 		});
