@@ -200,7 +200,7 @@ class Api {
 			$app_texts_json = json_decode( $app_texts, true );
 
 			if ( $app_texts_json && ! empty( $app_texts_json ) && array_key_exists( 'APP_TEXTS', $app_texts_json ) ) {
-				return new \WP_REST_Response( $app_texts_json, 200 );
+				return new \WP_REST_Response( $app_texts_json['APP_TEXTS'], 200 );
 
 			}
 		}
