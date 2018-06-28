@@ -31,6 +31,7 @@ $config = [
 	],
 	'websiteUrl'  => home_url() . parse_url( home_url(), PHP_URL_QUERY ) ? '&' : '?' . Options::$prefix . 'theme_mode=desktop',
 	'ga-id'       => 'UA-000000-01',
+	'logo'        => $app_settings['logo'],
 	'googleAds'   => [
 		'adsInterval' => '10',
 		'phone'       => [
