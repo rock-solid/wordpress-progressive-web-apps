@@ -5,6 +5,7 @@ use PWAPP\Inc\Options;
 use PWAPP\Inc\Themes_Config;
 use PWAPP\Inc\Uploads;
 use PWAPP\Inc\PWAPP_Export;
+use PWAPP\Frontend\Application;
 
 /**
  *  Class that sets up the rest routes for the app
@@ -42,6 +43,13 @@ class Api {
 						'type'     => 'integer',
 					),
 				),
+			)
+		);
+
+		register_rest_route(
+			'pwapp', '/language', array(
+				'methods'  => 'GET',
+				'callback' => array( $this, 'export_language' ),
 			)
 		);
 
@@ -167,6 +175,37 @@ class Api {
 
 		return new \WP_REST_Response( $arr_manifest, 200 );
 
+	}
+
+
+	/**
+	 *
+	 * Load app texts for the current locale.
+	 *
+	 * The JSON files with translations for each language are located in frontend/locales.
+	 *
+	 * @param $locale
+	 * @param $response_type = javascript | list
+	 * @return bool|mixed
+	 *
+	 */
+	public function export_language() {
+
+		$locale        = get_locale();
+		$language_file = Application::check_language_file( $locale );
+
+		if ( false !== $language_file ) {
+
+			$app_texts      = file_get_contents( $language_file );
+			$app_texts_json = json_decode( $app_texts, true );
+
+			if ( $app_texts_json && ! empty( $app_texts_json ) && array_key_exists( 'APP_TEXTS', $app_texts_json ) ) {
+				return new \WP_REST_Response( $app_texts_json, 200 );
+
+			}
+		}
+
+		return false;
 	}
 
 }
