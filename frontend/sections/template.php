@@ -1,5 +1,6 @@
 <?php
 use  PWAPP\Frontend\Application;
+use PWAPP\Inc\Options;
 
 global $pwapp;
 
@@ -13,52 +14,31 @@ $site_url = get_site_url();
 
 $theme_path = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/themes/app2/';
 
-$config = [
-	'export'      => [
-		'categories' => $site_url . '/wp-json/pwapp/categories/',
-		'posts'      => $site_url . '/wp-json/wp/v2/posts/',
+$website_url_data = array(
+	home_url(),
+	parse_url( home_url(), PHP_URL_QUERY ) ? '&' : '?',
+	Options::$prefix . 'theme_mode=desktop',
+);
+
+$config = array(
+	'export'      => array(
+		'categories' => $site_url . '/wp-json/pwapp/categories',
+		'posts'      => $site_url . '/wp-json/wp/v2/posts',
 		'pages'      => $site_url . '/wp-json/wp/v2/pages?_embed=media',
 		'comments'   => $site_url . '/wp-json/wp/v2/comments',
 		'media'      => $site_url . '/wp-json/wp/v2/media',
-	],
-	'translate'   => [
-		'path' => $site_url . '/wp-json/pwapp/language/',
-	],
-	'socialMedia' => [
+	),
+	'translate'   => array(
+		'path' => $site_url . '/wp-json/pwapp/language',
+	),
+	'socialMedia' => array(
 		'facebook' => $app_settings['enable_facebook'],
 		'twitter'  => $app_settings['enable_twitter'],
 		'google'   => $app_settings['enable_google'],
-	],
-	'websiteUrl'  => home_url() . parse_url( home_url(), PHP_URL_QUERY ) ? '&' : '?' . Options::$prefix . 'theme_mode=desktop',
-	'ga-id'       => 'UA-000000-01',
+	),
+	'websiteUrl'  => join( '', $website_url_data ),
 	'logo'        => $app_settings['logo'],
-	'googleAds'   => [
-		'adsInterval' => '10',
-		'phone'       => [
-			'networkCode' => '1060237',
-			'adUnitCode'  => 'dev.demo.ad.test1',
-			'sizes'       => [
-				[
-					336,
-					280,
-				],
-				[
-					300,
-					300,
-				],
-				[
-					300,
-					250,
-				],
-				[
-					250,
-					250,
-				],
-			],
-		],
-	],
-
-];
+);
 
 $config_json = wp_json_encode( $config );
 
