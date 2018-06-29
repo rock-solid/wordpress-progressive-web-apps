@@ -53,6 +53,38 @@ class Api {
 			)
 		);
 
+		register_rest_route(
+			'pwapp', '/posts', array(
+				'methods'  => 'GET',
+				'callback' => array( $this, 'export_posts' ),
+				'args'     => array(
+					'per_page'   => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+					'page'       => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+					'id'         => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+					'status'     => array(
+						'required' => false,
+						'type'     => 'string',
+						'enum'     => array(
+							'publish',
+						),
+					),
+					'categories' => array(
+						'required' => false,
+						'type'     => 'integer',
+					),
+				),
+			)
+		);
+
 	}
 
 	public function export_categories( \WP_REST_Request $request ) {
@@ -206,6 +238,86 @@ class Api {
 		}
 
 		return false;
+	}
+
+
+	public function export_posts( \WP_REST_Request $incoming_request ) {
+		global $wp_rest_server;
+		$internal_request = new \WP_REST_Request( 'GET', '/wp/v2/posts' );
+
+		if ( isset( $incoming_request['per_page'] ) && isset( $incoming_request['page'] ) && isset( $incoming_request['categories'] ) && isset( $incoming_request['status'] ) ) {
+			// Set one or more request query parameters
+			$internal_request->set_param( 'per_page', $incoming_request['per_page'] );
+			$internal_request->set_param( 'page', $incoming_request['page'] );
+			$internal_request->set_param( 'categories', $incoming_request['categories'] );
+			$internal_request->set_param( 'status', $incoming_request['status'] );
+
+			$response = rest_do_request( $internal_request );
+
+			$response_data = $wp_rest_server->response_to_data( $response, true );
+
+			$filtered_posts = $this->filter_no_password_posts( $response_data );
+			$page           = $incoming_request['page'];
+
+			if ( count( $response_data ) < $incoming_request['per_page'] ) {
+				return new \WP_REST_Response(
+					array(
+						'posts'    => $filtered_posts,
+						'page'     => $page,
+						'loadMore' => false,
+					), 200
+				);
+			}
+			while ( count( $filtered_posts ) < $incoming_request['per_page'] && count( $response_data >= $incoming_request['per_page'] ) ) {
+
+				$page++;
+				$missing_posts = $incoming_request['per_page'] - count( $filtered_posts );
+
+				$internal_request->set_param( 'page', $page );
+				$response      = rest_do_request( $internal_request );
+				$response_data = $wp_rest_server->response_to_data( $response, true );
+
+				$no_password_posts = $this->filter_no_password_posts( $response_data );
+
+				if ( count( $no_password_posts ) >= $missing_posts ) {
+					$filtered_posts = array_merge( $filtered_posts, array_slice( $no_password_posts, 0, 1 === $missing_posts ? 1 : $missing_posts - 1 ) );
+				}
+			}
+
+			return   new \WP_REST_Response(
+				array(
+					'posts'    => $filtered_posts,
+					'page'     => $page !== $incoming_request['page'] ? $page : $page + 1,
+					'loadMore' => true,
+				), 200
+			);
+			exit();
+		}
+
+		if ( isset( $incoming_request['id'] ) ) {
+
+			// Set one or more request query parameters
+			$internal_request->set_param( 'id', $incoming_request['id'] );
+			$response      = rest_do_request( $internal_request );
+			$response_data = $wp_rest_server->response_to_data( $response, true );
+
+			return new \WP_REST_Response( $response_data, 200 );
+			exit();
+		}
+
+		exit();
+	}
+
+	public function filter_no_password_posts( $posts ) {
+		$no_password_posts = [];
+
+		foreach ( $posts as $post ) {
+			if ( false === $post['content']['protected'] ) {
+				array_push( $no_password_posts, $post );
+			}
+		}
+
+		return $no_password_posts;
 	}
 
 }
