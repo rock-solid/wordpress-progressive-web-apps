@@ -46,111 +46,65 @@ class Themes_Config {
 		),
 	);
 
-	public static $color_schemes = array(
+	/**
+	* Theme config json. Use this only for admin purposes.
+	* If the theme param is missing, the method will return the settings of the current selected theme.
+	*
+	* @param int $theme
+	*
+	* @return array or false
+	*/
+	public static function get_theme_config($theme = 2){
 
-		2 => array(
-			'labels'     => array(
-				'Headlines and primary texts',
-				'Article background',
-				'Article border',
-				'Secondary texts - dates and other messages',
-				'Category label',
-				'Category text color',
-				'Buttons background',
-				'Buttons icon',
-				'Menu',
-				'Forms',
-				'Cover text color',
-			),
-			'vars'       => array(
-				'base-text-color',
-				'base-bg-color',
-				'article-border-color',
-				'extra-text-color',
-				'category-color',
-				'category-text-color',
-				'buttons-bg-color',
-				'buttons-color',
-				'actions-panel-color',
-				'form-color',
-				'cover-text-color',
-			),
-			'presets'    => array(
-				1 => array(
-					'#303030',
-					'#ffffff',
-					'#dddddd',
-					'#999999',
-					'#f90c9a',
-					'#ffffff',
-					'#fafafa',
-					'#747474',
-					'#32394a',
-					'#5c5c5c',
-					'#ffffff',
-				),
-				2 => array(
-					'#445256',
-					'#ededed',
-					'#d9e0e3',
-					'#7c9197',
-					'#ffb505',
-					'#ffffff',
-					'#e7e7e7',
-					'#34799f',
-					'#616d6f',
-					'#7c9197',
-					'#ffffff',
-				),
-				3 => array(
-					'#647279',
-					'#ebf3f6',
-					'#bcc7cb',
-					'#709cb1',
-					'#19bcbb',
-					'#ffffff',
-					'#cfe0e6',
-					'#ea6c55',
-					'#2d4d45',
-					'#709cb1',
-					'#ffffff',
-				),
-			),
-			'cover'      => 1,
-			'cover_text' => 0,
-		),
-	);
+		$theme_config_path = PWAPP_PLUGIN_PATH.'frontend/themes/app2/presets.json';
 
+		if (file_exists($theme_config_path)){
+
+			$theme_config = file_get_contents($theme_config_path);
+			$theme_config_json = json_decode($theme_config, true);
+
+			if ($theme_config_json && !empty($theme_config_json) &&
+				array_key_exists('vars', $theme_config_json) && is_array($theme_config_json['vars']) &&
+				array_key_exists('labels', $theme_config_json) && is_array($theme_config_json['labels']) &&
+				array_key_exists('presets', $theme_config_json) && is_array($theme_config_json['presets']) &&
+				array_key_exists('fonts', $theme_config_json) && is_array($theme_config_json['fonts']) &&
+				array_key_exists('cover', $theme_config_json) && is_numeric($theme_config_json['cover']) &&
+				array_key_exists('cover_text', $theme_config_json) && is_numeric($theme_config_json['cover_text']) &&
+				array_key_exists('posts_per_page', $theme_config_json) && is_numeric($theme_config_json['posts_per_page'])) {
+
+				return $theme_config_json;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	* Get the application's background color for the app manifest.
 	*
 	* @param int or null $color_scheme
 	* @return string or false
-	*
-	* @todo Update this method to use a separate color variable.
 	*/
-	public static function get_manifest_background( $color_scheme = null ) {
+	public static function get_manifest_background($color_scheme = null)
+	{
 		if ( null == $color_scheme ) {
 			$color_scheme = Options::get_setting( 'color_scheme' );
 		}
 
-		switch ( $color_scheme ) {
+		$theme_presets = self::get_theme_config();
 
-			case 0:
+		switch ($color_scheme) {
+			case 0 :
 				$custom_colors = Options::get_setting( 'custom_colors' );
-
-				if ( is_array( $custom_colors ) && isset( $custom_colors[1] ) ) {
-					return $custom_colors[1];
+				if ( is_array($custom_colors) ) {
+					return end( $custom_colors );
 				}
 				break;
-
-			case 1:
-			case 2:
-			case 3:
-				return self::$color_schemes['2']['presets'][ $color_scheme ][1];
+			case 1 :
+			case 2 :
+			case 3 :
+				return end( $theme_presets['presets'][$color_scheme] );
 		}
-
 		return false;
 	}
 }

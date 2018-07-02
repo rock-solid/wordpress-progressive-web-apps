@@ -230,9 +230,7 @@ class Application {
 		$frontend_options = array(
 			'color_scheme',
 			'theme_timestamp',
-			'font_headlines',
-			'font_subtitles',
-			'font_paragraphs',
+			'font_family',
 			'enable_facebook',
 			'enable_twitter',
 			'enable_google',

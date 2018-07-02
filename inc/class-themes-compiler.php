@@ -114,31 +114,31 @@ class Themes_Compiler {
 			$theme        = 2;
 			$color_scheme = Options::get_setting( 'color_scheme' );
 
-			if ( 0 == $color_scheme ) {
-				$colors = Options::get_setting( 'custom_colors' );
-			} else {
-				$colors = Themes_Config::$color_schemes[ $theme ]['presets'][ $color_scheme ];
+			$theme_config = Themes_Config::get_theme_config();
+
+			if ($theme_config !== false) {
+
+				if ( 0 == $color_scheme ) {
+					$colors = Options::get_setting( 'custom_colors' );
+				} else {
+					$colors = $theme_config['presets'][ $color_scheme ];
+				}
+
+				// write colors
+				foreach ( $theme_config['vars'] as $key => $var_name ) {
+					fwrite( $fp, '$' . $var_name . ':' . $colors[ $key ] . ";\r\n" );
+				}
+
+				// write font family
+				$font_family = Themes_Config::$allowed_fonts[ Options::get_setting( 'font_family' ) - 1 ];
+				fwrite( $fp, '$base-font-family: "' . $font_family. '";' . "\r\n" );
+
+				// write font size
+				fwrite( $fp, '$base-font-size:' . Options::get_setting( 'font_size' ) . "rem;\r\n" );
+
+				fclose( $fp );
+				return true;
 			}
-
-			// write fonts
-			foreach ( array( 'headlines', 'subtitles', 'paragraphs' ) as $font_type ) {
-
-				$font_setting = Options::get_setting( 'font_' . $font_type );
-				$font_family  = Themes_Config::$allowed_fonts[ $font_setting - 1 ];
-
-				fwrite( $fp, '$' . $font_type . "-font:'" . str_replace( ' ', '', $font_family ) . "';\r\n" );
-			}
-
-			// write font size
-			fwrite( $fp, '$base-font-size:' . Options::get_setting( 'font_size' ) . "rem;\r\n" );
-
-			// write colors
-			foreach ( Themes_Config::$color_schemes[ $theme ]['vars'] as $key => $var_name ) {
-				fwrite( $fp, '$' . $var_name . ':' . $colors[ $key ] . ";\r\n" );
-			}
-
-			fclose( $fp );
-			return true;
 
 		} else {
 

@@ -34,21 +34,18 @@ class Admin_Ajax {
 			'updated' => false,
 		);
 
-		foreach ( array( 'headlines', 'subtitles', 'paragraphs' ) as $font_type ) {
+		if ( isset( $data[ 'pwapp_edittheme_fontfamily' ] ) ) {
 
-			if ( isset( $data[ 'pwapp_edittheme_font' . $font_type ] ) ) {
+			// check if the font settings have changed
+			if ( Options::get_setting( 'font_family' ) != $data[ 'pwapp_edittheme_fontfamily' ] ) {
 
-				// check if the font settings have changed
-				if ( Options::get_setting( 'font_' . $font_type ) != $data[ 'pwapp_edittheme_font' . $font_type ] ) {
+				Options::update_settings( 'font_family' , $data[ 'pwapp_edittheme_fontfamily' ] );
+				$response['updated'] = true;
+			}
 
-					Options::update_settings( 'font_' . $font_type, $data[ 'pwapp_edittheme_font' . $font_type ] );
-					$response['updated'] = true;
-				}
-
-				// if a font different from the default one was selected, we need to compile the css file
-				if ( 1 != $data[ 'pwapp_edittheme_font' . $font_type ] ) {
-					$response['scss'] = true;
-				}
+			// if a font different from the default one was selected, we need to compile the css file
+			if ( 1 != $data[ 'pwapp_edittheme_fontfamily' ] ) {
+				$response['scss'] = true;
 			}
 		}
 
@@ -131,38 +128,43 @@ class Admin_Ajax {
 		$selected_custom_colors = Options::get_setting( 'custom_colors' );
 
 		// how many colors does the theme have
-		$no_theme_colors = count( Themes_Config::$color_schemes[ $selected_theme ]['vars'] );
+		$theme_config = Themes_Config::get_theme_config();
 
-		for ( $i = 0; $i < $no_theme_colors; $i++ ) {
+		if ($theme_config !== false) {
 
-			// validate color code format
-			if ( isset( $data[ 'pwapp_edittheme_customcolor' . $i ] ) &&
-				trim( $data[ 'pwapp_edittheme_customcolor' . $i ] ) != '' &&
-				preg_match( '/^#[a-f0-9]{6}$/i', trim( $data[ 'pwapp_edittheme_customcolor' . $i ] ) ) ) {
+			$no_theme_colors = count( $theme_config['vars'] );
 
-				$arr_custom_colors[] = strtolower( $data[ 'pwapp_edittheme_customcolor' . $i ] );
+			for ( $i = 0; $i < $no_theme_colors; $i++ ) {
 
-				// if the color settings have changed, we need to recompile the css file
-				if ( empty( $selected_custom_colors ) ||
-					( isset( $selected_custom_colors[ $i ] ) && strtolower( $data[ 'pwapp_edittheme_customcolor' . $i ] ) != $selected_custom_colors[ $i ] ) ) {
+				// validate color code format
+				if ( isset( $data[ 'pwapp_edittheme_customcolor' . $i ] ) &&
+					trim( $data[ 'pwapp_edittheme_customcolor' . $i ] ) != '' &&
+					preg_match( '/^#[a-f0-9]{6}$/i', trim( $data[ 'pwapp_edittheme_customcolor' . $i ] ) ) ) {
 
-					$response['scss'] = true;
+					$arr_custom_colors[] = strtolower( $data[ 'pwapp_edittheme_customcolor' . $i ] );
+
+					// if the color settings have changed, we need to recompile the css file
+					if ( empty( $selected_custom_colors ) ||
+						( isset( $selected_custom_colors[ $i ] ) && strtolower( $data[ 'pwapp_edittheme_customcolor' . $i ] ) != $selected_custom_colors[ $i ] ) ) {
+
+						$response['scss'] = true;
+					}
+				} else {
+					$response['error'] = true;
+					break;
 				}
-			} else {
-				$response['error'] = true;
-				break;
 			}
-		}
 
-		// save colors only if all the colors from the theme have been set
-		if ( count( $arr_custom_colors ) == $no_theme_colors ) {
+			// save colors only if all the colors from the theme have been set
+			if ( count( $arr_custom_colors ) == $no_theme_colors ) {
 
-			Options::update_settings( 'custom_colors', $arr_custom_colors );
+				Options::update_settings( 'custom_colors', $arr_custom_colors );
 
-		} else {
+			} else {
 
-			$response['error'] = true;
-			$response['scss']  = false;
+				$response['error'] = true;
+				$response['scss']  = false;
+			}
 		}
 
 		return $response;
@@ -213,9 +215,7 @@ class Admin_Ajax {
 
 			// handle color schemes and fonts (look & feel page)
 			if ( isset( $_POST['pwapp_edittheme_colorscheme'] ) && is_numeric( $_POST['pwapp_edittheme_colorscheme'] ) &&
-			isset( $_POST['pwapp_edittheme_fontheadlines'] ) && is_numeric( $_POST['pwapp_edittheme_fontheadlines'] ) &&
-			isset( $_POST['pwapp_edittheme_fontsubtitles'] ) && is_numeric( $_POST['pwapp_edittheme_fontsubtitles'] ) &&
-			isset( $_POST['pwapp_edittheme_fontparagraphs'] ) && is_numeric( $_POST['pwapp_edittheme_fontparagraphs'] ) &&
+			isset( $_POST['pwapp_edittheme_fontfamily'] ) && is_numeric( $_POST['pwapp_edittheme_fontfamily'] ) &&
 			isset( $_POST['pwapp_edittheme_fontsize'] ) && is_numeric( $_POST['pwapp_edittheme_fontsize'] ) ) {
 
 				// build array with the allowed fonts sizes
@@ -225,9 +225,7 @@ class Admin_Ajax {
 				}
 
 				if ( in_array( $_POST['pwapp_edittheme_colorscheme'], array( 0, 1, 2, 3 ) ) &&
-				in_array( $_POST['pwapp_edittheme_fontheadlines'] - 1, array_keys( Themes_Config::$allowed_fonts ) ) &&
-				in_array( $_POST['pwapp_edittheme_fontsubtitles'] - 1, array_keys( Themes_Config::$allowed_fonts ) ) &&
-				in_array( $_POST['pwapp_edittheme_fontparagraphs'] - 1, array_keys( Themes_Config::$allowed_fonts ) ) &&
+				in_array( $_POST['pwapp_edittheme_fontfamily'] - 1, array_keys( Themes_Config::$allowed_fonts ) ) &&
 				in_array( $_POST['pwapp_edittheme_fontsize'], $allowed_fonts_sizes ) ) {
 
 					// check if the theme compiler can be successfully loaded

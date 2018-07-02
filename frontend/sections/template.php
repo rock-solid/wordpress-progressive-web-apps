@@ -69,7 +69,7 @@ $config_json = wp_json_encode( $config );
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
 
-	<link rel="stylesheet" href="<?php echo $frontend_path."fonts/font-".$app_settings['font_headlines'].".css?date=20160106";?>" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $frontend_path."fonts/font-".$app_settings['font_family'].".css?date=20160106";?>" type="text/css" />
 	<link href="<?php echo $theme_path; ?>css/main.16f77c55.css" rel="stylesheet" />
 
 	<script type="text/javascript" pagespeed_no_defer="">

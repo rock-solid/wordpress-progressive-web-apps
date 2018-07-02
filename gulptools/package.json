@@ -4,7 +4,8 @@
   "description": "Compile scss file with the default color scheme",
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.1",
-    "gulp-insert": "^0.5.0"
+    "gulp-insert": "^0.5.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.1"
   }
 }
