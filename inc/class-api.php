@@ -57,27 +57,26 @@ class Api {
 
 	public function export_categories( \WP_REST_Request $request ) {
 
+		global $wp_rest_server;
+
 		if ( isset( $request['per_page'] ) && isset( $request['page'] ) ) {
+			$internal_request = new \WP_REST_Request( 'GET', '/wp/v2/categories' );
 
-			$offset = 1 == $request['page'] ? '' : $request['per_page'] - 2;
+			$internal_request->set_param( 'per_page', $request['per_page'] );
+			$internal_request->set_param( 'page', $request['page'] );
 
-			$categories = get_terms(
-				array(
-					'taxonomy'   => 'category',
-					'number'     => $request['per_page'],
-					'hide_empty' => false,
-					'offset'     => $offset,
-				)
-			);
+			$response   = rest_do_request( $internal_request );
+			$categories = $wp_rest_server->response_to_data( $response, true );
 
 			$refined_categories = [];
 
 			foreach ( $categories as $category ) {
+
 				$refined_categories[] = [
-					'id'    => $category->term_id,
-					'slug'  => $category->slug,
-					'name'  => $category->name,
-					'image' => $this->get_category_image( $category->term_id ),
+					'id'    => $category['id'],
+					'slug'  => $category['id'],
+					'name'  => $category['id'],
+					'image' => $this->get_category_image( $category->id ),
 				];
 			}
 
@@ -86,15 +85,17 @@ class Api {
 		}
 
 		if ( isset( $request['id'] ) ) {
+			$internal_request = new \WP_REST_Request( 'GET', '/wp/v2/categories/' . $request['id'] );
 
-			$category = get_category( $request['id'] );
+			$response   = rest_do_request( $internal_request );
+			$categories = $wp_rest_server->response_to_data( $response, true );
 
 			return new \WP_REST_Response(
 				[
-					'id'    => $category->term_id,
-					'slug'  => $category->slug,
-					'name'  => $category->name,
-					'image' => $this->get_category_image( $category->term_id ),
+					'id'    => $categories['id'],
+					'slug'  => $categories['id'],
+					'name'  => $categories['id'],
+					'image' => $this->get_category_image( $categories['id'] ),
 				], 200
 			);
 
