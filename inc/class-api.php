@@ -178,6 +178,24 @@ class Api {
 
 	}
 
+	public function get_app_texts_json() {
+
+		$locale        = get_locale();
+		$language_file = Application::check_language_file( $locale );
+		if ( false !== $language_file ) {
+
+			$app_texts      = file_get_contents( $language_file );
+			$app_texts_json = json_decode( $app_texts, true );
+
+			if ( $app_texts_json && ! empty( $app_texts_json ) && array_key_exists( 'APP_TEXTS', $app_texts_json ) ) {
+
+				return $app_texts_json;
+			}
+		}
+
+		return false;
+	}
+
 
 	/**
 	 *
@@ -192,21 +210,10 @@ class Api {
 	 */
 	public function export_language() {
 
-		$locale        = get_locale();
-		$language_file = Application::check_language_file( $locale );
+		$app_texts_json = $this->get_app_texts_json();
 
-		if ( false !== $language_file ) {
+		return false !== $app_texts_json ? new \WP_REST_Response( $app_texts_json['APP_TEXTS'], 200 ) : false;
 
-			$app_texts      = file_get_contents( $language_file );
-			$app_texts_json = json_decode( $app_texts, true );
-
-			if ( $app_texts_json && ! empty( $app_texts_json ) && array_key_exists( 'APP_TEXTS', $app_texts_json ) ) {
-				return new \WP_REST_Response( $app_texts_json['APP_TEXTS'], 200 );
-
-			}
-		}
-
-		return false;
 	}
 
 }
