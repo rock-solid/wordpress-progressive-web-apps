@@ -38,7 +38,10 @@ class Options {
 		// images
 		'logo'                     => '',
 		'icon'                     => '',
+		// deprecated
 		'cover'                    => '',
+		'inactive_pages'           => array(),
+		'inactive_categories'      => array(),
 	);
 
 
