@@ -37,9 +37,9 @@ use \PWAPP\Inc\Uploads;
 			<?php
 
 				$selected_theme = Options::get_setting( 'theme' );
+				$theme_settings = Themes_Config::get_theme_config();
 
-			if ( array_key_exists( $selected_theme, Themes_Config::$color_schemes ) ) :
-				$theme_settings = Themes_Config::$color_schemes[ $selected_theme ];
+			if ( $theme_settings !== false ) :
 				?>
 					<div class="details">
 						<h2 class="title">Customize Color Schemes and Fonts</h2>
@@ -147,67 +147,28 @@ use \PWAPP\Inc\Uploads;
 
 								<!-- add radio buttons -->
 								<?php
-								$font_headlines = Options::get_setting( 'font_headlines' );
-								if ( '' == $font_headlines ) {
-									$font_headlines = 1;
-								}
+									$font_family = Options::get_setting( 'font_family' );
+									if ( '' == $font_family ) {
+										$font_family = 1;
+									}
 								?>
 
-								<label for="pwapp_edittheme_fontheadlines">Headlines</label>
+								<label for="pwapp_edittheme_fontfamily">Font family</label>
 
-								<select name="pwapp_edittheme_fontheadlines" id="pwapp_edittheme_fontheadlines">
+								<select name="pwapp_edittheme_fontfamily" id="pwapp_edittheme_fontfamily">
 
 								<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
 										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo str_replace( ' ', '', $font_family ); ?>"><?php echo $font_family; ?></span>'
-																  <?php
-																	if ( $font_headlines == $key + 1 ) {
-																		echo 'selected';}
-																	?>
+											<?php
+											if ( $font_family == $key + 1 ) {
+												echo 'selected';}
+											?>
 										></option>
 									<?php endforeach; ?>
 								</select>
 
 								<div class="spacer-10"></div>
 
-								<?php
-								$font_subtitles = Options::get_setting( 'font_subtitles' );
-								if ( '' == $font_subtitles ) {
-									$font_subtitles = 1;
-								}
-								?>
-
-								<label for="pwapp_edittheme_fontsubtitles">Subtitles</label>
-								<select name="pwapp_edittheme_fontsubtitles" id="pwapp_edittheme_fontsubtitles">
-								<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
-										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo str_replace( ' ', '', $font_family ); ?>"><?php echo $font_family; ?></span>'
-																  <?php
-																	if ( $font_subtitles == $key + 1 ) {
-																		echo 'selected';}
-																	?>
-										></option>
-									<?php endforeach; ?>
-								</select>
-								<div class="spacer-10"></div>
-
-								<?php
-								$font_paragraphs = Options::get_setting( 'font_paragraphs' );
-								if ( '' == $font_paragraphs ) {
-									$font_paragraphs = 1;
-								}
-								?>
-
-								<label for="pwapp_edittheme_fontparagraphs">Paragraphs</label>
-								<select name="pwapp_edittheme_fontparagraphs" id="pwapp_edittheme_fontparagraphs">
-								<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
-										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo str_replace( ' ', '', $font_family ); ?>"><?php echo $font_family; ?></span>'
-																  <?php
-																	if ( $font_paragraphs == $key + 1 ) {
-																		echo 'selected';}
-																	?>
-										></option>
-									<?php endforeach; ?>
-								</select>
-								<div class="spacer-20"></div>
 							</div>
 
 							<div class="spacer-20"></div>
@@ -224,10 +185,10 @@ use \PWAPP\Inc\Uploads;
 								<?php foreach ( Themes_Config::$allowed_fonts_sizes as $key => $allowed_font_size ) : ?>
 										<div class="toggle-button">
 											<input type="radio" name="pwapp_edittheme_fontsize" id="pwapp_edittheme_fontsize_option_<?php echo $key + 1; ?>" autocomplete="off" value="<?php echo $allowed_font_size['size']; ?>"
-																																			   <?php
-																																				if ( $font_size == $allowed_font_size['size'] ) {
-																																					echo 'checked';}
-																																				?>
+												<?php
+												if ( $font_size == $allowed_font_size['size'] ) {
+													echo 'checked';}
+												?>
 											>
 											<div class="font-size font-size-<?php echo strtolower( $allowed_font_size['label'] ); ?>" id="pwapp_edittheme_fontsize_option_<?php echo $key + 1; ?>"></div>
 											<label for="pwapp_edittheme_fontsize_option_<?php echo $key + 1; ?>"><?php echo $allowed_font_size['label']; ?></label>
@@ -429,7 +390,7 @@ use \PWAPP\Inc\Uploads;
 				<div class="spacer-0"></div>
 			</div>
 			<div class="spacer-15"></div>
-			
+
 		</div>
 
 		<div class="right-side">
