@@ -74,8 +74,8 @@ class Api {
 
 				$refined_categories[] = [
 					'id'    => $category['id'],
-					'slug'  => $category['id'],
-					'name'  => $category['id'],
+					'slug'  => $category['slug'],
+					'name'  => $category['name'],
 					'image' => $this->get_category_image( $category->id ),
 				];
 			}
@@ -93,8 +93,8 @@ class Api {
 			return new \WP_REST_Response(
 				[
 					'id'    => $categories['id'],
-					'slug'  => $categories['id'],
-					'name'  => $categories['id'],
+					'slug'  => $categories['slug'],
+					'name'  => $categories['name'],
 					'image' => $this->get_category_image( $categories['id'] ),
 				], 200
 			);
