@@ -7,11 +7,14 @@ if ( is_single() || is_page() || is_category() ) :
 	$is_visible = false;
 
 	if ( is_single() ) {
-		$mobile_url .= '/#article/' . get_the_ID();
+
+		$post_obj    = get_post();
+		$mobile_url .= '/#post/' . $post_obj->post_name . '/' . $post_obj->ID;
 
 	} elseif ( is_page() ) {
 
-		$mobile_url .= '/#page/' . $page_id;
+		$page_obj    = get_post();
+		$mobile_url .= '/#page/' . $page_obj->post_name . '/' . $page_obj->ID;
 
 	} elseif ( is_category() ) {
 
