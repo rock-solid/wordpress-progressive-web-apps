@@ -116,7 +116,7 @@ class Themes_Compiler {
 
 			$theme_config = Themes_Config::get_theme_config();
 
-			if ($theme_config !== false) {
+			if ( false !== $theme_config ) {
 
 				if ( 0 == $color_scheme ) {
 					$colors = Options::get_setting( 'custom_colors' );
@@ -131,7 +131,7 @@ class Themes_Compiler {
 
 				// write font family
 				$font_family = Themes_Config::$allowed_fonts[ Options::get_setting( 'font_family' ) - 1 ];
-				fwrite( $fp, '$base-font-family: "' . $font_family. '";' . "\r\n" );
+				fwrite( $fp, '$base-font-family: "' . $font_family . '";' . "\r\n" );
 
 				// write font size
 				fwrite( $fp, '$base-font-size:' . Options::get_setting( 'font_size' ) . "rem;\r\n" );
@@ -139,7 +139,6 @@ class Themes_Compiler {
 				fclose( $fp );
 				return true;
 			}
-
 		} else {
 
 			$error = 'Unable to compile theme, the file ' . $file_path . ' is not writable.';
