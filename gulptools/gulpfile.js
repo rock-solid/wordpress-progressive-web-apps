@@ -91,6 +91,7 @@ gulp.task('compile-default-theme', function () {
 /**
 *
 * Compile admin CSS file
+* @todo Use this task to compile admin css instead of config.rb
 */
 // gulp.task('admin:processcss', function () {
 //   // Compile SCSS file and write it in the resources folder
