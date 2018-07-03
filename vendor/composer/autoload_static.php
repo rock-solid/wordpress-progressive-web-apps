@@ -6,10 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit34e34073e74725f1df186ae5aafc7b86
 {
-    public static $files = array (
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         'L' => 
         array (
@@ -25,13 +21,6 @@ class ComposerStaticInit34e34073e74725f1df186ae5aafc7b86
     );
 
     public static $prefixesPsr0 = array (
-        'H' => 
-        array (
-            'HTMLPurifier' => 
-            array (
-                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
-            ),
-        ),
         'D' => 
         array (
             'Detection' => 
@@ -49,12 +38,9 @@ class ComposerStaticInit34e34073e74725f1df186ae5aafc7b86
         'PWAPP\\Core\\PWAPP' => __DIR__ . '/../..' . '/core/class-pwapp.php',
         'PWAPP\\Frontend\\Application' => __DIR__ . '/../..' . '/frontend/class-application.php',
         'PWAPP\\Frontend\\Detect' => __DIR__ . '/../..' . '/frontend/class-detect.php',
-        'PWAPP\\Frontend\\Export\\PWAPP_Export' => __DIR__ . '/../..' . '/frontend/export/class-export.php',
         'PWAPP\\Inc\\Api' => __DIR__ . '/../..' . '/inc/class-api.php',
         'PWAPP\\Inc\\Cookie' => __DIR__ . '/../..' . '/inc/class-cookie.php',
-        'PWAPP\\Inc\\Formatter' => __DIR__ . '/../..' . '/inc/class-formatter.php',
         'PWAPP\\Inc\\Options' => __DIR__ . '/../..' . '/inc/class-options.php',
-        'PWAPP\\Inc\\Purifier' => __DIR__ . '/../..' . '/inc/class-purifier.php',
         'PWAPP\\Inc\\Themes_Compiler' => __DIR__ . '/../..' . '/inc/class-themes-compiler.php',
         'PWAPP\\Inc\\Themes_Config' => __DIR__ . '/../..' . '/inc/class-themes-config.php',
         'PWAPP\\Inc\\Tokens' => __DIR__ . '/../..' . '/inc/class-tokens.php',
