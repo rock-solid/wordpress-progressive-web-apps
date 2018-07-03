@@ -30,7 +30,7 @@ use \PWAPP\Inc\Uploads;
 			<!-- add content form -->
 			<div class="details">
 				<div class="spacer-10"></div>
-				<p>Customize your progressive web application by choosing from the below color schemes & fonts, adding your logo and app icon. The app comes with 6 abstract covers that are randomly displayed on the loading screen to give your app a magazine flavor. You can further personalize your mobile web application by uploading your own cover.</p>
+				<p>Customize your progressive web application by choosing from the below color schemes & fonts, adding your logo and app icon.</p>
 				<div class="spacer-20"></div>
 			</div>
 			<div class="spacer-10"></div>
@@ -148,9 +148,9 @@ use \PWAPP\Inc\Uploads;
 								<!-- add radio buttons -->
 								<?php
 									$font_family = Options::get_setting( 'font_family' );
-									if ( '' == $font_family ) {
-										$font_family = 1;
-									}
+								if ( '' == $font_family ) {
+									$font_family = 1;
+								}
 								?>
 
 								<label for="pwapp_edittheme_fontfamily">Font family</label>
