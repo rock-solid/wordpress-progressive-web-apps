@@ -39,6 +39,8 @@ $config = array(
 	),
 	'websiteUrl'  => join( '', $website_url_data ),
 	'logo'        => $app_settings['logo'],
+	'commentsEnabled' => 0,
+	'offlineMode' => 0,
 );
 
 $config_json = wp_json_encode( $config );
