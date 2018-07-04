@@ -20,6 +20,10 @@ $base-spacing-xxxl: 80px;
   box-sizing: border-box;
 }
 
+body {
+  background-color: $base-bg-color;
+}
+
 @function mpow($number, $exponent) {
   $value: 1;
   @if $exponent > 0 {
@@ -98,6 +102,7 @@ h6,
 button.ui.button {
   background: $buttons-bg-color !important;
 }
+
 i.icon {
   color: $buttons-icon-color !important;
 }
@@ -114,11 +119,29 @@ a {
   bottom: 0;
   height: unset;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   background: $footer-bg-color;
   padding: $base-spacing-xs;
   border-top: solid 1px $border-color;
+  z-index: 1000;
+
+  .footer-side {
+    max-width: 60px;
+    flex: 1;
+    text-align: center;
+  }
+
+  h4 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  h4, span {
+    color: $base-text-color;
+    line-height: 2rem;
+  }
 }
 
 
@@ -130,7 +153,13 @@ a {
     textarea {
       margin: $base-spacing-xs 0 0 0;
       border-color: $form-border-color;
+      font-family: $base-font-family;
     }
+  }
+
+  button {
+    font-family: $base-font-family;
+    color: $buttons-icon-color;
   }
 }
 
@@ -165,16 +194,11 @@ a {
 }
 
 .categories-card .ui.header {
-  position: absolute;
   z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: flex-end;
+  flex-direction: row;
   text-align: start;
-  font-weight: 100;
-  text-transform: uppercase;
   padding: 9px 15px;
   background: -webkit-linear-gradient(
     bottom,
@@ -183,8 +207,13 @@ a {
     transparent 80px,
     transparent
   );
+
   h1 {
+    font-weight: 100;
+    text-transform: uppercase;
     color: $cover-text-color;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 }
 
@@ -242,13 +271,15 @@ a {
 
 
 .carousel-container {
+  background-color: $cover-panel-color;
   height: 100vh;
 }
 
+.carousel-container .pusher,
 .carousel-container .slick-slider,
 .carousel-container .slick-list,
 .carousel-container .slick-track,
-.carousel-container div {
+.carousel-container .pusher div {
   height: 100%;
 }
 
@@ -275,12 +306,26 @@ a {
   color: $buttons-bg-color;
 }
 
+.carousel-container .pusher .ui.loader.active {
+  &::before, &::after {
+    top: 50%;
+  }
+}
+
+.ui.image.tiny.logo {
+  position: absolute;
+  z-index: 1000;
+  top: $base-spacing;
+  left: $base-spacing;
+}
+
 
 
 /* COMMENTS */
 .ui.comments.post-comments {
   margin: 0;
   height: 90vh;
+
   .comment {
     margin: $base-spacing-lg;
     padding: 0;
@@ -291,10 +336,22 @@ a {
   /* Button */
   button {
     margin: $base-spacing-xmd $base-spacing-xsm 0;
+    font-family: $base-font-family;
+    color: $buttons-icon-color;
   }
+
   /* text */
   .no-comments {
+    font-family: $base-font-family;
     padding-top: $base-spacing-lg;
+  }
+}
+
+.ui.modal.comments-modal {
+  background-color: $base-bg-color !important;
+
+  .header, .content {
+    background: none;
   }
 }
 
@@ -308,6 +365,9 @@ a {
     margin: 0;
     color: $base-text-color;
     font-family: $base-font-family;
+    border-radius: 0;
+    background-color: $footer-bg-color;
+
     /* CLOSE ICON */
     a {
       position: absolute;
@@ -319,18 +379,22 @@ a {
 
 /* MODAL */
 .react-router-modal__container.page-details {
-  background-color: $base-bg-color;
+
   border-color: $border-color;
   width: 100vw;
+
   .react-router-modal__modal {
     width: 94%;
     height: 98%;
     overflow-y: scroll;
+    background-color: $base-bg-color;
+
     .ui.container.page {
       margin-bottom: $base-spacing-xmd;
       a {
         color: $base-links-color;
       }
+
       .ui.dividing.header {
         display: flex;
         flex-direction: row-reverse;
@@ -338,14 +402,14 @@ a {
         justify-content: space-between;
         padding-bottom: $base-spacing-xsm;
         margin-bottom: $base-spacing-xsm;
+        border-color: $border-color;
+
         // align close button to header
         a {
           margin: calc(2rem - 0.14285714em) 0 0rem;
-          button.ui.icon.button {
-            background: $buttons-bg-color;
-          }
         }
       }
+
       .sub.header {
         color: $extra-text-color;
         padding-bottom: $base-spacing-xsm;
@@ -380,21 +444,26 @@ a {
     flex-direction: column;
     margin: 0 !important;
     text-align: left;
+
     .post-image {
       height: 60vh;
       background: center no-repeat;
       background-size: cover;
     }
+
     .container {
       margin: $base-spacing;
-      padding-top: $base-spacing-lg;
+      padding-top: $base-spacing-sm;
+
       .ui.header {
         text-align: start;
       }
+
       .sub.header {
         margin-top: $base-spacing;
         margin-bottom: $base-spacing;
       }
+
       .label {
         height: unset;
         border-radius: 2px;
@@ -403,6 +472,7 @@ a {
         background-color: $category-color;
         color: $category-text;
       }
+
       .post-content {
         padding: 0 $base-spacing-xsm;
         iframe {
@@ -421,12 +491,21 @@ a {
         color: $buttons-icon-color;
         background-color: $buttons-bg-color;
         box-shadow: none;
+
         &.chevron.left {
+          margin-top: $base-spacing;
+          margin-left: $base-spacing;
+        }
+
+        &.chevron.left.absolute {
           position: absolute;
           z-index: 1;
-          top: $base-spacing-xsm;
-          left: $base-spacing-xsm;
+          top: $base-spacing;
+          left: $base-spacing;
+          margin-top: 0;
+          margin-left: 0;
         }
+
         &.share {
           margin: $base-spacing-xsm;
         }
@@ -447,6 +526,19 @@ a {
     text-transform: uppercase;
     overflow: hidden;
   }
+
+  .categories-labels{
+    .ui.label {
+      height: unset;
+      border-radius: 2px;
+      padding: $base-spacing-sm;
+      margin: $base-spacing-xxs;
+      background-color: $category-color;
+      color: $category-text;
+      font-size: $base-font-size;
+    }
+  }
+
   .content {
     padding-top: $base-spacing-xsm;
     .image {
@@ -474,7 +566,13 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 93vh;
-  a {
+
+  .post-item {
+    max-height: 50vh;
+    overflow: hidden;
+  }
+
+  a.post-link {
     flex: 1;
     min-height: 40vh;
     &:first-child {
@@ -487,7 +585,7 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 90vh;
-  a {
+  a.post-link {
     flex: 1;
     min-width: 90vw;
     margin-top: $base-spacing-md;
@@ -502,7 +600,6 @@ a {
 
 .posts-carousel-container {
   * {
-    background-color: $base-bg-color;
     border-color: $border-color !important;
   }
   .slick-slide.slick-active {
@@ -512,28 +609,37 @@ a {
 
 
 
-.ui.menu-pages.sidebar.visible {
-  background-color: $base-bg-color;
+.ui.menu-pages.sidebar {
   border-color: $border-color;
   i {
     color: $buttons-icon-color;
   }
   .list {
-    padding: $base-spacing-xsm;
+    padding: $base-spacing;
+
     .header {
-      font-family: "Roboto Condensed", sans-serif;
+      font-family: $base-font-family, sans-serif;
+      color: $base-text-color;
       margin-top: $base-spacing-sm;
     }
+
     .item {
       display: flex;
       align-items: center;
-      height: 8vh;
-      position: relative;
+      border-color: $border-color;
+      padding-top: 0.5rem;
+      padding-bottom: 0.7rem;
+
       .content {
-        font-family: "Roboto Condensed", sans-serif;
         display: flex;
         align-items: center;
+
+        h3 {
+          font-family: $base-font-family, sans-serif;
+          color: $base-text-color;
+        }
       }
+
       .icon.triangle {
         position: absolute;
         right: 0;
@@ -591,4 +697,3 @@ a {
     transform: translate3d(0, 0, 0)
   }
 }
-
