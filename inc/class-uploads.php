@@ -30,7 +30,7 @@ class Uploads {
 		),
 	);
 
-	public static $manifest_sizes = array( 48, 96, 144, 196 );
+	public static $manifest_sizes = array( 48, 96, 144, 196, 512 );
 
 	protected static $htaccess_template = 'frontend/sections/htaccess-template.txt';
 
