@@ -227,7 +227,7 @@ use \PWAPP\Inc\Uploads;
 				} elseif ( '' != $icon_filename && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
 					foreach ( Uploads::$manifest_sizes as $manifest_size ) {
 						if ( ! file_exists( PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename ) ) {
-							$warning_message = 'Progressive Web Apps 0.7 comes with Add To Home Screen functionality which requires you to reupload your App Icon.';
+							$warning_message = 'Progressive Web Apps 1.0 comes with Add To Home Screen functionality which requires you to reupload your App Icon.';
 							break;
 						}
 					}

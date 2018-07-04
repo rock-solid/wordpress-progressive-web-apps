@@ -114,7 +114,7 @@ class PWAPP {
 		if ( '' != $icon_filename && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
 			foreach ( Uploads::$manifest_sizes as $manifest_size ) {
 				if ( ! file_exists( PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename ) ) {
-					echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 0.7 comes with Add To Home Screen functionality which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
+					echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 1.0 comes with Add To Home Screen functionality which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
 					return;
 				}
 			}
