@@ -76,7 +76,7 @@ class Api {
 					'id'    => $category['id'],
 					'slug'  => $category['slug'],
 					'name'  => $category['name'],
-					'image' => $this->get_category_image( $category->id ),
+					'image' => $this->get_category_image( $category['id'] ),
 				];
 			}
 
