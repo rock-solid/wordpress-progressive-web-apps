@@ -1,0 +1,92 @@
+{
+  "name": "Mosaic",
+  "labels": [
+    "Headlines and primary texts",
+    "Posts, pages and side menu background",
+    "Borders",
+    "Links",
+    "Secondary texts - dates and other messages",
+    "Categories badge color",
+    "Categories text color",
+    "Footer and comments header background",
+    "Buttons background",
+    "Buttons icon",
+    "Forms borders",
+    "Cover background",
+    "Cover text",
+    "Browser background color"
+  ],
+  "vars": [
+    "base-text-color",
+    "base-bg-color",
+    "border-color",
+    "base-links-color",
+    "extra-text-color",
+    "category-color",
+    "category-text",
+    "footer-bg-color",
+    "buttons-bg-color",
+    "buttons-icon-color",
+    "form-border-color",
+    "cover-panel-color",
+    "cover-text-color",
+    "browser-bar-background-color"
+  ],
+  "presets": {
+    "1": [
+      "#303030",
+      "#ffffff",
+      "#dddddd",
+      "#4183c4",
+      "#999999",
+      "#f90c9a",
+      "#ffffff",
+      "#dddddd",
+      "#fafafa",
+      "#747474",
+      "#5c5c5c",
+      "#32394a",
+      "#ffffff",
+      "#ffffff"
+    ],
+    "2": [
+      "#445256",
+      "#ededed",
+      "#d9e0e3",
+      "#4183c4",
+      "#7c9197",
+      "#ffb505",
+      "#ffffff",
+      "#d9e0e3",
+      "#e7e7e7",
+      "#34799f",
+      "#7c9197",
+      "#32394a",
+      "#ffffff",
+      "#ededed"
+    ],
+    "3": [
+      "#647279",
+      "#ebf3f6",
+      "#bcc7cb",
+      "#4183c4",
+      "#709cb1",
+      "#19bcbb",
+      "#ffffff",
+      "#bcc7cb",
+      "#cfe0e6",
+      "#ea6c55",
+      "#709cb1",
+      "#32394a",
+      "#ffffff",
+      "#ededed"
+    ]
+  },
+  "cover": 1,
+  "cover_text": 0,
+  "posts_per_page": 1,
+  "fonts": {
+    "base-font-family": "RobotoCondensedLight",
+    "base-font-size": "1rem"
+  }
+}

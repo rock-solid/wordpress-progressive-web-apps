@@ -4,7 +4,7 @@
 /*                                                                                                   */
 /*****************************************************************************************************/
 
-function PWAPP_EDIT_THEME(){
+function PWAPP_EDIT_THEME() {
 
   var JSObject = this;
 
@@ -21,21 +21,21 @@ function PWAPP_EDIT_THEME(){
   /*                              FUNCTION INIT - called from PWAPPJSInterface                          */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.init = function(){
+  this.init = function () {
 
     // save a reference to PWAPPJSInterface Object
     PWAPPJSInterface = window.parent.PWAPPJSInterface;
 
     // save a reference to 'SEND' Button
-    this.send_btn = jQuery('#'+this.type+'_send_btn',this.DOMDoc).get(0);
+    this.send_btn = jQuery('#' + this.type + '_send_btn', this.DOMDoc).get(0);
 
     // save a reference to the FORM and remove the default submit action
-    this.form = this.DOMDoc.getElementById(this.type+'_form');
+    this.form = this.DOMDoc.getElementById(this.type + '_form');
 
     // add actions to send, cancel, ... buttons
     this.addButtonsActions();
 
-    if (this.form == null){
+    if (this.form == null) {
       return;
     }
 
@@ -49,14 +49,14 @@ function PWAPP_EDIT_THEME(){
   /*                                  ENABLE COLOR PICKERS                                             */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.initCustomColors = function(){
+  this.initCustomColors = function () {
 
     // enable color picker for the color inputs
     jQuery('input[name^="' + JSObject.type + '_customcolor"]').wpColorPicker();
 
     // toggle display for the custom colors section
-    jQuery('input[name="' + JSObject.type + '_colorscheme"]').click(function(){
-      if (jQuery(this).val() == 0){
+    jQuery('input[name="' + JSObject.type + '_colorscheme"]').click(function () {
+      if (jQuery(this).val() == 0) {
         jQuery('.color-schemes-custom').show();
       } else {
         jQuery('.color-schemes-custom').hide();
@@ -70,10 +70,8 @@ function PWAPP_EDIT_THEME(){
   /*                                  FUNCTION ENABLE CUSTOM SELECTS                                   */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.initCustomSelects = function(){
-    jQuery('#' + JSObject.type + '_fontheadlines').selectBoxIt();
-    jQuery('#' + JSObject.type + '_fontsubtitles').selectBoxIt();
-    jQuery('#' + JSObject.type + '_fontparagraphs').selectBoxIt();
+  this.initCustomSelects = function () {
+    jQuery('#' + JSObject.type + '_fontfamily').selectBoxIt();
   };
 
 
@@ -82,13 +80,13 @@ function PWAPP_EDIT_THEME(){
   /*                                  FUNCTION ADD BUTTONS ACTIONS                                     */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.addButtonsActions = function(){
+  this.addButtonsActions = function () {
 
     /*******************************************************/
     /*                     SEND 'BUTTON'                   */
     /*******************************************************/
     jQuery(this.send_btn).unbind('click');
-    jQuery(this.send_btn).bind('click',function(){
+    jQuery(this.send_btn).bind('click', function () {
       JSObject.disableButton(this);
       JSObject.sendData();
     });
@@ -102,9 +100,9 @@ function PWAPP_EDIT_THEME(){
   /*                                 FUNCTION ENABLE BUTTON                                            */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.enableButton = function(btn){
-    jQuery(btn).css('cursor','pointer');
-    jQuery(btn).animate({opacity:1},100);
+  this.enableButton = function (btn) {
+    jQuery(btn).css('cursor', 'pointer');
+    jQuery(btn).animate({ opacity: 1 }, 100);
   };
 
   /*****************************************************************************************************/
@@ -112,10 +110,10 @@ function PWAPP_EDIT_THEME(){
   /*                                 FUNCTION DISABLE BUTTON                                           */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.disableButton = function(btn){
+  this.disableButton = function (btn) {
     jQuery(btn).unbind('click');
-    jQuery(btn).animate({opacity:0.4},100);
-    jQuery(btn).css('cursor','default');
+    jQuery(btn).animate({ opacity: 0.4 }, 100);
+    jQuery(btn).css('cursor', 'default');
   };
 
   /*****************************************************************************************************/
@@ -123,8 +121,8 @@ function PWAPP_EDIT_THEME(){
   /*                       FUNCTION SUBMIT FORM  THROUGH an IFRAME as target                           */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.submitForm = function(){
-    return PWAPPJSInterface.AjaxUpload.dosubmit(JSObject.form, {'onStart' : JSObject.startUploadingData, 'onComplete' : JSObject.completeUploadingData});
+  this.submitForm = function () {
+    return PWAPPJSInterface.AjaxUpload.dosubmit(JSObject.form, { 'onStart': JSObject.startUploadingData, 'onComplete': JSObject.completeUploadingData });
   };
 
   /*****************************************************************************************************/
@@ -132,11 +130,11 @@ function PWAPP_EDIT_THEME(){
   /*                                      FUNCTION SEND DATA                                           */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.sendData = function(){
+  this.sendData = function () {
 
-    jQuery('#'+this.form.id,this.DOMDoc).unbind('submit');
-    jQuery('#'+this.form.id,this.DOMDoc).bind('submit',function(){JSObject.submitForm();});
-    jQuery('#'+this.form.id,this.DOMDoc).submit();
+    jQuery('#' + this.form.id, this.DOMDoc).unbind('submit');
+    jQuery('#' + this.form.id, this.DOMDoc).bind('submit', function () { JSObject.submitForm(); });
+    jQuery('#' + this.form.id, this.DOMDoc).submit();
 
     JSObject.disableButton(JSObject.send_btn);
   };
@@ -147,19 +145,19 @@ function PWAPP_EDIT_THEME(){
   /*                                FUNCTION START UPLOADING DATA                                      */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.startUploadingData = function(){
+  this.startUploadingData = function () {
 
     PWAPPJSInterface.Preloader.start();
 
     //disable form elements
-    setTimeout(function(){
+    setTimeout(function () {
       var aElems = JSObject.form.elements;
       nElems = aElems.length;
 
-      for (j=0; j<nElems; j++) {
+      for (j = 0; j < nElems; j++) {
         aElems[j].disabled = true;
       }
-    },300);
+    }, 300);
 
     return true;
   };
@@ -170,22 +168,22 @@ function PWAPP_EDIT_THEME(){
   /*                              FUNCTION COMPLETE UPLOADING DATA                                     */
   /*                                                                                                   */
   /*****************************************************************************************************/
-  this.completeUploadingData = function(responseJSON){
+  this.completeUploadingData = function (responseJSON) {
 
-    jQuery('#'+JSObject.form.id,JSObject.DOMDoc).unbind('submit');
-    jQuery('#'+JSObject.form.id,JSObject.DOMDoc).bind('submit',function(){return false;});
+    jQuery('#' + JSObject.form.id, JSObject.DOMDoc).unbind('submit');
+    jQuery('#' + JSObject.form.id, JSObject.DOMDoc).bind('submit', function () { return false; });
 
     // remove preloader
     PWAPPJSInterface.Preloader.remove(100);
 
-    var JSON = eval ('('+responseJSON+')');
+    var JSON = eval('(' + responseJSON + ')');
     var response = Boolean(Number(String(JSON.status)));
 
-    if (response == true && JSON.messages.length == 0){
+    if (response == true && JSON.messages.length == 0) {
 
       // show message
       var message = 'Your app has been successfully modified!';
-      PWAPPJSInterface.Loader.display({message: message});
+      PWAPPJSInterface.Loader.display({ message: message });
 
     } else {
 
@@ -193,23 +191,23 @@ function PWAPP_EDIT_THEME(){
       if (JSON.messages.length == 0) {
 
         var message = 'There was an error. Please reload the page and try again.';
-        PWAPPJSInterface.Loader.display({message: message});
+        PWAPPJSInterface.Loader.display({ message: message });
 
       } else {
 
-        for (var i = 0; i < JSON.messages.length; i++ )
-          PWAPPJSInterface.Loader.display({message: JSON.messages[i]});
+        for (var i = 0; i < JSON.messages.length; i++)
+          PWAPPJSInterface.Loader.display({ message: JSON.messages[i] });
       }
     }
 
     // enable form elements
-    setTimeout(function(){
+    setTimeout(function () {
       var aElems = JSObject.form.elements;
       nElems = aElems.length;
-      for (j=0; j<nElems; j++) {
+      for (j = 0; j < nElems; j++) {
         aElems[j].disabled = false;
       }
-    },300);
+    }, 300);
 
     //enable buttons
     JSObject.addButtonsActions();

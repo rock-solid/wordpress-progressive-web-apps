@@ -1,169 +1,96 @@
 <?php
-	$app_settings = PWAPP_Application::load_app_settings();
+use  PWAPP\Frontend\Application;
+use PWAPP\Inc\Options;
 
-	$frontend_path = plugins_url()."/".PWAPP_DOMAIN."/frontend/";
-	$theme_path = $frontend_path."themes/app2/";
+global $pwapp;
 
-	// check fonts
-	$loaded_fonts = array(
-		$app_settings['font_headlines'],
-		$app_settings['font_subtitles'],
-		$app_settings['font_paragraphs'],
-	);
+$frontend = new Application();
 
-	$loaded_fonts = array_unique($loaded_fonts);
+$app_settings = $frontend->load_app_settings();
 
-	// check if locale file exists
-	$texts_json_exists = PWAPP_Application::check_language_file(get_locale());
+$site_name = get_bloginfo( 'name' );
 
-	if ($texts_json_exists === false) {
-		echo "ERROR, unable to load language file. Please check the '".PWAPP_DOMAIN."/frontend/locales/' folder.";
-	}
+$site_url = get_site_url();
 
-	if (!class_exists('PWAPP_Themes_Config')) {
-		require_once(PWAPP_PLUGIN_PATH . 'inc/class-pwapp-themes-config.php');
-	}
+$theme_path    = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/themes/app2/';
+$frontend_path = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/';
 
-	$background_color = PWAPP_Themes_Config::get_manifest_background($app_settings['color_scheme']);
+$website_url_data = array(
+	home_url(),
+	parse_url( home_url(), PHP_URL_QUERY ) ? '&' : '?',
+	Options::$prefix . 'theme_mode=desktop',
+);
+
+$config = array(
+	'export'          => array(
+		'categories' => $site_url . '/wp-json/pwapp/categories',
+		'posts'      => $site_url . '/wp-json/wp/v2/posts',
+		'pages'      => $site_url . '/wp-json/wp/v2/pages?_embed=media',
+		'comments'   => $site_url . '/wp-json/wp/v2/comments',
+		'media'      => $site_url . '/wp-json/wp/v2/media',
+	),
+	'translate'       => array(
+		'path' => $site_url . '/wp-json/pwapp/language',
+	),
+	'socialMedia'     => array(
+		'facebook' => $app_settings['enable_facebook'],
+		'twitter'  => $app_settings['enable_twitter'],
+		'google'   => $app_settings['enable_google'],
+	),
+	'websiteUrl'  => join( '', $website_url_data ),
+	'logo'        => $app_settings['logo'],
+	'commentsEnabled' => 0,
+	'offlineMode' => 0,
+);
+
+$config_json = wp_json_encode( $config );
+
 ?>
-<!DOCTYPE HTML>
-<html manifest="" <?php language_attributes(); ?>>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <link rel="apple-touch-icon-precomposed" href="" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="manifest" href="<?php echo $frontend_path."export/content.php?content=androidmanifest";?>" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="#a333c8">
+	<link rel="manifest" href="<?php echo  $site_url . '/wp-json/pwapp/manifest/'; ?>">
+	<?php if ( '' != $app_settings['icon'] ) : ?>
+		<link rel="apple-touch-icon" href="<?php echo $app_settings['icon']; ?>" />
+	<?php endif; ?>
+	<link rel="shortcut icon" href="/favicon.ico">
 
-	<?php if ($background_color !== false) :?>
-		<meta name="theme-color" content="<?php echo $background_color; ?>">
-	<?php endif;?>
+	<title><?php echo esc_html( $site_name ); ?></title>
 
-    <?php if ($app_settings['icon'] != ''): // icon path for Firefox ?>
-        <link rel="shortcut icon" href="<?php echo $app_settings['icon'];?>"/>
-    <?php endif;?>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
 
-    <title><?php echo get_bloginfo("name");?></title>
-	<noscript>Your browser does not support JavaScript!</noscript>
-    <style type="text/css">
-        /**
-        * Example of an initial loading indicator.
-        * It is recommended to keep this as minimal as possible to provide instant feedback
-        * while other resources are still being loaded for the first time
-        */
-        html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #e5e8e3;
-        }
+	<link rel="stylesheet" href="<?php echo $frontend_path . 'fonts/font-' . $app_settings['font_family'] . '.css?date=20160106'; ?>" type="text/css" />
+	<link href="<?php echo $theme_path; ?>css/main.16f77c55.css" rel="stylesheet" />
 
-        #appLoadingIndicator {
-            position: absolute;
-            top: 50%;
-            margin-top: -8px;
-            text-align: center;
-            width: 100%;
-            height: 16px;
-            -webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;
-            animation-name: appLoadingIndicator;
-            animation-duration: 0.5s;
-            animation-iteration-count: infinite;
-            animation-direction: linear;
-        }
+	<script type="text/javascript" pagespeed_no_defer="">
+		window.__INITIAL_CONFIG__ =  <?php echo $config_json; ?>
+	</script>
 
-        #appLoadingIndicator > * {
-            background-color: #c6cdbe;
-            display: inline-block;
-            height: 16px;
-            width: 16px;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
-            margin: 0 2px;
-            opacity: 0.8;
-        }
-
-        @-webkit-keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
-        }
-
-        @keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
-        }
-    </style>
-
-    <script type="text/javascript" pagespeed_no_defer="">
-        var appticles = {
-            exportPath: "<?php echo $frontend_path."export/";?>",
-
-            <?php if ($app_settings['display_website_link']):?>
-                websiteUrl: '<?php echo home_url(); echo parse_url(home_url(), PHP_URL_QUERY) ? '&' : '?'; echo PWAPP_Options::$prefix; ?>theme_mode=desktop',
-            <?php endif;?>
-
-            logo: "<?php echo $app_settings['logo'];?>",
-            icon: "<?php echo $app_settings['icon'];?>",
-            defaultCover: "<?php echo $app_settings['cover'] != '' ? $app_settings['cover'] : $frontend_path."images/pattern-".rand(1, 6).".jpg";;?>",
-            userCover: <?php echo intval($app_settings['cover'] != '');?>,
-            hasFacebook: <?php echo $app_settings['enable_facebook'];?>,
-            hasTwitter: <?php echo $app_settings['enable_twitter'];?>,
-            hasGoogle: <?php echo $app_settings['enable_google'];?>,
-            commentsToken: "<?php echo $app_settings['comments_token'];?>",
-            articlesPerCard: <?php if ($app_settings['posts_per_page'] == 'single') echo 1; elseif ($app_settings['posts_per_page'] == 'double') echo 2; else echo '"auto"' ;?>
-        }
-    </script>
-
-
-    <!-- core -->
-    <?php if ($app_settings['theme_timestamp'] != ''):?>
-        <link rel="stylesheet" href="<?php echo PWAPP_FILES_UPLOADS_URL.'theme-'.$app_settings['theme_timestamp'].'.css';?>" type="text/css" />
-    <?php else: ?>
-        <link rel="stylesheet" href="<?php echo $theme_path;?>css/phone.css?date=20160420" type="text/css" />
-    <?php endif;?>
-
-    <!-- custom fonts -->
-    <?php foreach ($loaded_fonts as $font_no):?>
-        <link rel="stylesheet" href="<?php echo $frontend_path."fonts/font-".$font_no.".css?date=20160106";?>" type="text/css">
-    <?php endforeach;?>
-
-    <script src="<?php echo $frontend_path.'export/content.php?content=apptexts&locale='.get_locale();?>" type="text/javascript"></script>
-    <script src="<?php echo $theme_path;?>js/app.js?date=20160525" type="text/javascript"></script>
-	<?php if ($app_settings['service_worker_installed'] == 1): ?>
-		<script type="text/javascript" pagespeed_no_defer="">
+	<?php if ( '1' === $app_settings['service_worker_installed'] ) : ?>
+		<script>
 			if ('serviceWorker' in navigator) {
- 				navigator.serviceWorker.register('/sw.js');
- 			}
- 		</script>
- 	<?php endif; ?>
+				navigator.serviceWorker.register('/sw.js');
+			}
+		</script>
+	<?php endif; ?>
 </head>
+
 <body>
-<div id="appLoadingIndicator">
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div id="root" style="height:100%"></div>
+	<script type="text/javascript" src="<?php echo $theme_path; ?>js/main.d4c9ae9a.js"></script>
 </body>
+
 </html>

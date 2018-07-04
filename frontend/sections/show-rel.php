@@ -1,76 +1,41 @@
 <?php
 
-if (class_exists('PWAPP_Core')):
+if ( is_single() || is_page() || is_category() ) :
 
-    if (is_single() || is_page() || is_category()):
+	// The mobile web app paths will be set relative to the home url
+	$mobile_url = home_url();
+	$is_visible = false;
 
-        // The mobile web app paths will be set relative to the home url
-        $mobile_url = home_url();
-        $is_visible = false;
+	if ( is_single() ) {
 
-        if (is_single()){
+		$post_obj    = get_post();
+		$mobile_url .= '/#post/' . $post_obj->post_name . '/' . $post_obj->ID;
 
-            // Read inactive categories
-            $inactive_categories = PWAPP_Options::get_setting('inactive_categories');
+	} elseif ( is_page() ) {
 
-            // Read post categories
-            $post_categories = get_the_category();
+		$page_obj    = get_post();
+		$mobile_url .= '/#page/' . $page_obj->post_name . '/' . $page_obj->ID;
 
-            // Check if the post belongs to a visible category
-            $is_visible = false;
-            $visible_category = null;
+	} elseif ( is_category() ) {
 
-            foreach ($post_categories as $post_category){
+		$category_name = single_cat_title( '', false );
 
-                if (!in_array($post_category->cat_ID, $inactive_categories)) {
-                    $is_visible = true;
-                    $mobile_url .= "/#article/".get_the_ID();
-                    break;
-                }
-            }
+		if ( $category_name ) {
 
-        } elseif (is_page()) {
+			$category_obj = get_term_by( 'name', $category_name, 'category' );
 
-            $page_id = get_the_ID();
-            $inactive_pages = PWAPP_Options::get_setting('inactive_pages');
+			if ( $category_obj && isset( $category_obj->slug ) && isset( $category_obj->term_id ) && is_numeric( $category_obj->term_id ) ) {
 
-            if (!in_array($page_id, $inactive_pages)){
+				$mobile_url .= '/#category/' . $category_obj->slug . '/' . $category_obj->term_id;
 
-                $is_visible = true;
+			}
+		}
+	}
 
-                $mobile_url .= "/#page/".$page_id;
-            }
 
-        } elseif (is_category()) {
+	?>
+	<link rel="alternate" media="only screen and (max-width: 640px)" href="<?php echo $mobile_url; ?>" />
+	<?php
 
-            $category_name = single_cat_title("", false);
-
-            if ($category_name){
-
-                $category_obj = get_term_by('name', $category_name, 'category');
-
-                if ($category_obj && isset($category_obj->slug) && isset($category_obj->term_id) && is_numeric($category_obj->term_id)){
-
-                    $category_id = $category_obj->term_id;
-
-                    // check if the category is active / inactive before displaying it
-                    $inactive_categories = PWAPP_Options::get_setting('inactive_categories');
-
-                    if (!in_array($category_id, $inactive_categories)){
-
-                        $is_visible = true;
-
-                        $mobile_url .= "/#category/".$category_obj->slug.'/'.$category_id;
-                    }
-                }
-            }
-        }
-
-        if ($is_visible):
-            ?>
-            <link rel="alternate" media="only screen and (max-width: 640px)" href="<?php echo $mobile_url;?>" />
-        <?php
-        endif;
-    endif;
 endif;
 ?>

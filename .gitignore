@@ -1,7 +1,5 @@
 admin/sass/.sass-cache/*
 gulptools/node_modules/*
-gulptools/merged/*
-gulptools/scss/*
 gulptools/.sass-cache/*
 coverage/*
 **/.DS_Store

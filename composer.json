@@ -1,0 +1,18 @@
+{
+  "name": "PWAPP",
+  "description": "",
+  "version": "0.1",
+  "autoload": {
+    "classmap": [
+      "core/",
+      "admin/",
+      "frontend/",
+      "inc/"
+    ]
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "mobiledetect/mobiledetectlib": "^2.8",
+    "leafo/scssphp": "^0.7.5"
+  }
+}
