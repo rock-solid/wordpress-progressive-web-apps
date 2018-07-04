@@ -6,7 +6,6 @@ use PWAPP\Inc\Themes_Config;
 use PWAPP\Inc\Themes_Compiler;
 use PWAPP\Inc\Options;
 use PWAPP\Inc\Uploads;
-use PWAPP\Inc\Formatter;
 
 /**
  *
@@ -34,17 +33,17 @@ class Admin_Ajax {
 			'updated' => false,
 		);
 
-		if ( isset( $data[ 'pwapp_edittheme_fontfamily' ] ) ) {
+		if ( isset( $data['pwapp_edittheme_fontfamily'] ) ) {
 
 			// check if the font settings have changed
-			if ( Options::get_setting( 'font_family' ) != $data[ 'pwapp_edittheme_fontfamily' ] ) {
+			if ( Options::get_setting( 'font_family' ) != $data['pwapp_edittheme_fontfamily'] ) {
 
-				Options::update_settings( 'font_family' , $data[ 'pwapp_edittheme_fontfamily' ] );
+				Options::update_settings( 'font_family', $data['pwapp_edittheme_fontfamily'] );
 				$response['updated'] = true;
 			}
 
 			// if a font different from the default one was selected, we need to compile the css file
-			if ( 1 != $data[ 'pwapp_edittheme_fontfamily' ] ) {
+			if ( 1 != $data['pwapp_edittheme_fontfamily'] ) {
 				$response['scss'] = true;
 			}
 		}
@@ -130,7 +129,7 @@ class Admin_Ajax {
 		// how many colors does the theme have
 		$theme_config = Themes_Config::get_theme_config();
 
-		if ($theme_config !== false) {
+		if ( false !== $theme_config ) {
 
 			$no_theme_colors = count( $theme_config['vars'] );
 
@@ -346,7 +345,7 @@ class Admin_Ajax {
 	/**
 	 * Resize & copy image using WordPress methods
 	 *
-	 * @param $file_type = icon, logo or cover
+	 * @param $file_type = icon or logo
 	 * @param $file_path
 	 * @param $file_name
 	 * @param string                          $error_message
@@ -405,7 +404,7 @@ class Admin_Ajax {
 	 *
 	 * Remove image using the corresponding option's value for the filename
 	 *
-	 * @param $file_type = icon, logo or cover
+	 * @param $file_type = icon or logo
 	 * @return bool
 	 */
 	protected function remove_image( $file_type ) {
@@ -431,7 +430,7 @@ class Admin_Ajax {
 
 	/**
 	 *
-	 * Method used to save the icon, logo, cover or a category image
+	 * Method used to save the icon, logo
 	 */
 	public function theme_editimages() {
 
@@ -487,8 +486,6 @@ class Admin_Ajax {
 									$file_type = 'icon';
 								} elseif ( 'pwapp_editimages_logo' == $file ) {
 									$file_type = 'logo';
-								} elseif ( 'pwapp_editcover_cover' == $file ) {
-									$file_type = 'cover';
 								}
 
 								if ( $info['error'] >= 1 || $info['size'] <= 0 && array_key_exists( $file_type, Uploads::$allowed_files ) ) {
@@ -565,14 +562,14 @@ class Admin_Ajax {
 							}
 						}
 
-						if ( false == $has_uploaded_files && ! isset( $_POST['pwapp_editcover_text'] ) ) {
+						if ( false == $has_uploaded_files ) {
 							$arr_response['messages'][] = 'Please upload an image!';
 						}
 					}
 				}
 			} elseif ( 'delete' == $action ) {
 
-				// delete icon, logo or cover, depending on the 'source' param
+				// delete icon, logo, depending on the 'source' param
 				if ( isset( $_GET['source'] ) ) {
 
 					if ( array_key_exists( $_GET['source'], Uploads::$allowed_files ) ) {
@@ -591,16 +588,6 @@ class Admin_Ajax {
 						}
 					}
 				}
-			}
-
-			if ( isset( $_POST['pwapp_editcover_text'] ) ) {
-
-				$purifier = Formatter::init_purifier();
-
-				$cover_text = $purifier->purify( stripslashes( $_POST['pwapp_editcover_text'] ) );
-				Options::update_settings( 'cover_text', $cover_text );
-
-				$arr_response['status'] = 1;
 			}
 
 			// echo json with response

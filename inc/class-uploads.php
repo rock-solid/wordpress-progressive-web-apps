@@ -18,19 +18,14 @@ class Uploads {
 	/* ----------------------------------*/
 
 	public static $allowed_files = array(
-		'logo'  => array(
+		'logo' => array(
 			'max_width'  => 120,
 			'max_height' => 120,
 			'extensions' => array( 'png' ),
 		),
-		'icon'  => array(
+		'icon' => array(
 			'max_width'  => 256,
 			'max_height' => 256,
-			'extensions' => array( 'jpg', 'jpeg', 'png', 'gif' ),
-		),
-		'cover' => array(
-			'max_width'  => 1000,
-			'max_height' => 1000,
 			'extensions' => array( 'jpg', 'jpeg', 'png', 'gif' ),
 		),
 	);

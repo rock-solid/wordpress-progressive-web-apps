@@ -254,7 +254,7 @@ class Application {
 		}
 
 		// load images
-		foreach ( array( 'icon', 'logo', 'cover' ) as $file_type ) {
+		foreach ( array( 'icon', 'logo' ) as $file_type ) {
 
 			$file_path = Options::get_setting( $file_type );
 
@@ -266,7 +266,7 @@ class Application {
 		}
 
 		// generate comments token
-		$settings['comments_token'] = Tokens::get_token();
+		// $settings['comments_token'] = Tokens::get_token();
 
 		return $settings;
 	}

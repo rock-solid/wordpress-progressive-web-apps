@@ -2,7 +2,7 @@
 
 if ( isset( $theme ) ) :
 
-	$is_selected = isset( $theme['selected'] ) && $theme['selected'] == 1;
+	$is_selected = isset( $theme['selected'] ) && 1 == $theme['selected'];
 
 	$is_premium = isset( $theme['demo'] ) || isset( $theme['details'] );
 	?>

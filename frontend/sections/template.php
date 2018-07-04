@@ -12,7 +12,7 @@ $site_name = get_bloginfo( 'name' );
 
 $site_url = get_site_url();
 
-$theme_path = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/themes/app2/';
+$theme_path    = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/themes/app2/';
 $frontend_path = plugins_url() . '/' . PWAPP_DOMAIN . '/frontend/';
 
 $website_url_data = array(
@@ -22,17 +22,17 @@ $website_url_data = array(
 );
 
 $config = array(
-	'export'      => array(
+	'export'          => array(
 		'categories' => $site_url . '/wp-json/pwapp/categories',
 		'posts'      => $site_url . '/wp-json/wp/v2/posts',
 		'pages'      => $site_url . '/wp-json/wp/v2/pages?_embed=media',
 		'comments'   => $site_url . '/wp-json/wp/v2/comments',
 		'media'      => $site_url . '/wp-json/wp/v2/media',
 	),
-	'translate'   => array(
+	'translate'       => array(
 		'path' => $site_url . '/wp-json/pwapp/language',
 	),
-	'socialMedia' => array(
+	'socialMedia'     => array(
 		'facebook' => $app_settings['enable_facebook'],
 		'twitter'  => $app_settings['enable_twitter'],
 		'google'   => $app_settings['enable_google'],
@@ -71,7 +71,7 @@ $config_json = wp_json_encode( $config );
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
 
-	<link rel="stylesheet" href="<?php echo $frontend_path."fonts/font-".$app_settings['font_family'].".css?date=20160106";?>" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $frontend_path . 'fonts/font-' . $app_settings['font_family'] . '.css?date=20160106'; ?>" type="text/css" />
 	<link href="<?php echo $theme_path; ?>css/main.16f77c55.css" rel="stylesheet" />
 
 	<script type="text/javascript" pagespeed_no_defer="">

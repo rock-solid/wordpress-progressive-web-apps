@@ -54,23 +54,21 @@ class Themes_Config {
 	*
 	* @return array or false
 	*/
-	public static function get_theme_config($theme = 2){
+	public static function get_theme_config( $theme = 2 ) {
 
-		$theme_config_path = PWAPP_PLUGIN_PATH.'frontend/themes/app2/presets.json';
+		$theme_config_path = PWAPP_PLUGIN_PATH . 'frontend/themes/app2/presets.json';
 
-		if (file_exists($theme_config_path)){
+		if ( file_exists( $theme_config_path ) ) {
 
-			$theme_config = file_get_contents($theme_config_path);
-			$theme_config_json = json_decode($theme_config, true);
+			$theme_config      = file_get_contents( $theme_config_path );
+			$theme_config_json = json_decode( $theme_config, true );
 
-			if ($theme_config_json && !empty($theme_config_json) &&
-				array_key_exists('vars', $theme_config_json) && is_array($theme_config_json['vars']) &&
-				array_key_exists('labels', $theme_config_json) && is_array($theme_config_json['labels']) &&
-				array_key_exists('presets', $theme_config_json) && is_array($theme_config_json['presets']) &&
-				array_key_exists('fonts', $theme_config_json) && is_array($theme_config_json['fonts']) &&
-				array_key_exists('cover', $theme_config_json) && is_numeric($theme_config_json['cover']) &&
-				array_key_exists('cover_text', $theme_config_json) && is_numeric($theme_config_json['cover_text']) &&
-				array_key_exists('posts_per_page', $theme_config_json) && is_numeric($theme_config_json['posts_per_page'])) {
+			if ( $theme_config_json && ! empty( $theme_config_json ) &&
+				array_key_exists( 'vars', $theme_config_json ) && is_array( $theme_config_json['vars'] ) &&
+				array_key_exists( 'labels', $theme_config_json ) && is_array( $theme_config_json['labels'] ) &&
+				array_key_exists( 'presets', $theme_config_json ) && is_array( $theme_config_json['presets'] ) &&
+				array_key_exists( 'fonts', $theme_config_json ) && is_array( $theme_config_json['fonts'] ) &&
+				array_key_exists( 'posts_per_page', $theme_config_json ) && is_numeric( $theme_config_json['posts_per_page'] ) ) {
 
 				return $theme_config_json;
 			}
@@ -85,25 +83,24 @@ class Themes_Config {
 	* @param int or null $color_scheme
 	* @return string or false
 	*/
-	public static function get_manifest_background($color_scheme = null)
-	{
+	public static function get_manifest_background( $color_scheme = null ) {
 		if ( null == $color_scheme ) {
 			$color_scheme = Options::get_setting( 'color_scheme' );
 		}
 
 		$theme_presets = self::get_theme_config();
 
-		switch ($color_scheme) {
-			case 0 :
+		switch ( $color_scheme ) {
+			case 0:
 				$custom_colors = Options::get_setting( 'custom_colors' );
-				if ( is_array($custom_colors) ) {
+				if ( is_array( $custom_colors ) ) {
 					return end( $custom_colors );
 				}
 				break;
-			case 1 :
-			case 2 :
-			case 3 :
-				return end( $theme_presets['presets'][$color_scheme] );
+			case 1:
+			case 2:
+			case 3:
+				return end( $theme_presets['presets'][ $color_scheme ] );
 		}
 		return false;
 	}

@@ -123,7 +123,7 @@ class Options {
 				} else {
 					return false; // there was an error
 				}
-			} elseif ( is_string( $option ) && $option_value != '' ) {
+			} elseif ( is_string( $option ) && '' != $option_value ) {
 
 				if ( array_key_exists( $option, self::$options ) ) {
 					return add_option( self::$prefix . $option, $option_value );
