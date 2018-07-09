@@ -25,7 +25,7 @@ $config = array(
 	'export'          => array(
 		'categories' => $site_url . '/wp-json/pwapp/categories',
 		'posts'      => $site_url . '/wp-json/wp/v2/posts',
-		'pages'      => $site_url . '/wp-json/wp/v2/pages?_embed=media',
+		'pages'      => $site_url . '/wp-json/wp/v2/pages',
 		'comments'   => $site_url . '/wp-json/wp/v2/comments',
 		'media'      => $site_url . '/wp-json/wp/v2/media',
 	),
