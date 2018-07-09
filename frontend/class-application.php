@@ -246,7 +246,7 @@ class Application {
 		// check if custom theme exists and the file size is greater than zero
 		if ( '' != $settings['theme_timestamp'] ) {
 
-			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR . 'theme-' . $settings['theme_timestamp'] . '.css';
+			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR . 'theme-v2-' . $settings['theme_timestamp'] . '.css';
 
 			if ( ! file_exists( $custom_theme_path ) || filesize( $custom_theme_path ) == 0 ) {
 				$settings['theme_timestamp'] = '';

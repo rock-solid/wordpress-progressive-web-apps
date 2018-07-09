@@ -85,7 +85,7 @@ class Themes_Compiler {
 	 * @param $theme_timestamp
 	 */
 	public function remove_css_file( $theme_timestamp ) {
-		$file_path = PWAPP_FILES_UPLOADS_DIR . 'theme-' . $theme_timestamp . '.css';
+		$file_path = PWAPP_FILES_UPLOADS_DIR . 'theme-v2-' . $theme_timestamp . '.css';
 
 		if ( file_exists( $file_path ) ) {
 			unlink( $file_path );
@@ -176,7 +176,7 @@ class Themes_Compiler {
 	protected function generate_css_file( $theme_timestamp, &$error = false ) {
 
 		// attempt to open or create the scss file
-		$file_path = PWAPP_FILES_UPLOADS_DIR . 'theme-' . $theme_timestamp . '.css';
+		$file_path = PWAPP_FILES_UPLOADS_DIR . 'theme-v2-' . $theme_timestamp . '.css';
 
 		$fp = @fopen( $file_path, 'w' );
 
@@ -196,7 +196,7 @@ class Themes_Compiler {
 			try {
 
 				// write compiler output directly in the css file
-				$compiled_file = $scss_compiler->compile( '@import "_variables.scss"; @import "phone.scss";' );
+				$compiled_file = $scss_compiler->compile( '@import "_variables.scss"; @import "phone-v2.scss";' );
 				fwrite( $fp, $compiled_file );
 
 				fclose( $fp );

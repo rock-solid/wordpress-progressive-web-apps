@@ -72,7 +72,12 @@ $config_json = wp_json_encode( $config );
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
 
 	<link rel="stylesheet" href="<?php echo $frontend_path . 'fonts/font-' . $app_settings['font_family'] . '.css?date=20160106'; ?>" type="text/css" />
-	<link href="<?php echo $theme_path; ?>css/main.16f77c55.css" rel="stylesheet" />
+
+	<?php if ($app_settings['theme_timestamp'] === ''): ?>
+		<link href="<?php echo $theme_path; ?>css/phone-v2.css" rel="stylesheet" />
+	<?php else: ?>
+		<link href="<?php echo PWAPP_FILES_UPLOADS_URL.'theme-v2-'.$app_settings['theme_timestamp'].'.css';?>" rel="stylesheet" />
+	<?php endif; ?>
 
 	<script type="text/javascript" pagespeed_no_defer="">
 		window.__INITIAL_CONFIG__ =  <?php echo $config_json; ?>
@@ -90,7 +95,7 @@ $config_json = wp_json_encode( $config );
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root" style="height:100%"></div>
-	<script type="text/javascript" src="<?php echo $theme_path; ?>js/main.d4c9ae9a.js"></script>
+	<script type="text/javascript" src="<?php echo $theme_path; ?>js/main.35aa4542.js"></script>
 </body>
 
 </html>

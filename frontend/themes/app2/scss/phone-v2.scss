@@ -24,6 +24,11 @@ body {
   background-color: $base-bg-color;
 }
 
+html, body
+{
+    height: 100%;
+}
+
 @function mpow($number, $exponent) {
   $value: 1;
   @if $exponent > 0 {
@@ -114,10 +119,22 @@ a {
 
 
 
+.categories-labels {
+  display: inline-block;
+  border-radius: 2px;
+  padding: $base-spacing-xs;
+  margin: $base-spacing-xxs;
+  background-color: $category-color;
+  color: $category-text;
+  font-size: $base-font-size;
+}
+
+
+
 .posts-carousel-container .footer {
   position: absolute;
   bottom: 0;
-  height: unset;
+  // height: unset;
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -136,6 +153,9 @@ a {
     flex: 1;
     text-align: center;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   h4, span {
@@ -272,7 +292,9 @@ a {
 
 .carousel-container {
   background-color: $cover-panel-color;
-  height: 100vh;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .carousel-container .pusher,
@@ -312,11 +334,13 @@ a {
   }
 }
 
-.ui.image.tiny.logo {
+.ui.image.logo {
   position: absolute;
   z-index: 1000;
   top: $base-spacing;
   left: $base-spacing;
+  width: 100px;
+  height: auto;
 }
 
 
@@ -324,7 +348,6 @@ a {
 /* COMMENTS */
 .ui.comments.post-comments {
   margin: 0;
-  height: 90vh;
 
   .comment {
     margin: $base-spacing-lg;
@@ -408,12 +431,34 @@ a {
         a {
           margin: calc(2rem - 0.14285714em) 0 0rem;
         }
+
+        h1 {
+          overflow-wrap: break-word;
+        }
       }
 
       .sub.header {
         color: $extra-text-color;
         padding-bottom: $base-spacing-xsm;
         margin-bottom: $base-spacing-xsm;
+        overflow-wrap: break-word;
+      }
+
+      .page-content {
+        overflow-wrap: break-word;
+
+        iframe {
+          max-width: 100%;
+          height: auto;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        div {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -421,15 +466,22 @@ a {
 
 
 
-.share.ui.modal.visible.active.transition {
-  min-height: 97vh;
+.share.ui.modal {
+  height: 90%;
+
   .actions {
-    min-height: 95vh;
+    height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-left: $base-spacing-sm;
+      margin-right: $base-spacing-sm;
+    }
+
     .social-media {
-      min-width: 66vw;
       display: flex;
       justify-content: space-evenly;
     }
@@ -457,11 +509,16 @@ a {
 
       .ui.header {
         text-align: start;
+
+        h1 {
+          overflow-wrap: break-word;
+        }
       }
 
       .sub.header {
         margin-top: $base-spacing;
         margin-bottom: $base-spacing;
+        overflow-wrap: break-word;
       }
 
       .label {
@@ -475,6 +532,8 @@ a {
 
       .post-content {
         padding: 0 $base-spacing-xsm;
+        overflow-wrap: break-word;
+
         iframe {
           max-width: 100%;
           height: auto;
@@ -482,6 +541,10 @@ a {
         img {
           max-width: 100%;
           height: auto;
+        }
+
+        div {
+          max-width: 100%;
         }
       }
     }
@@ -507,7 +570,7 @@ a {
         }
 
         &.share {
-          margin: $base-spacing-xsm;
+          margin: $base-spacing-md;
         }
       }
     }
@@ -525,18 +588,9 @@ a {
   .header {
     text-transform: uppercase;
     overflow: hidden;
-  }
-
-  .categories-labels{
-    .ui.label {
-      height: unset;
-      border-radius: 2px;
-      padding: $base-spacing-sm;
-      margin: $base-spacing-xxs;
-      background-color: $category-color;
-      color: $category-text;
-      font-size: $base-font-size;
-    }
+    margin-top: $base-spacing-sm;
+    margin-bottom: $base-spacing-sm;
+    overflow-wrap: break-word;
   }
 
   .content {
@@ -563,18 +617,15 @@ a {
 
 
 .double-post {
-  display: flex;
-  flex-direction: column;
-  min-height: 93vh;
+  flex: 1;
+  margin-bottom: 45px;
+  max-height: 95%;
 
   .post-item {
-    max-height: 50vh;
+    height: 50%;
+    max-height: 50%;
     overflow: hidden;
-  }
 
-  a.post-link {
-    flex: 1;
-    min-height: 40vh;
     &:first-child {
       border-bottom: 1px solid;
     }
@@ -582,12 +633,13 @@ a {
 }
 
 .single-post {
-  display: flex;
-  flex-direction: column;
-  min-height: 90vh;
-  a.post-link {
-    flex: 1;
-    min-width: 90vw;
+  flex: 1;
+  margin-bottom: 45px;
+  max-height: 95%;
+
+  .post-item {
+    height: 90%;
+    min-width: 90%;
     margin-top: $base-spacing-md;
     margin-bottom: 0;
     margin-left: $base-spacing;
@@ -599,11 +651,24 @@ a {
 
 
 .posts-carousel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .pusher,
+  .slick-slider,
+  .slick-list,
+  .slick-track {
+    height: 100%;
+
+    .slick-slide {
+      display: flex;
+      flex-direction: column;
+    }
+}
+
   * {
     border-color: $border-color !important;
-  }
-  .slick-slide.slick-active {
-    height: 100vh;
   }
 }
 
@@ -627,8 +692,8 @@ a {
       display: flex;
       align-items: center;
       border-color: $border-color;
-      padding-top: 0.5rem;
-      padding-bottom: 0.7rem;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.7rem !important;
 
       .content {
         display: flex;
