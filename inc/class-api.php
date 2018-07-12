@@ -72,12 +72,10 @@ class Api {
 
 			foreach ( $categories as $category ) {
 
-				$refined_categories[] = [
-					'id'    => $category['id'],
-					'slug'  => $category['slug'],
-					'name'  => $category['name'],
-					'image' => $this->get_category_image( $category['id'] ),
-				];
+				$refined_categories[] = array_merge(
+					$category,
+					[ 'image' => $this->get_category_image( $category['id'] ) ]
+				);
 			}
 
 			return   new \WP_REST_Response( $refined_categories, 200 );
@@ -91,14 +89,11 @@ class Api {
 			$categories = $wp_rest_server->response_to_data( $response, true );
 
 			return new \WP_REST_Response(
-				[
-					'id'    => $categories['id'],
-					'slug'  => $categories['slug'],
-					'name'  => $categories['name'],
-					'image' => $this->get_category_image( $categories['id'] ),
-				], 200
+				array_merge(
+					$categories,
+					[ 'image' => $this->get_category_image( $categories['id'] ) ]
+				)
 			);
-
 		}
 
 		exit();
