@@ -95,7 +95,7 @@ $config_json = wp_json_encode( $config );
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root" style="height:100%"></div>
-	<script type="text/javascript" src="<?php echo $theme_path; ?>js/main.35aa4542.js"></script>
+	<script type="text/javascript" src="<?php echo $theme_path; ?>js/main.8317e96c.js"></script>
 </body>
 
 </html>

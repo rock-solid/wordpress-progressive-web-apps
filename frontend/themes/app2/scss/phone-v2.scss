@@ -444,6 +444,10 @@ a {
         overflow-wrap: break-word;
       }
 
+      .page-featured-image {
+        margin-bottom: $base-spacing;
+      }
+
       .page-content {
         overflow-wrap: break-word;
 
@@ -485,6 +489,12 @@ a {
       display: flex;
       justify-content: space-evenly;
     }
+
+    i.icon.circular {
+      color: $buttons-icon-color;
+      background-color: $buttons-bg-color;
+      box-shadow: none;
+    }
   }
 }
 
@@ -516,6 +526,7 @@ a {
       }
 
       .sub.header {
+        color: $extra-text-color;
         margin-top: $base-spacing;
         margin-bottom: $base-spacing;
         overflow-wrap: break-word;
@@ -681,11 +692,18 @@ a {
   }
   .list {
     padding: $base-spacing;
+    width: 100%;
 
     .header {
       font-family: $base-font-family, sans-serif;
       color: $base-text-color;
       margin-top: $base-spacing-sm;
+
+      .icon {
+        text-align: left;
+        margin-right: 0;
+        width: 1em;
+      }
     }
 
     .item {
@@ -708,6 +726,8 @@ a {
       .icon.triangle {
         position: absolute;
         right: 0;
+        padding-right: 0;
+        text-align: right;
       }
     }
   }
