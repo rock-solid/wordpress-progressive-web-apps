@@ -33,9 +33,9 @@ use  \PWAPP\Admin\Admin;
 
 			<div class="spacer-0"></div>
 			<div class="details theming">
-				<h2 class="title">Mobile App Theme</h2>
+				<h2 class="title">Progressive Mobile Web App</h2>
 				<div class="spacer-30"></div>
-				<p>The Mosaic mobile app theme is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space.</p>
+				<p>The Mosaic mobile PWA is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space.</p>
 				<div class="spacer-30"></div>
 				<div class="themes">
 					<div class="theme single" data-theme="2">
@@ -66,7 +66,7 @@ use  \PWAPP\Admin\Admin;
 					<?php if ( isset( $upgrade_content['premium']['themes']['title'] ) ) : ?>
 						<h2 class="title"><?php echo $upgrade_content['premium']['themes']['title']; ?></h2>
 					<?php else : ?>
-						<h2 class="title">Premium Mobile App Themes</h2>
+						<h2 class="title">Premium Progressive Mobile Web Apps</h2>
 					<?php endif; ?>
 
 					<div class="spacer-30"></div>

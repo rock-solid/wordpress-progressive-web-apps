@@ -21,7 +21,7 @@ This new level of quality allows Progressive Web Apps to earn a place on the use
 
 The WordPress Progressive Web Apps plugin helps bloggers, publishers and other content creators to go beyond responsive web design and 'appify' their existing mobile presence. Progressive Web Apps is supported on: iOS & Android. Compatible browsers: Safari, Google Chrome, Android – Native Browser. The plugin has been tested on WordPress 4.8 and later, we recommend using the latest WordPress version.
 
-The WordPress Progressive Web Apps plugin includes one FREE mobile app theme (MOSAIC) which is customizable (colors, fonts, appearance) via the WordPress admin area. The tech stack we used in building this Progressive Web App includes:
+The WordPress Progressive Web Apps plugin includes one FREE mobile PWA (MOSAIC) which is customizable (colors, fonts, appearance) via the WordPress admin area. The tech stack we used in building this Progressive Web App includes:
 
 * React JS
 * Semantic UI for UI components
@@ -31,11 +31,11 @@ The WordPress Progressive Web Apps plugin includes one FREE mobile app theme (MO
 * Babel
 * Jest & Sinon for unit tests
 
-The MOSAIC mobile app theme (available for FREE) is built with React JS. Most of the premium mobile app themes available at [PWAThemes.com/progressive-web-app-themes.html](https://pwathemes.com/progressive-web-app-themes.html) are built using Angular/Ionic 1 or React. Each mobile app theme comes with a "production" version, which in essence is the bundled/packaged/minified collection of all the necessary JS and CSS files for the PWA to run correctly.
+The MOSAIC PWA (available for FREE) is built with React JS. Most of the premium mobile progressive web apps available at [PWAThemes.com/progressive-web-app-themes.html](https://pwathemes.com/progressive-web-app-themes.html) are built using Angular/Ionic 1 or React. Each PWA comes with a "production" version, which in essence is the bundled/packaged/minified collection of all the necessary JS and CSS files for the PWA to run correctly.
 
-Each of our mobile app themes are tested with Karma, Jasmine and Protractor (Angular) or Jest (React). We have an average of 70-80% code coverage and we're working on improving this rate. While we do our best to catch any bugs out there, we are aware that some of them might escape us. Please reach out if you happen to come across a nasty one 😊.
+Each of our progressive web apps are tested with Karma, Jasmine and Protractor (Angular) or Jest (React). We have an average of 70-80% code coverage and we're working on improving this rate. While we do our best to catch any bugs out there, we are aware that some of them might escape us. Please reach out if you happen to come across a nasty one 😊.
 
-The FREE mobile app theme MOSAIC available in the WordPress Progressive Web Apps plugin is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space. It's great for publishers that have posts spanning several categories and need a way to visually structure their content.
+The FREE PWA MOSAIC available in the WordPress Progressive Web Apps plugin is the window-display of themes. You can instantly see several categories and choose which ones are of interest and focus on those. Depending on the number of displayed categories, the boxes will resize to fit all available space. It's great for publishers that have posts spanning several categories and need a way to visually structure their content.
 
 It comes with support for:
 
@@ -44,7 +44,7 @@ It comes with support for:
 * Side-to-side navigation with lateral swiping through categories
 * Maximum 2 articles per card
 
-There are dozens of mobile app themes available in the PRO version: [BASE](https://pwathemes.com/progressive-web-app-themes/base.html), [OBLIQ](https://pwathemes.com/progressive-web-app-themes/obliq.html), [ELEVATE](https://pwathemes.com/progressive-web-app-themes/elevate.html), [FOLIO](https://pwathemes.com/progressive-web-app-themes/folio.html), [INVISION](https://pwathemes.com/progressive-web-app-themes/invision.html), [POPSICLE](https://pwathemes.com/progressive-web-app-themes/popsicle.html), [PULSE](https://pwathemes.com/progressive-web-app-themes/pulse.html), [GHOST](https://pwathemes.com/progressive-web-app-themes/ghost.html), [PHANTOM](https://pwathemes.com/progressive-web-app-themes/phantom.html), [LUCID](https://pwathemes.com/progressive-web-app-themes/lucid.html), [EXTRUDE](https://pwathemes.com/progressive-web-app-themes/extrude.html), [VEDI](https://pwathemes.com/progressive-web-app-themes/vedi.html), [BLEND](https://pwathemes.com/progressive-web-app-themes/blend.html), [PURE](https://pwathemes.com/progressive-web-app-themes/pure.html),  [FUTURE](https://pwathemes.com/progressive-web-app-themes/future.html) & [PALM](https://pwathemes.com/progressive-web-app-themes/palm.html).
+There are dozens of mobile progressive web apps available in the PRO version: [BASE](https://pwathemes.com/progressive-web-app-themes/base.html), [OBLIQ](https://pwathemes.com/progressive-web-app-themes/obliq.html), [ELEVATE](https://pwathemes.com/progressive-web-app-themes/elevate.html), [FOLIO](https://pwathemes.com/progressive-web-app-themes/folio.html), [INVISION](https://pwathemes.com/progressive-web-app-themes/invision.html), [POPSICLE](https://pwathemes.com/progressive-web-app-themes/popsicle.html), [PULSE](https://pwathemes.com/progressive-web-app-themes/pulse.html), [GHOST](https://pwathemes.com/progressive-web-app-themes/ghost.html), [PHANTOM](https://pwathemes.com/progressive-web-app-themes/phantom.html), [LUCID](https://pwathemes.com/progressive-web-app-themes/lucid.html), [EXTRUDE](https://pwathemes.com/progressive-web-app-themes/extrude.html), [VEDI](https://pwathemes.com/progressive-web-app-themes/vedi.html), [BLEND](https://pwathemes.com/progressive-web-app-themes/blend.html), [PURE](https://pwathemes.com/progressive-web-app-themes/pure.html),  [FUTURE](https://pwathemes.com/progressive-web-app-themes/future.html) & [PALM](https://pwathemes.com/progressive-web-app-themes/palm.html).
 
 Additional key features available in PRO:
 
@@ -145,7 +145,7 @@ Please note that the progressive web app will be enabled only on supported devic
 
 == Screenshots ==
 
-1. The Mosaic mobile app theme
+1. The Mosaic progressive web app
 2. "App Themes" page from the admin panel.
 3. "App Themes" page from the admin panel with other Premium app themes
 4. "Look & Feel" page from the admin panel. Customize theme by choosing colors and fonts.
