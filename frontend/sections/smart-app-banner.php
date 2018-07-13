@@ -17,12 +17,12 @@ if ( is_single() || is_page() || is_category() ) {
 
 	if ( is_single() ) {
 		$post_obj    = get_post();
-		$mobile_url .= '/#post/' . $post_obj->post_name . '/' . $post_obj->ID;
+		$mobile_url .= '#post/' . $post_obj->post_name . '/' . $post_obj->ID;
 
 	} elseif ( is_page() ) {
 
 		$page_obj    = get_post();
-		$mobile_url .= '/#page/' . $page_obj->post_name . '/' . $page_obj->ID;
+		$mobile_url .= '#page/' . $page_obj->post_name . '/' . $page_obj->ID;
 
 
 	} elseif ( is_category() ) {
@@ -35,7 +35,7 @@ if ( is_single() || is_page() || is_category() ) {
 
 			if ( $category_obj && isset( $category_obj->slug ) && isset( $category_obj->term_id ) && is_numeric( $category_obj->term_id ) ) {
 
-				$mobile_url .= '/#category/' . $category_obj->slug . '/' . $category_obj->term_id;
+				$mobile_url .= '#category/' . $category_obj->slug . '/' . $category_obj->term_id;
 			}
 		}
 	}

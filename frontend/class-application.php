@@ -130,7 +130,7 @@ class Application {
 
 		if ( isset( $_GET[ $param_name ] ) && is_string( $_GET[ $param_name ] ) ) {
 
-			$theme_mode = $_GET[ $param_name ];
+			$theme_mode = trim($_GET[ $param_name ]);
 
 			if ( 'desktop' == $theme_mode || 'mobile' == $theme_mode ) {
 				$cookie_manager->set_cookie( 'theme_mode', $theme_mode, 3600 * 30 * 24 );
