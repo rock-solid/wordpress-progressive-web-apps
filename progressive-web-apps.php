@@ -41,9 +41,11 @@ function pwapp_frontend_init() {
 $api = new Api();
 
 add_action( 'rest_api_init', [ $api, 'register_pwapp_routes' ] );
+
+// Uncomment the line below to enable comments
 // add_filter( 'rest_allow_anonymous_comments', '__return_true' );
 
-// // Add hooks for activating & deactivating the plugin
+// Add hooks for activating & deactivating the plugin
 register_activation_hook( __FILE__, [ $progressive_web_apps, 'activate' ] );
 register_deactivation_hook( __FILE__, [ $progressive_web_apps, 'deactivate' ] );
 

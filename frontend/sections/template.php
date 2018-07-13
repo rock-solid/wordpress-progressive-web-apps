@@ -39,6 +39,7 @@ $config = array(
 	),
 	'websiteUrl'  => join( '', $website_url_data ),
 	'logo'        => $app_settings['logo'],
+	// Set commentsEnabled to 1 for enabling comments
 	'commentsEnabled' => 0,
 	'offlineMode' => 0,
 );
