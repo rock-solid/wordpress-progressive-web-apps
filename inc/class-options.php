@@ -39,10 +39,16 @@ class Options {
 		// images
 		'logo'                     => '',
 		'icon'                     => '',
-		// deprecated
+
+		// deprecated, keep for plugin uninstall
 		'cover'                    => '',
 		'inactive_pages'           => array(),
 		'inactive_categories'      => array(),
+		'categories_details'  	   => array(),
+		'ordered_categories' 	   => array(),
+		'display_mode' 			   => 'normal',
+		'display_website_link'	   => 1,
+		'posts_per_page' 		   => 'auto'
 	);
 
 
