@@ -1,9 +1,9 @@
 === Progressive Web Apps ===
 Contributors: cborodescu, anghelalexandra
 Tags: progressive web apps, pwa, mobile, mobile web, mobile internet, smartphone, iphone, android, windows, webkit, chrome, safari, mobile web app, html5, responsive ui
-Requires at least: 4.5
+Requires at least: 4.8
 Requires PHP: 5.4
-Tested up to: 4.8.1
+Tested up to: 4.9.7
 Stable tag: 1.0
 License: GPLv2 or later
 
@@ -81,7 +81,7 @@ Have fun on your mobile adventures!
 
 == Installation ==
 
-= Simple installation for WordPress v4.5 and later =
+= Simple installation for WordPress v4.8 and later =
 
 1.  Go to the 'Plugins' / 'Add new' menu
 1.	Upload progressive-web-apps.zip then press 'Install now'.
