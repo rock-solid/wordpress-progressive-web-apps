@@ -37,6 +37,12 @@ use \PWAPP\Inc\Uploads;
 			<?php
 
 				$selected_theme = Options::get_setting( 'theme' );
+				$has_old_theme = Themes_Config::has_old_theme();
+
+				if ( $has_old_theme ) {
+					Themes_Config::reset_theme_settings();
+				}
+
 				$theme_settings = Themes_Config::get_theme_config();
 
 			if ( $theme_settings !== false ) :
@@ -45,7 +51,17 @@ use \PWAPP\Inc\Uploads;
 						<h2 class="title">Customize Color Schemes and Fonts</h2>
 						<div class="spacer-15"></div>
 						<div class="grey-line"></div>
-						<div class="spacer-30"></div>
+						<div class="spacer-10"></div>
+
+						<?php if ($has_old_theme): ?>
+							<div class="message-container warning">
+								<div class="wrapper">
+									<span>The app has been upgraded to a new version, please add your styling using the new colors and fonts settings.</span>
+								</div>
+								<div class="spacer-10"></div>
+							</div>
+						<?php endif; ?>
+						<div class="spacer-20"></div>
 
 						<form name="pwapp_edittheme_form" id="pwapp_edittheme_form" action="<?php echo admin_url( 'admin-ajax.php' ); ?>?action=pwapp_theme_settings" method="post">
 
@@ -55,7 +71,7 @@ use \PWAPP\Inc\Uploads;
 
 								<!-- add labels -->
 								<div class="colors description">
-								<?php foreach ( $theme_settings['labels'] as $key => $description ) : ?>
+									<?php foreach ( $theme_settings['labels'] as $key => $description ) : ?>
 										<div class="color-" title="<?php echo $description; ?>"><?php echo $key + 1; ?></div>
 									<?php endforeach; ?>
 								</div>
@@ -63,7 +79,7 @@ use \PWAPP\Inc\Uploads;
 
 								<!-- add presets radio buttons & colors -->
 							<?php
-								$selected_color_scheme = Options::get_setting( 'color_scheme' );
+							$selected_color_scheme = Options::get_setting( 'color_scheme' );
 							if ( '' == $selected_color_scheme ) {
 								$selected_color_scheme = 1;
 							}
@@ -71,17 +87,16 @@ use \PWAPP\Inc\Uploads;
 							foreach ( $theme_settings['presets'] as $color_scheme => $default_colors ) :
 								?>
 									<input type="radio" name="pwapp_edittheme_colorscheme" id="pwapp_edittheme_colorscheme" value="<?php echo $color_scheme; ?>"
-																																			  <?php
-																																				if ( $color_scheme == $selected_color_scheme ) {
-																																					echo 'checked="checked"';}
-																																				?>
-									 autocomplete="off" />
+										<?php
+										if ( $color_scheme == $selected_color_scheme ) {
+											echo 'checked="checked"';}
+										?>
+									 	autocomplete="off"
+									/>
 									<div class="colors">
-
-								<?php foreach ( $theme_settings['labels'] as $key => $description ) : ?>
+										<?php foreach ( $theme_settings['labels'] as $key => $description ) : ?>
 											<div class="color-<?php echo $color_scheme . '-' . $key; ?>" title="<?php echo $description; ?>" style="background: <?php echo $theme_settings['presets'][ $color_scheme ][ $key ]; ?>"></div>
 										<?php endforeach; ?>
-
 									</div>
 									<div class="spacer-20"></div>
 								<?php endforeach; ?>
@@ -148,17 +163,16 @@ use \PWAPP\Inc\Uploads;
 								<!-- add radio buttons -->
 								<?php
 									$font_family = Options::get_setting( 'font_family' );
-								if ( '' == $font_family ) {
-									$font_family = 1;
-								}
+									if ( '' == $font_family ) {
+										$font_family = 1;
+									}
 								?>
 
 								<label for="pwapp_edittheme_fontfamily">Font family</label>
 
 								<select name="pwapp_edittheme_fontfamily" id="pwapp_edittheme_fontfamily">
-
-								<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
-										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo str_replace( ' ', '', $font_family ); ?>"><?php echo $font_family; ?></span>'
+									<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
+										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo $font_family; ?>"><?php echo $font_family; ?></span>'
 											<?php
 											if ( $font_family == $key + 1 ) {
 												echo 'selected';}
@@ -227,7 +241,7 @@ use \PWAPP\Inc\Uploads;
 				} elseif ( '' != $icon_filename && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
 					foreach ( Uploads::$manifest_sizes as $manifest_size ) {
 						if ( ! file_exists( PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename ) ) {
-							$warning_message = 'Progressive Web Apps 1.0 comes with Add To Home Screen functionality which requires you to reupload your App Icon.';
+							$warning_message = 'Progressive Web Apps 1.0 comes with new icons sizes for Add To Home Screen which requires you to reupload your App Icon.';
 							break;
 						}
 					}
@@ -353,7 +367,7 @@ use \PWAPP\Inc\Uploads;
 				<div class="notice notice-left right" style="width: 265px;">
 					<span>
 						Add your logo in a .png format with a transparent background. This will be displayed on the cover of your app.<br /><br />
-						Your icon should be square with a recommended size of 256 x 256 px. This will be displayed when the app will be added to the homescreen.<br /><br />
+						Your icon should be square with a recommended size of 512 x 512 px. This will be displayed when the app will be added to the homescreen.<br /><br />
 						The file size for uploaded images should not exceed 1MB.
 					</span>
 				</div>

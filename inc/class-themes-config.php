@@ -104,4 +104,35 @@ class Themes_Config {
 		}
 		return false;
 	}
+
+	/**
+	 * Check if the theme has a previously compiled styling file that is obsolete.
+	 */
+	public static function has_old_theme() {
+
+		$theme_timestamp = Options::get_setting( 'theme_timestamp' );
+
+		if ( '' != $theme_timestamp ) {
+
+			// we have a timestamp, but the new theme file doesn't exist
+			$custom_theme_path = PWAPP_FILES_UPLOADS_DIR . 'theme-v2-' . $theme_timestamp . '.css';
+
+			if ( ! file_exists( $custom_theme_path ) || 0 == filesize( $custom_theme_path ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Reset theme options.
+	 */
+	public static function reset_theme_settings() {
+
+		Options::update_settings( 'color_scheme', 1 );
+		Options::update_settings( 'custom_colors', array() );
+		Options::update_settings( 'font_family', 1 );
+		Options::update_settings( 'font_size', 1 );
+	}
 }

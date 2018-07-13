@@ -5,6 +5,7 @@ namespace PWAPP\Core;
 use PWAPP\Inc\Cookie;
 use PWAPP\Inc\Options;
 use PWAPP\Inc\Uploads;
+use PWAPP\Inc\Themes_Config;
 
 /**
  *
@@ -99,6 +100,7 @@ class PWAPP {
 		}
 
 		$this->display_icon_reupload_notice();
+		$this->display_styling_notice();
 	}
 
 
@@ -114,10 +116,21 @@ class PWAPP {
 		if ( '' != $icon_filename && file_exists( PWAPP_FILES_UPLOADS_DIR . $icon_filename ) ) {
 			foreach ( Uploads::$manifest_sizes as $manifest_size ) {
 				if ( ! file_exists( PWAPP_FILES_UPLOADS_DIR . $manifest_size . $icon_filename ) ) {
-					echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 1.0 comes with Add To Home Screen functionality which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
+					echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 1.0 comes with new icons sizes for Add To Home Screen which requires you to reupload your <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>App Icon</a>!</p></div>';
 					return;
 				}
 			}
+		}
+	}
+
+	/**
+	 *
+	 * Display styling notice if the app css file needs to be recompiled.
+	 *
+	 */
+	public function display_styling_notice() {
+		if ( Themes_Config::has_old_theme() ) {
+			echo '<div class="notice notice-warning is-dismissible"><p>Progressive Web Apps 1.0 comes with a new app which requires you to <a href="' . get_admin_url() . 'admin.php?page=pwapp-options-theme-settings"/>update your colors and fonts</a>!</p></div>';
 		}
 	}
 

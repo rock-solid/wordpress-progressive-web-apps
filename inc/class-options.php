@@ -26,9 +26,6 @@ class Options {
 		'custom_colors'            => array(),
 		'theme_timestamp'          => '',
 		'font_family'              => 1,
-		'font_headlines'           => 1, // deprecated
-		'font_subtitles'           => 1, // deprecated
-		'font_paragraphs'          => 1, // deprecated
 		'font_size'                => 1, // unit measure is 'rem'
 
 		'enable_facebook'          => 1,
@@ -41,6 +38,9 @@ class Options {
 		'icon'                     => '',
 
 		// deprecated, keep for plugin uninstall
+		'font_headlines'           => 1,
+		'font_subtitles'           => 1,
+		'font_paragraphs'          => 1,
 		'cover'                    => '',
 		'inactive_pages'           => array(),
 		'inactive_categories'      => array(),
