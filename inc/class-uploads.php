@@ -24,8 +24,8 @@ class Uploads {
 			'extensions' => array( 'png' ),
 		),
 		'icon' => array(
-			'max_width'  => 256,
-			'max_height' => 256,
+			'max_width'  => 512,
+			'max_height' => 512,
 			'extensions' => array( 'jpg', 'jpeg', 'png', 'gif' ),
 		),
 	);
@@ -129,6 +129,11 @@ class Uploads {
 
 		// remove htaccess file
 		$this->remove_htaccess_file();
+
+		// remove old compiled theme file
+		foreach (glob(PWAPP_FILES_UPLOADS_DIR."theme-*.css") as $file_path) {
+			unlink( $file_path );
+		}
 
 		// delete folder
 		rmdir( PWAPP_FILES_UPLOADS_DIR );
