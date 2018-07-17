@@ -162,9 +162,9 @@ use \PWAPP\Inc\Uploads;
 
 								<!-- add radio buttons -->
 								<?php
-									$font_family = Options::get_setting( 'font_family' );
-									if ( '' == $font_family ) {
-										$font_family = 1;
+									$selected_font_family = Options::get_setting( 'font_family' );
+									if ( '' == $selected_font_family ) {
+										$selected_font_family = 1;
 									}
 								?>
 
@@ -174,7 +174,7 @@ use \PWAPP\Inc\Uploads;
 									<?php foreach ( Themes_Config::$allowed_fonts as $key => $font_family ) : ?>
 										<option value="<?php echo $key + 1; ?>" data-text='<span style="font-family:<?php echo $font_family; ?>"><?php echo $font_family; ?></span>'
 											<?php
-											if ( $font_family == $key + 1 ) {
+											if ( $selected_font_family == $key + 1 ) {
 												echo 'selected';}
 											?>
 										></option>
@@ -364,7 +364,7 @@ use \PWAPP\Inc\Uploads;
 					</form>
 				</div>
 
-				<div class="notice notice-left right" style="max-width: 240px;">
+				<div class="notice notice-left right" style="max-width: 220px;">
 					<span>
 						Add your logo in a .png format with a transparent background. This will be displayed on the cover of your app.<br /><br />
 						Your icon should be square with a recommended size of 512 x 512 px. This will be displayed when the app will be added to the homescreen.<br /><br />
