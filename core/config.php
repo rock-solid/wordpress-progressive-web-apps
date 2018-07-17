@@ -7,6 +7,7 @@ define( 'PWAPP_DOMAIN', 'progressive-web-apps' );
 define( 'PWAPP_PLUGIN_PATH', WP_PLUGIN_DIR . '/' . PWAPP_DOMAIN . '/' );
 
 define( 'PWAPP_FEEDBACK_EMAIL', 'feedback@appticles.com' );
+define( 'PWAPP_CONTACT_EMAIL', 'contact@appticles.com' );
 
 define( 'PWAPP_MORE_UPDATES', 'http://d3oqwjghculspf.cloudfront.net/pwa/themes.json' );
 define( 'PWAPP_MORE_UPDATES_HTTPS', 'https://d3oqwjghculspf.cloudfront.net/pwa/themes.json' );
