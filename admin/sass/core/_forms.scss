@@ -268,10 +268,6 @@
 		}
 
 		.wrapper{
-			@include wbz-display-box();
-			@include wbz-box-orient(vertical);
-			@include wbz-box-flex(1);
-			width: 100%;
 			padding: 25px 50px;
 			margin: 10px 0;
 
@@ -281,13 +277,9 @@
 		}
 		.title{
 			width: 100%;
-			@include wbz-display-box();
-			@include wbz-box-orient(horizontal, important);
 
 			h2{
 				font-family: 'OlRoundGothicLight', sans-serif;
-				@include wbz-display-box();
-				@include wbz-box-flex(1);
 				margin: 0 0 15px 0!important;
 				font-size: 25px;
 			}

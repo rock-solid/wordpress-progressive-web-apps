@@ -7,16 +7,6 @@ body {
 
 }
 #pwapp-admin{
-
-    *, *:after, *:before {
-        font-weight: normal;
-        @include wbz-box-sizing(border-box);
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-touch-callout: none;
-        -ms-touch-action: none;
-        -webkit-user-drag: none;
-    }
-
     h1{
         font-family: 'OlRoundGothicLight', sans-serif;
         font-size: $h1-font-size;
@@ -40,13 +30,13 @@ body {
         margin: 0 0 30px;
         padding: 0 0 10px;
     }
-    p, span, a{
+    p, span:not(.wp-color-result-text), a{
         font-family: 'OpenSansRegular', sans-serif;
         font-size: 14px;
         line-height: 19px;
         color: $base-text-color;
     }
-    p, span {
+    p, span:not(.wp-color-result-text) {
         margin:0;
         padding: 0;
     }
@@ -70,26 +60,6 @@ body {
     .right{
         float:right;
     }
-    .notification{
-        @include wbz-display-box();
-        @include wbz-box-pack(center);
-        @include wbz-box-align(center);
-        position: relative;
-        width: 0px;
-        height: 0px;
-
-        .count{
-            @include wbz-border-radius(25px);
-            background: $base-red;
-            font-family: 'OpenSansRegular', sans-serif;
-            text-align: center;
-            color: #ffffff;
-            font-size: 12px;
-            line-height: 25px;
-            width: 25px;
-            height: 25px;
-        }
-    }
 
     @for $i from 0 through 100{
         .spacer-#{$i} {
@@ -99,10 +69,6 @@ body {
     .grey-line{
         @include wbz-spacer(1px);
         border-top: 1px solid $body-color;
-    }
-    .grey-dotted-line{
-        @include wbz-spacer(1px);
-        border-top: 1px dotted $base-p-color;
     }
     .relative{
         width: 0;
@@ -191,7 +157,7 @@ body {
             display: block;
             width: 0;
         }
-        span{
+        span:not(.wp-color-result-text){
             font-family: "OpenSansRegular", sans-serif;
             font-size: 13px;
             line-height: 20px;
@@ -199,184 +165,98 @@ body {
         }
     }
 }
-body{
-    min-width: $total-width;
-}
-#wp-content{
-    background:$body-color;
-}
 
 #pwapp-admin {
-    width: 100%;
+	.look-and-feel, .app-themes {
+		display: flex;
 
-    .left-side {
-        padding-right: 13px;
-        display: table-cell;
-        nav.menu {
-            width: 100%;
-            height: 69px;
-            position: relative;
-            padding: 0px;
-            min-width: 805px;
+		.left-side {
+			flex: 1;
+			min-width: 500px;
+			margin-right: $base-spacing;
 
-            ul {
-                list-style-type: none;
-                height: 69px;
-                border-bottom: 1px solid #DADDDE;
+			nav.menu {
+				width: 100%;
+				height: $menu-tabs-height;
+				position: relative;
+				padding: 0px;
 
-                li {
-                    min-width: 162px;
-                    height: 68px;
-                    display: table-cell;
-                    background-color: #f5f7f7;
-                    vertical-align: middle;
-                    text-align: center;
-                    border-right: #daddde 1px solid;
-                    border-bottom: #daddde 1px solid;
+				ul {
+					list-style-type: none;
+					height: $menu-tabs-height;
+					border-bottom: 1px solid #DADDDE;
 
-                    &:hover {
-                        border-bottom: 1px solid #dce0e0;
-                        background-color: #dce0e0;
-                        height: 68px;
+					li {
+						min-width: 162px;
+						height: $menu-tabs-height - 1;
+						display: table-cell;
+						background-color: #f5f7f7;
+						vertical-align: middle;
+						text-align: center;
+						border-right: #daddde 1px solid;
+						border-bottom: #daddde 1px solid;
 
-                        a {
-                            border-top: 4px solid #dce0e0;
-                        }
-                    }
-                    &.selected {
-                        border-bottom: 1px solid #ffffff;
-                        background-color: #ffffff;
-                        height: 69px;
+						&:hover {
+							border-bottom: 1px solid #dce0e0;
+							background-color: #dce0e0;
+							height: $menu-tabs-height - 1;
 
-                        a {
-                            color: $base-green;
-                            border-top: 4px solid $base-green;
-                            border-bottom: 1px solid #ffffff;
-                        }
-                    }
-                    a {
-                        color: $base-text-color;
-                        font-family: 'AcordeRegular';
-                        font-size: 17px;
-                        line-height: normal;
-                        padding: 20px 0;
-                        width: 100%;
-                        display: block;
-                        border-top: 4px solid #f5f7f7;
-                    }
-                }
-            }
-        }
-    }
-    .right-side {
-        width: 252px;
-        display: table-cell;
-        vertical-align: top;
-        padding: 0 10px 0 0;
+							a {
+								border-top: 4px solid #dce0e0;
+							}
+						}
+						&.selected {
+							border-bottom: 1px solid #ffffff;
+							background-color: #ffffff;
+							height: $menu-tabs-height;
 
-        .updates {
-            padding: 15px 5px 15px 15px;
-            background-color: $box-color;
+							a {
+								color: $base-green;
+								border-top: 4px solid $base-green;
+								border-bottom: 1px solid #ffffff;
+							}
+						}
+						a {
+							color: $base-text-color;
+							font-family: 'AcordeRegular';
+							font-size: 17px;
+							line-height: normal;
+							padding: 20px 0;
+							width: 100%;
+							display: block;
+							border-top: 4px solid #f5f7f7;
+						}
+					}
+				}
+			}
+		}
 
-            .details {
-                height: 333px;
-                position: relative;
-                overflow: hidden;
-            }
-            p {
-                font-size: 13px;
-                color: $base-p-color;
-                margin-right: 10px;
+		.right-side {
+			width: $right-side-width;
 
-                &.news-title {
-                    font-size: 16px;
-                    margin-bottom: 10px;
+			.form-box {
+				padding: $base-spacing;
+				background-color: $box-color;
 
-                    a {
-                        font-size: 16px;
-                        outline: none;
-                    }
-                }
-            }
-            a {
-                font-size: 13px;
-            }
-        }
-        .form-box {
-            padding: 15px;
-            background-color: $box-color;
+				p {
+					font-size: 13px;
+				}
 
-            p {
-                font-size: 13px;
-            }
+				.field-message {
+					padding: 1px 0;
+				}
+			}
 
-            .field-message {
-                padding: 1px 0;
-            }
-        }
-
-        .ask-review {
-            p, a {
-                font-size: 12px;
-            }
-            p {
-                padding: 0px 5px;
-            }
-        }
-    }
-
-    .added {
-        margin: 0 auto;
-        width: 190px;
-
-        .switcher {
-            width: 100%;
-
-            .msg {
-                font-family: 'AcordeSemiBold', sans-serif;
-                width: 150px;
-                height: $input-height;
-                background: $input-background;
-                color: $input-color;
-                font-size: $input-font-size;
-                @include wbz-border-radius($input-radius 0 0 $input-radius);
-                @include wbz-box-shadow(none);
-                border: 1px solid $input-border;
-                border-right: 0px;
-                padding: 0 10px;
-                line-height: 38px;
-                text-align: center;
-                float: left;
-            }
-
-            .check {
-                @include wbz-border-radius(0 $input-radius $input-radius 0);
-                @include wbz-inline-icon(active, 17px);
-                height: $input-height;
-                border: 1px solid darken($input-border, 10%);
-                border-left: 0px;
-                width: 40px;
-                float: right;
-                color: #ffffff;
-
-                &::before {
-                    height: 38px;
-                    width: 40px;
-                    right: -9px;
-                    top: -2px;
-                    line-height: 38px;
-                }
-            }
-
-            &.blue {
-                .check {
-                    background: $base-blue;
-                    border: 1px solid darken($base-blue, 10%);
-                    border-left: 0px;
-                }
-            }
-        }
-    }
+			.ask-review {
+				p, a {
+					font-size: 12px;
+				}
+				p {
+					padding: 0px 5px;
+				}
+			}
+		}
+	}
 }
 
 .wp-admin{

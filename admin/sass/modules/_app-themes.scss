@@ -1,12 +1,6 @@
 #pwapp-admin{
 	.app-themes{
-		display: table;
-
 		.left-side{
-			width: 100%;
-			display: table;
-			vertical-align: top;
-
             $theme-box-width: 195px;
             $theme-box-height: 320px;
             $theme-box-margin: 25px;
@@ -61,8 +55,6 @@
 				}
 
                 &.theming{
-                    display: table;
-                    width: 100%;
 
                     h2.title {
                         text-align: center;
@@ -88,12 +80,11 @@
 								margin: 0 $theme-box-margin $theme-box-margin 240px;
 							}
 
-                            .name{
+                            .name {
                                 font-family: 'AcordeRegular', sans-serif;
                                 font-size: 16px;
                                 color: $base-text-color;
                                 background: $base-color-lighter;
-                                height: $theme-box-subsection-height;
                                 border-bottom: 1px solid #dce0e0;
                                 padding: 10px;
                                 text-transform: uppercase;
@@ -254,7 +245,7 @@
                                 }
 								.content {
 									a.btn.smaller {
-										width: 100%;
+										margin: 0 auto;
 										line-height: normal;
 									}
 								}

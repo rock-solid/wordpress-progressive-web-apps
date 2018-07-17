@@ -107,7 +107,7 @@ use \PWAPP\Inc\Uploads;
 							</div>
 
 							<!-- start notice -->
-							<div class="notice notice-left left" style="width: 50%;">
+							<div class="notice notice-left left" style="max-width: 40%;">
 								<span>
 									The color scheme will impact the following sections within the mobile web application:<br/><br/>
 								<?php
@@ -210,7 +210,7 @@ use \PWAPP\Inc\Uploads;
 									<?php endforeach; ?>
 								</div>
 							</div>
-							<div class="notice notice-left right" style="width: 50%;">
+							<div class="notice notice-left right" style="max-width: 40%;">
 								<span>
 									The headlines, subtitles and paragraphs font sizes will be calculated depending on the paragraph font size. The 3 sizes have been carefully chosen with readibility in mind, based on our own research into the display of text content from large publishers such as the NY Times and other high-profile publishers.
 								</span>
@@ -364,7 +364,7 @@ use \PWAPP\Inc\Uploads;
 					</form>
 				</div>
 
-				<div class="notice notice-left right" style="width: 265px;">
+				<div class="notice notice-left right" style="max-width: 240px;">
 					<span>
 						Add your logo in a .png format with a transparent background. This will be displayed on the cover of your app.<br /><br />
 						Your icon should be square with a recommended size of 512 x 512 px. This will be displayed when the app will be added to the homescreen.<br /><br />

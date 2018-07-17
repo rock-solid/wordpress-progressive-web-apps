@@ -1,33 +1,6 @@
 #pwapp-admin{
 	.look-and-feel{
-		display: table;
-
 		.left-side{
-
-            $theme-box-width: 195px;
-            $theme-box-height: 280px;
-            $theme-box-margin: 14px;
-			$theme-box-subsection-height: 41px;
-
-			.corner{
-				z-index: 1;
-
-				&.active{
-
-					.indicator{
-						@include wbz-inline-icon(active, 11px);
-						color: #ffffff;
-
-                        top: 0px;
-                        left: $theme-box-width - 44px;
-
-						&::before{
-							top: -40px;
-							right: 18px;
-						}
-					}
-				}
-			}
 			.details{
 				padding:30px;
 				background-color: $box-color;
@@ -87,15 +60,6 @@
                         float: left;
                         margin-bottom: 10px;
 
-                        .wp-picker-container * {
-                            @include wbz-box-sizing(content-box);
-                            /*display: inherit;*/
-
-                            .button {
-                                margin-left: 6px;
-                                @include wbz-box-sizing(border-box);
-                            }
-                        }
                         > label {
                             width: 100%;
                         }
@@ -103,9 +67,6 @@
                 }
 
                 .font-chooser{
-                    // width: 50%;
-                    // float: left;
-
                     &.left {
                         width: 50%;
                         display: flex;
@@ -310,40 +271,6 @@
 							right: -30px;
 						}
 					}
-
-                    .wp-switch-editor{
-                        color:#555;
-                        height:20px;
-                        background: #ebebeb;
-                        border:1px solid #dedede;
-                        font: 13px/19px "Open Sans", sans-serif;
-                        margin: 5px 0 0 5px;
-                        padding: 3px 8px 4px;
-                        @include wbz-box-sizing(initial);
-                    }
-                    .wp-editor-wrap{
-                        width: 60%;
-                        float: left;
-                        textarea{
-                            width:100%;
-                        }
-                        &.tmce-active{
-                            .switch-tmce{
-                                background: #f5f5f5;
-                                color: #555;
-                                height: 20px;
-                                border-bottom-color:#f5f5f5;
-                            }
-                        }
-                        &.html-active {
-                            .switch-html {
-                                background: #f5f5f5;
-                                color: #555;
-                                height: 20px;
-                                border-bottom-color:#f5f5f5;
-                            }
-                        }
-                    }
 				}
 			}
 		}
