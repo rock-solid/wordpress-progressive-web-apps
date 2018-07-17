@@ -140,7 +140,7 @@ Please note that the progressive web app will be enabled only on supported devic
 == Upgrade Notice ==
 
 = 1.0 =
-* The latest version comes with a brand Progressive Web App built on React & Semantic UI.
+* The latest version comes with a brand new Progressive Web App built on React & Semantic UI.
 
 
 == Screenshots ==
