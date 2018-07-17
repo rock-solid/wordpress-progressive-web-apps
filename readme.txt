@@ -7,7 +7,7 @@ Tested up to: 4.9.7
 Stable tag: 1.0
 License: GPLv2 or later
 
-Progressive Web Apps use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
+Use a Progressive Web App implemented with React JS to enhance the experience of your mobile users.
 
 == Description ==
 
