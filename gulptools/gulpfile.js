@@ -4,7 +4,10 @@
 var gulp = require('gulp'),
   sass = require('gulp-sass'),
   minify = require('gulp-minify'),
-  insert = require('gulp-insert');
+  insert = require('gulp-insert'),
+  inline = require('gulp-inline-fonts'),
+  concat = require('gulp-concat'),
+  merge = require('merge-stream');
 
 gulp.task('default', ['compile-default-theme']);
 
@@ -89,17 +92,37 @@ gulp.task('compile-default-theme', function () {
 });
 
 /**
-*
 * Compile admin CSS file
-* @todo Use this task to compile admin css instead of config.rb
 */
-// gulp.task('admin:processcss', function () {
-//   // Compile SCSS file and write it in the resources folder
-//   gulp
-//     .src('./../admin/sass/general.scss')
-//     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-//     .pipe(gulp.dest('./../admin/css/'));
-// });
+gulp.task('admin:processcss', function () {
+  // Compile SCSS file and write it in the resources folder
+  return gulp
+    .src('./../admin/sass/general.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(gulp.dest('./../admin/css/'));
+});
+
+/**
+* Compile admin fonts CSS file
+*/
+gulp.task('admin:processfonts', function () {
+  // create an accumulated stream
+  var fontStream = merge();
+
+  ['AcordeRegular', 'AcordeSemibold', 'OlRoundGothicLight', 'OpenSansRegular', 'Appticles'].forEach(function (fontFamily) {
+
+    ['woff', 'eot', 'svg', 'ttf', 'otf'].forEach(function (format) {
+
+      if (format !== 'otf' || format !== 'Appticles') {
+        fontStream.add(gulp.src(`./../admin/sass/fonts/${fontFamily}/${fontFamily}.${format}`)
+          .pipe(inline({ name: fontFamily, weight: 'normal', formats: [format] })));
+      }
+    });
+
+  });
+
+  return fontStream.pipe(concat('fonts.css')).pipe(gulp.dest('./../admin/css/'));
+});
 
 /**
 *

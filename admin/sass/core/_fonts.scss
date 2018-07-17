@@ -1,9 +1,0 @@
-@import 'compass/css3';
-
-@include font-face('AcordeRegular', inline-font-files('acorde-regular.woff', woff, 'acorde-regular.ttf', truetype,'acorde-regular.svg', svg,"acorde-regular.eot",eot));
-@include font-face('AcordeSemiBold', inline-font-files('acorde-semibold.woff', woff, 'acorde-semibold.ttf', truetype,'acorde-semibold.svg', svg,"acorde-semibold.eot",eot));
-@include font-face('OlRoundGothicLight', inline-font-files('ol-round-gothic-light.woff', woff, 'ol-round-gothic-light.ttf', truetype,'ol-round-gothic-light.svg', svg,"ol-round-gothic-light.eot",eot));
-@include font-face('OpenSansRegular', inline-font-files('open-sans-regular.woff', woff, 'open-sans-regular.ttf', truetype,'open-sans-regular.svg', svg,"open-sans-regular.eot",eot));
-
-
-@include font-face('Appticles', inline-font-files('wp-font.woff', woff, 'wp-font.ttf', truetype,'wp-font.svg', svg,"wp-font.eot",eot));

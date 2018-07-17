@@ -99,6 +99,7 @@ class Admin_Init {
 	 */
 	public function pwapp_admin_enqueue_scripts() {
 		// enqueue styles
+		wp_enqueue_style( Options::$prefix . 'css_fonts', plugins_url( PWAPP_DOMAIN . '/admin/css/fonts.css' ), array(), PWAPP_VERSION );
 		wp_enqueue_style( Options::$prefix . 'css_general', plugins_url( PWAPP_DOMAIN . '/admin/css/general.css' ), array(), PWAPP_VERSION );
 
 		// enqueue scripts
