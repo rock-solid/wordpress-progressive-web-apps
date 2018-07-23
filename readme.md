@@ -17,7 +17,7 @@
 
 [Progressive Web Apps](https://pwathemes.com/) use modern web capabilities to deliver app-like user experiences. They're reliable, fast and engaging.
 
-DEMO: [https://bit.ly/pwa-mosaic](https://bit.ly/pwa-mosaic)
+DEMO: [https://demo-mosaic-react.wpmobilepack.com](https://demo-mosaic-react.wpmobilepack.com)
 
  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](https://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/jfbnuN2.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/UQY7TDs.gif) &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; ![demo](http://d3oqwjghculspf.cloudfront.net/github/wordpress-progressive-web-apps/AtI7537.gif) &nbsp; &nbsp;  &nbsp; &nbsp;
 
